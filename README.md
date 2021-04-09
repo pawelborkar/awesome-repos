@@ -21,6 +21,9 @@
 Repository  |   Description |   License |
 |---|---|---|
 |   [Public-Apis](https://github.com/public-apis/public-apis)  |   A collective list of free APIs  |   [MIT](https://github.com/public-apis/public-apis/blob/master/LICENSE) |
+
+**[⬆ Back to Index](#index)**
+
 ### Awesome
 Repository  |   Description |   License |
 |---|---|---|
@@ -28,8 +31,6 @@ Repository  |   Description |   License |
 |   [Awesome](https://github.com/awesome-windows/awesome)  |   💻 🎉 An awesome & curated list of best applications and tools for **Windows**  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Awesomeness](https://github.com/bayandin/awesome-awesomeness)  |   A curated list of awesome awesomeness  |   No License |
 |   [Machine Learning](https://github.com/josephmisiti/awesome-machine-learning)  |    A curated list of awesome Machine Learning frameworks, libraries and software   |    [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
-
-
 
 **[⬆ Back to Index](#index)**
 ### Books
