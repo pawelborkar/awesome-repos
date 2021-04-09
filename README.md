@@ -47,7 +47,7 @@ Repository  |   Description |   License |
 |---|---|---|
 |   [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)  |   :books: Freely available programming books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
 |   [GoBooks](https://github.com/dariubs/GoBooks)  |   List of Golang books  |   No License |
-|   [Mind Expanding Books](https://github.com/hackerkid/Mind-Expanding-Books)  |   List of Golang books  |   No License |
+|   [Mind Expanding Books](https://github.com/hackerkid/Mind-Expanding-Books)  |   📚 Books everyone should read  |   No License |
 |   [Python Books](https://github.com/Junnplus/awesome-python-books)  |   📚 Directory of Python books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
 |   [TypeScript Books](https://github.com/basarat/typescript-book)  |   :books: The definitive guide to TypeScript and possibly the best TypeScript book 📖. Free and Open Source 🌹  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
 
