@@ -25,6 +25,7 @@ Repository  |   Description |   License |
 |   [Computer Vision](https://github.com/jbhuang0604/awesome-computer-vision)  |    A curated list of awesome computer vision resources   |    No License |
 |   [Machine Learning](https://github.com/josephmisiti/awesome-machine-learning)  |    A curated list of awesome Machine Learning frameworks, libraries and software   |    [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Natural Language Processing](https://github.com/keon/awesome-nlp)  |   📖 A curated list of resources dedicated to Natural Language Processing (NLP)   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
+|   [Pytorchs](https://github.com/bharathgs/Awesome-pytorch-list)  |   A comprehensive list of pytorch related content on github,such as different models,implementations,helper libraries,tutorials etc   |   No License |
 
 **[⬆ Back to Index](#index)**
 ### API
@@ -46,17 +47,17 @@ Repository  |   Description |   License |
 ### Books
 Repository  |   Description |   License |
 |---|---|---|
-|   [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)  |   :books: Freely available programming books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
+|   [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)  |   :books: Freely available programming books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [GoBooks](https://github.com/dariubs/GoBooks)  |   List of Golang books  |   No License |
 |   [Mind Expanding Books](https://github.com/hackerkid/Mind-Expanding-Books)  |   📚 Books everyone should read  |   No License |
-|   [Python Books](https://github.com/Junnplus/awesome-python-books)  |   📚 Directory of Python books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
-|   [TypeScript Books](https://github.com/basarat/typescript-book)  |   :books: The definitive guide to TypeScript and possibly the best TypeScript book 📖. Free and Open Source 🌹  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
+|   [Python Books](https://github.com/Junnplus/awesome-python-books)  |   📚 Directory of Python books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
+|   [TypeScript Books](https://github.com/basarat/typescript-book)  |   :books: The definitive guide to TypeScript and possibly the best TypeScript book 📖. Free and Open Source 🌹  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 
 **[⬆ Back to Index](#index)**
 ### Frameworks
 Repository  |   Description |   License |
 |---|---|---|
-|   [CSS](https://github.com/troxler/awesome-css-frameworks)  |    List of awesome CSS frameworks   |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
+|   [CSS](https://github.com/troxler/awesome-css-frameworks)  |    List of awesome CSS frameworks   |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [Electron](https://github.com/sindresorhus/awesome-electron)  |    Useful resources for creating apps with Electron    |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [.NET](https://github.com/quozd/awesome-dotnet)  |    A collection of awesome .NET libraries, tools, frameworks and software   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Laravel](https://github.com/chiraggude/awesome-laravel)  |     A curated list of bookmarks, packages, tutorials, videos and other cool resources from the Laravel ecosystem   |   No License |
@@ -73,12 +74,13 @@ Repository  |   Description |   License |
 ### Programming Languages
 Repository  |   Description |   License |
 |---|---|---|
+|   [C](https://github.com/oz123/awesome-c)   |   A curated list of awesome C frameworks, libraries, resources and other shiny things. Inspired by all the other awesome-... projects out there  |   [CC-BY-SA-4.0](https://github.com/oz123/awesome-c/blob/master/LICENSE ) |
 |   [CPP](https://github.com/fffaraz/awesome-cpp)  |    A curated list of awesome C++ (or C) frameworks, libraries, resources, and shiny things. Inspired by awesome-... stuff   |   [MIT](https://github.com/fffaraz/awesome-cpp/blob/master/LICENSE) |
 |   [Go](https://github.com/avelino/awesome-go)  |    A curated list of awesome Go frameworks, libraries and software   |   [MIT](https://github.com/avelino/awesome-go/blob/master/LICENSE) |
-|   [Java](https://github.com/akullpp/awesome-java)  |    A curated list of awesome frameworks, libraries and software for the Java programming language  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
-|   [JavaScript](https://github.com/sorrycc/awesome-javascript)  |    🐢 A collection of awesome browser-side JavaScript libraries, resources and shiny things  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
-|   [Python](https://github.com/vinta/awesome-python)   |   A curated list of awesome Python frameworks, libraries, software and resources  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/ ) |
+|   [Java](https://github.com/akullpp/awesome-java)  |    A curated list of awesome frameworks, libraries and software for the Java programming language  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
+|   [JavaScript](https://github.com/sorrycc/awesome-javascript)  |    🐢 A collection of awesome browser-side JavaScript libraries, resources and shiny things  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [PHP](https://github.com/ziadoz/awesome-php)   |   A curated list of amazingly awesome PHP libraries, resources and shiny things  |   [WTFPL](https://github.com/ziadoz/awesome-php/blob/master/LICENSE.md ) |
+|   [Python](https://github.com/vinta/awesome-python)   |   A curated list of awesome Python frameworks, libraries, software and resources  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [R](https://github.com/qinwf/awesome-R)   |    A curated list of awesome R packages, frameworks and software  |   No License |
 |   [Rust](https://github.com/rust-unofficial/awesome-rust)   |    A curated list of Rust code and resources  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Shell](https://github.com/alebcay/awesome-shell)   |    A curated list of awesome command-line frameworks, toolkits, guides and gizmos  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
