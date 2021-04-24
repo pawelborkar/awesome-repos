@@ -15,6 +15,7 @@
   - [Artificial Intelligence](#Artificial-Intelligence)
   - [Awesome](#awesome)
   - [Books](#books)
+  - [CheatSheets](#cheatsheets)
   - [Frameworks](#frameworks)
   - [FrontEnd](#frontend)
   - [Programming Languages](#programming-languages)
@@ -25,7 +26,7 @@ Repository  |   Description |   License |
 |   [Computer Vision](https://github.com/jbhuang0604/awesome-computer-vision)  |    A curated list of awesome computer vision resources   |    No License |
 |   [Machine Learning](https://github.com/josephmisiti/awesome-machine-learning)  |    A curated list of awesome Machine Learning frameworks, libraries and software   |    [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Natural Language Processing](https://github.com/keon/awesome-nlp)  |   📖 A curated list of resources dedicated to Natural Language Processing (NLP)   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
-|   [Pytorchs](https://github.com/bharathgs/Awesome-pytorch-list)  |   A comprehensive list of pytorch related content on github,such as different models,implementations,helper libraries,tutorials etc   |   No License |
+|   [Pytorch](https://github.com/bharathgs/Awesome-pytorch-list)  |   A comprehensive list of pytorch related content on github,such as different models,implementations,helper libraries,tutorials etc   |   No License |
 
 **[⬆ Back to Index](#index)**
 ### API
@@ -54,6 +55,13 @@ Repository  |   Description |   License |
 |   [TypeScript Books](https://github.com/basarat/typescript-book)  |   :books: The definitive guide to TypeScript and possibly the best TypeScript book 📖. Free and Open Source 🌹  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 
 **[⬆ Back to Index](#index)**
+### CheatSheets
+Repository  |   Description |   License |
+|---|---|---|
+|   [Data Science](https://github.com/FavioVazquez/ds-cheatsheets)  |    List of Data Science Cheatsheets to rule the world   |   [MIT](https://github.com/FavioVazquez/ds-cheatsheets/blob/master/LICENSE ) |
+|   [Docker](https://github.com/eon01/DockerCheatSheet)  |    🐋 Docker Cheat Sheet 🐋   |   [MIT](https://github.com/eon01/DockerCheatSheet/blob/master/LICENSE ) |
+
+**[⬆ Back to Index](#index)**
 ### Frameworks
 Repository  |   Description |   License |
 |---|---|---|
@@ -75,7 +83,7 @@ Repository  |   Description |   License |
 Repository  |   Description |   License |
 |---|---|---|
 |   [C](https://github.com/oz123/awesome-c)   |   A curated list of awesome C frameworks, libraries, resources and other shiny things. Inspired by all the other awesome-... projects out there  |   [CC-BY-SA-4.0](https://github.com/oz123/awesome-c/blob/master/LICENSE ) |
-|   [CPP](https://github.com/fffaraz/awesome-cpp)  |    A curated list of awesome C++ (or C) frameworks, libraries, resources, and shiny things. Inspired by awesome-... stuff   |   [MIT](https://github.com/fffaraz/awesome-cpp/blob/master/LICENSE) |
+|   [C++](https://github.com/fffaraz/awesome-cpp)  |    A curated list of awesome C++ (or C) frameworks, libraries, resources, and shiny things. Inspired by awesome-... stuff   |   [MIT](https://github.com/fffaraz/awesome-cpp/blob/master/LICENSE) |
 |   [Go](https://github.com/avelino/awesome-go)  |    A curated list of awesome Go frameworks, libraries and software   |   [MIT](https://github.com/avelino/awesome-go/blob/master/LICENSE) |
 |   [Java](https://github.com/akullpp/awesome-java)  |    A curated list of awesome frameworks, libraries and software for the Java programming language  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [JavaScript](https://github.com/sorrycc/awesome-javascript)  |    🐢 A collection of awesome browser-side JavaScript libraries, resources and shiny things  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
