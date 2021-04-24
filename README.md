@@ -16,6 +16,7 @@
   - [Awesome](#awesome)
   - [Books](#books)
   - [Frameworks](#frameworks)
+  - [FrontEnd](#frontend)
   - [Programming Languages](#programming-languages)
 
 ### Artificial Intelligence
@@ -60,6 +61,13 @@ Repository  |   Description |   License |
 |   [.NET](https://github.com/quozd/awesome-dotnet)  |    A collection of awesome .NET libraries, tools, frameworks and software   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Laravel](https://github.com/chiraggude/awesome-laravel)  |     A curated list of bookmarks, packages, tutorials, videos and other cool resources from the Laravel ecosystem   |   No License |
 |   [Vue](https://github.com/vuejs/awesome-vue)  |     🎉 A curated list of awesome things related to Vue.js   |   [MIT](https://github.com/vuejs/awesome-vue/blob/master/LICENSE ) |
+
+**[⬆ Back to Index](#index)**
+### FrontEnd
+Repository  |   Description |   License |
+|---|---|---|
+| [HTML5](https://github.com/diegocard/awesome-html5) | 📝 A curated list of awesome HTML5 resources  | [MIT](https://github.com/diegocard/awesome-html5/blob/master/LICENSE) |
+| [React](https://github.com/brillout/awesome-react-components) |  Curated List of React Components & Libraries  | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
 ### Programming Languages
