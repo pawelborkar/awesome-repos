@@ -50,8 +50,8 @@ Repository  |   Description |   License |
 Repository  |   Description |   License |
 |---|---|---|
 |   [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)  |   :books: Freely available programming books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
-|   [GoBooks](https://github.com/dariubs/GoBooks)  |   List of Golang books  |   No License |
-|   [Mind Expanding Books](https://github.com/hackerkid/Mind-Expanding-Books)  |   📚 Books everyone should read  |   No License |
+|   [GoBooks](https://github.com/dariubs/GoBooks)  |   List of Golang books  |  [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
+|   [Mind Expanding Books](https://github.com/hackerkid/Mind-Expanding-Books)  |   📚 Books everyone should read  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Python Books](https://github.com/Junnplus/awesome-python-books)  |   📚 Directory of Python books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [TypeScript Books](https://github.com/basarat/typescript-book)  |   :books: The definitive guide to TypeScript and possibly the best TypeScript book 📖. Free and Open Source 🌹  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 
@@ -93,7 +93,7 @@ Repository  |   Description |   License |
 |   [JavaScript](https://github.com/sorrycc/awesome-javascript)  |    🐢 A collection of awesome browser-side JavaScript libraries, resources and shiny things  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [PHP](https://github.com/ziadoz/awesome-php)   |   A curated list of amazingly awesome PHP libraries, resources and shiny things  |   [WTFPL](https://github.com/ziadoz/awesome-php/blob/master/LICENSE.md ) |
 |   [Python](https://github.com/vinta/awesome-python)   |   A curated list of awesome Python frameworks, libraries, software and resources  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
-|   [R](https://github.com/qinwf/awesome-R)   |    A curated list of awesome R packages, frameworks and software  |   No License |
+|   [R](https://github.com/qinwf/awesome-R)   |    A curated list of awesome R packages, frameworks and software  |   [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode) |
 |   [Rust](https://github.com/rust-unofficial/awesome-rust)   |    A curated list of Rust code and resources  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Shell](https://github.com/alebcay/awesome-shell)   |    A curated list of awesome command-line frameworks, toolkits, guides and gizmos  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Swift](https://github.com/matteocrippa/awesome-swift)   |    A collaborative list of awesome Swift libraries and resources   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
