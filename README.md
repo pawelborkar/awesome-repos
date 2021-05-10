@@ -17,6 +17,7 @@
   - [Awesome](#awesome)
   - [Books](#books)
   - [CheatSheets](#cheatsheets)
+  - [Cloud](#cloud)
   - [Frameworks](#frameworks)
   - [FrontEnd](#frontend)
   - [Programming Languages](#programming-languages)
@@ -69,6 +70,13 @@ Repository  |   Description |   License |
 |   [Python](https://github.com/gto76/python-cheatsheet)  |    Comprehensive Python Cheatsheet   |   No License  |
 
 **[⬆ Back to Index](#index)**
+### Cloud
+Repository  |   Description |   License |
+|---|---|---|
+|   [AWS](https://github.com/donnemartin/awesome-aws)  |    A curated list of awesome Amazon Web Services (AWS) libraries, open source repos, guides, blogs, and other resources. Featuring the Fiery Meter of AWSome.    |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
+
+**[⬆ Back to Index](#index)**
+
 ### Frameworks
 Repository  |   Description |   License |
 |---|---|---|
