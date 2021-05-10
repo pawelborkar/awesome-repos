@@ -60,6 +60,7 @@ Repository  |   Description |   License |
 ### CheatSheets
 Repository  |   Description |   License |
 |---|---|---|
+|   [Async-JavaScript](https://github.com/frontarm/async-javascript-cheatsheet)  |    Cheatsheet for promises and async/await.    |   [MIT](https://github.com/frontarm/async-javascript-cheatsheet/blob/master/LICENSE.md)  |
 |   [C++](https://github.com/mortennobel/cpp-cheatsheet)  |    Modern C++ Cheatsheet   |   No License  |
 |   [Data Science](https://github.com/FavioVazquez/ds-cheatsheets)  |    List of Data Science Cheatsheets to rule the world   |   [MIT](https://github.com/FavioVazquez/ds-cheatsheets/blob/master/LICENSE ) |
 |   [Docker](https://github.com/eon01/DockerCheatSheet)  |    🐋 Docker Cheat Sheet 🐋   |   [MIT](https://github.com/eon01/DockerCheatSheet/blob/master/LICENSE ) |
