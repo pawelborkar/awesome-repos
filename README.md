@@ -94,6 +94,7 @@ Repository  |   Description |   License |
 |   [Go](https://github.com/avelino/awesome-go)  |    A curated list of awesome Go frameworks, libraries and software   |   [MIT](https://github.com/avelino/awesome-go/blob/master/LICENSE) |
 |   [Java](https://github.com/akullpp/awesome-java)  |    A curated list of awesome frameworks, libraries and software for the Java programming language  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [JavaScript](https://github.com/sorrycc/awesome-javascript)  |    🐢 A collection of awesome browser-side JavaScript libraries, resources and shiny things  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
+|   [Lua](https://github.com/LewisJEllis/awesome-lua)  |    A curated list of quality Lua packages and resources.  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [PHP](https://github.com/ziadoz/awesome-php)   |   A curated list of amazingly awesome PHP libraries, resources and shiny things  |   [WTFPL](https://github.com/ziadoz/awesome-php/blob/master/LICENSE.md ) |
 |   [Python](https://github.com/vinta/awesome-python)   |   A curated list of awesome Python frameworks, libraries, software and resources  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [R](https://github.com/qinwf/awesome-R)   |    A curated list of awesome R packages, frameworks and software  |   [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode) |
