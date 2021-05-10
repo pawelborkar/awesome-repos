@@ -18,6 +18,7 @@
   - [Books](#books)
   - [CheatSheets](#cheatsheets)
   - [Cloud](#cloud)
+  - [Courses & Certifications](#courses--certifications)
   - [Frameworks](#frameworks)
   - [FrontEnd](#frontend)
   - [Programming Languages](#programming-languages)
@@ -74,6 +75,12 @@ Repository  |   Description |   License |
 Repository  |   Description |   License |
 |---|---|---|
 |   [AWS](https://github.com/donnemartin/awesome-aws)  |    A curated list of awesome Amazon Web Services (AWS) libraries, open source repos, guides, blogs, and other resources. Featuring the Fiery Meter of AWSome.    |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
+
+**[⬆ Back to Index](#index)**
+### Courses & Certifications
+Repository  |   Description |   License |
+|---|---|---|
+|   [GCP Training](https://github.com/GoogleCloudPlatform/training-data-analyst)  |    Labs and demos for courses for GCP Training     |   [Apache-2.0](https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/LICENSE) |
 
 **[⬆ Back to Index](#index)**
 
