@@ -22,6 +22,7 @@
   - [Frameworks](#frameworks)
   - [FrontEnd](#frontend)
   - [Programming Languages](#programming-languages)
+  - [Opportunities & Programs](#opportunities--programs)
 
 ### Artificial Intelligence
 Repository  |   Description |   License |
@@ -102,6 +103,12 @@ Repository  |   Description |   License |
 | [React](https://github.com/brillout/awesome-react-components) |  Curated List of React Components & Libraries  | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
+### Opportunities & Programs
+Repository  |   Description |   License |
+|---|---|---|
+| [Community Writer Programs](https://github.com/malgamves/CommunityWriterPrograms) | A list of Developer Community Writer Programs  | [MIT](https://github.com/malgamves/CommunityWriterPrograms/blob/master/LICENSE) |
+
+**[⬆ Back to Index](#index)**
 ### Programming Languages
 Repository  |   Description |   License |
 |---|---|---|
@@ -119,3 +126,4 @@ Repository  |   Description |   License |
 |   [Swift](https://github.com/matteocrippa/awesome-swift)   |    A collaborative list of awesome Swift libraries and resources   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
+
