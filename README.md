@@ -22,8 +22,9 @@
   - [Courses & Certifications](#courses--certifications)
   - [Frameworks](#frameworks)
   - [FrontEnd](#frontend)
-  - [Programming Languages](#programming-languages)
   - [Opportunities & Programs](#opportunities--programs)
+  - [Programming Languages](#programming-languages)
+  - [Projects](#projects)
 
 ### Artificial Intelligence
 Repository  |   Description |   License |
@@ -137,3 +138,9 @@ Repository  |   Description |   License |
 
 **[⬆ Back to Index](#index)**
 
+### Projects
+Repository  |   Description |   License |
+|---|---|---|
+|   [Vanilla Web Projects](https://github.com/bradtraversy/vanillawebprojects)   |    Mini projects built with HTML5, CSS & JavaScript. No frameworks or libraries   |   [No License] |
+
+**[⬆ Back to Index](#index)**
