@@ -74,6 +74,7 @@ Repository  |   Description |   License |
 Repository  |   Description |   License |
 |---|---|---|
 |   [Async-JavaScript](https://github.com/frontarm/async-javascript-cheatsheet)  |    Cheatsheet for promises and async/await.    |   [MIT](https://github.com/frontarm/async-javascript-cheatsheet/blob/master/LICENSE.md)  |
+|   [Bootstrap 5](https://github.com/themeselection/bootstrap-cheatsheet)  |  An interactive list of Bootstrap 5 classes, variables, and mixins  |  [MIT](https://github.com/tiimgreen/github-cheat-sheet/blob/master/LICENSE ) |
 |   [C++](https://github.com/mortennobel/cpp-cheatsheet)  |    Modern C++ Cheatsheet   |   No License  |
 |   [Data Science](https://github.com/FavioVazquez/ds-cheatsheets)  |    List of Data Science Cheatsheets to rule the world   |   [MIT](https://github.com/FavioVazquez/ds-cheatsheets/blob/master/LICENSE ) |
 |   [Docker](https://github.com/eon01/DockerCheatSheet)  |    🐋 Docker Cheat Sheet 🐋   |   [MIT](https://github.com/eon01/DockerCheatSheet/blob/master/LICENSE ) |
@@ -81,7 +82,6 @@ Repository  |   Description |   License |
 |   [Git and GitHub](https://github.com/tiimgreen/github-cheat-sheet)  |    A list of cool features of Git and GitHub.   |   [MIT](https://github.com/tiimgreen/github-cheat-sheet/blob/master/LICENSE ) |
 |   [Python](https://github.com/gto76/python-cheatsheet)  |    Comprehensive Python Cheatsheet   |   No License  |
 |   [Vim](https://github.com/pawelbr/vim-cheatsheet)  |    Shortcuts that will help you to become an advance VIM user.   |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
-|   [Bootstrap 5](https://github.com/themeselection/bootstrap-cheatsheet)  |  An interactive list of Bootstrap 5 classes, variables, and mixins  |  [MIT](https://github.com/tiimgreen/github-cheat-sheet/blob/master/LICENSE ) |
 
 **[⬆ Back to Index](#index)**
 ### Cloud
