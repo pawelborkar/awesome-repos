@@ -27,6 +27,13 @@
   - [Programming Languages](#programming-languages)
   - [Projects](#projects)
 
+### API
+Repository  |   Description |   License |
+|---|---|---|
+|   [GraphQL-Apis](https://github.com/APIs-guru/graphql-apis)  |   📜 A collective list of public GraphQL APIs  |   [MIT](https://github.com/APIs-guru/graphql-apis/blob/master/LICENSE) |
+|   [Public-Apis](https://github.com/public-apis/public-apis)  |   A collective list of free APIs  |   [MIT](https://github.com/public-apis/public-apis/blob/master/LICENSE) |
+
+**[⬆ Back to Index](#index)**
 ### Artificial Intelligence
 Repository  |   Description |   License |
 |---|---|---|
@@ -34,12 +41,6 @@ Repository  |   Description |   License |
 |   [Machine Learning](https://github.com/josephmisiti/awesome-machine-learning)  |    A curated list of awesome Machine Learning frameworks, libraries and software   |    [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Natural Language Processing](https://github.com/keon/awesome-nlp)  |   📖 A curated list of resources dedicated to Natural Language Processing (NLP)   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Pytorch](https://github.com/bharathgs/Awesome-pytorch-list)  |   A comprehensive list of pytorch related content on github,such as different models,implementations,helper libraries,tutorials etc   |   No License |
-
-**[⬆ Back to Index](#index)**
-### API
-Repository  |   Description |   License |
-|---|---|---|
-|   [Public-Apis](https://github.com/public-apis/public-apis)  |   A collective list of free APIs  |   [MIT](https://github.com/public-apis/public-apis/blob/master/LICENSE) |
 
 **[⬆ Back to Index](#index)**
 
