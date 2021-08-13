@@ -13,7 +13,7 @@
 ## Index
 
   - [API](#api)
-  - [Artificial Intelligence](#Artificial-Intelligence)
+  - [Artificial Intelligence](#artificial-intelligence)
   - [Awesome](#awesome)
   - [Books](#books)
   - [Career](#career)
@@ -34,7 +34,8 @@ Repository  |   Description |   License |
 |   [Public-Apis](https://github.com/public-apis/public-apis)  |   A collective list of free APIs  |   [MIT](https://github.com/public-apis/public-apis/blob/master/LICENSE) |
 
 **[⬆ Back to Index](#index)**
-### Artificial Intelligence
+
+### Artificial Intelligence 
 Repository  |   Description |   License |
 |---|---|---|
 |   [Computer Vision](https://github.com/jbhuang0604/awesome-computer-vision)  |    A curated list of awesome computer vision resources   |    [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
@@ -120,6 +121,7 @@ Repository  |   Description |   License |
 ### FrontEnd
 Repository  |   Description |   License |
 |---|---|---|
+| [Front End Web Development](https://github.com/RitikPatni/Front-End-Web-Development-Resources) | This repository contains content which will be helpful in your journey as a front-end Web Developer  | [MIT](https://github.com/RitikPatni/Front-End-Web-Development-Resources/blob/master/LICENSE) |
 | [HTML5](https://github.com/diegocard/awesome-html5) | 📝 A curated list of awesome HTML5 resources  | [MIT](https://github.com/diegocard/awesome-html5/blob/master/LICENSE) |
 | [React](https://github.com/brillout/awesome-react-components) |  Curated List of React Components & Libraries  | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
