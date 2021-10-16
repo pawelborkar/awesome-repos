@@ -72,6 +72,7 @@ Repository  |   Description |   License |
 |   [Clean Code JavaScript](https://github.com/ryanmcdermott/clean-code-javascript)  |   🛁 Clean Code concepts adapted for JavaScript  |   [MIT](https://github.com/ryanmcdermott/clean-code-javascript/blob/master/LICENSE ) |
 |   [FrontEnd Developer Interview Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions)  |   A list of helpful front-end related questions you can use to interview potential candidates, test yourself or completely ignore  |   [MIT](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/main/LICENSE.md ) |
 |   [JavaScript Algorithms](https://github.com/trekhleb/javascript-algorithms)  |   📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings  |   [MIT](https://github.com/trekhleb/javascript-algorithms/blob/master/LICENSE ) |
+|   [Leetcode Patterns](https://github.com/seanprashad/leetcode-patterns)  |   A curated list of leetcode questions grouped by their common patterns   |   [GPL-3.0](https://github.com/seanprashad/leetcode-patterns/blob/master/LICENSE.md ) |
 
 **[⬆ Back to Index](#index)**
 ### CheatSheets
