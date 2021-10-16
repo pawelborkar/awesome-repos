@@ -71,6 +71,7 @@ Repository  |   Description |   License |
 |   [Become A Full Stack Web Developer](https://github.com/bmorelli25/Become-A-Full-Stack-Web-Developer)  |   Free resources for learning Full Stack Web Development  |   [MIT](https://github.com/bmorelli25/Become-A-Full-Stack-Web-Developer/blob/master/LICENSE) |
 |   [Clean Code JavaScript](https://github.com/ryanmcdermott/clean-code-javascript)  |   🛁 Clean Code concepts adapted for JavaScript  |   [MIT](https://github.com/ryanmcdermott/clean-code-javascript/blob/master/LICENSE ) |
 |   [Computer Science (OSSU)](https://github.com/ossu/computer-science)  |   🎓 Path to a free self-taught education in Computer Science!    |   [MIT](https://github.com/ossu/computer-science/blob/master/LICENSE ) |
+|   [CS Courses](https://github.com/prakhar1989/awesome-courses)  |   📚 List of awesome university courses for learning Computer Science!     |   No License |
 |   [FrontEnd Developer Interview Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions)  |   A list of helpful front-end related questions you can use to interview potential candidates, test yourself or completely ignore  |   [MIT](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/main/LICENSE.md ) |
 |   [JavaScript Algorithms](https://github.com/trekhleb/javascript-algorithms)  |   📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings  |   [MIT](https://github.com/trekhleb/javascript-algorithms/blob/master/LICENSE ) |
 |   [Leetcode Patterns](https://github.com/seanprashad/leetcode-patterns)  |   A curated list of leetcode questions grouped by their common patterns   |   [GPL-3.0](https://github.com/seanprashad/leetcode-patterns/blob/master/LICENSE.md ) |
@@ -99,7 +100,7 @@ Repository  |   Description |   License |
 ### Competitive Programming
 Repository  |   Description |   License |
 |---|---|---|
-|   [ ACM-ICPC Algorithms](https://github.com/matthewsamuel95/ACM-ICPC-Algorithms)  |    Algorithms used in Competitive Programming    |   [No License] |
+|   [ ACM-ICPC Algorithms](https://github.com/matthewsamuel95/ACM-ICPC-Algorithms)  |    Algorithms used in Competitive Programming    |   No License |
 |   [ Awesome Competitive Programming](https://github.com/lnishan/awesome-competitive-programming)  |    A curated list of awesome Competitive Programming, Algorithm and Data Structure resources    |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [ Competitive Code](https://github.com/Vishruth-S/CompetitiveCode)  |    A repo for interesting Competitive Coding problems    |   [MIT](https://github.com/Vishruth-S/CompetitiveCode/blob/main/LICENSE ) |
 |   [ Competitive Programming Resources](https://github.com/kunal-kushwaha/Competitive-Programming-Resources)  |    Competitive Programming & System Design Resources.    |   [MIT](https://github.com/kunal-kushwaha/Competitive-Programming-Resources/blob/master/LICENSE ) |
@@ -161,7 +162,7 @@ Repository  |   Description |   License |
 Repository  |   Description |   License |
 |---|---|---|
 |   [50projects50days](https://github.com/bradtraversy/50projects50days)   |   50+ mini web projects using HTML, CSS & JS   |   [MIT](https://github.com/bradtraversy/50projects50days#license) |
-|   [React Projects](https://github.com/ajayns/react-projects)   |   A collection of projects built on the React library    |   [No License] |
-|   [Vanilla Web Projects](https://github.com/bradtraversy/vanillawebprojects)   |    Mini projects built with HTML5, CSS & JavaScript. No frameworks or libraries   |   [No License] |
+|   [React Projects](https://github.com/ajayns/react-projects)   |   A collection of projects built on the React library    |   No License |
+|   [Vanilla Web Projects](https://github.com/bradtraversy/vanillawebprojects)   |    Mini projects built with HTML5, CSS & JavaScript. No frameworks or libraries   |   No License |
 
 **[⬆ Back to Index](#index)**
