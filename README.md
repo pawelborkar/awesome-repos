@@ -26,6 +26,7 @@
   - [Opportunities & Programs](#opportunities--programs)
   - [Programming Languages](#programming-languages)
   - [Projects](#projects)
+  - [Web](#web)
 
 ### API
 Repository  |   Description |   License |
@@ -164,5 +165,12 @@ Repository  |   Description |   License |
 |   [50projects50days](https://github.com/bradtraversy/50projects50days)   |   50+ mini web projects using HTML, CSS & JS   |   [MIT](https://github.com/bradtraversy/50projects50days#license) |
 |   [React Projects](https://github.com/ajayns/react-projects)   |   A collection of projects built on the React library    |   No License |
 |   [Vanilla Web Projects](https://github.com/bradtraversy/vanillawebprojects)   |    Mini projects built with HTML5, CSS & JavaScript. No frameworks or libraries   |   No License |
+
+**[⬆ Back to Index](#index)**
+
+### Web
+Repository  |   Description |   License |
+|---|---|---|
+|   [Streaming](https://github.com/manuzhang/awesome-streaming)   |   a curated list of awesome streaming frameworks, applications, etc    |   [CC-BY-SA-4.0](http://creativecommons.org/licenses/by-sa/4.0/) |
 
 **[⬆ Back to Index](#index)**
