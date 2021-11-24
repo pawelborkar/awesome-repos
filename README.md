@@ -15,6 +15,7 @@
   - [API](#api)
   - [Artificial Intelligence](#artificial-intelligence)
   - [Awesome](#awesome)
+  - [BackEnd](#backend)
   - [Books](#books)
   - [Career](#career)
   - [CheatSheets](#cheatsheets)
@@ -54,12 +55,19 @@ Repository  |   Description |   License |
 |   [Awesome](https://github.com/awesome-windows/awesome)  |   💻 🎉 An awesome & curated list of best applications and tools for **Windows**  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [Awesomeness](https://github.com/bayandin/awesome-awesomeness)  |   A curated list of awesome awesomeness  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 
+**[⬆ Back to Index](#index)**
+
+### BackEnd
+Repository  |   Description |   License |
+|---|---|---|
+|   [GraphQL](https://github.com/chentsulin/awesome-graphql)  |   Awesome list of GraphQL  |  [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
+
 ### Books
 Repository  |   Description |   License |
 |---|---|---|
-|   [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)  |   :books: Freely available programming books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
+|   [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)  |   📚 Freely available programming books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [GoBooks](https://github.com/dariubs/GoBooks)  |   List of Golang books  |  [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [JavaScript](https://github.com/javascript-society/javascript-path)  |    📚 List of books to master JavaScript Development 🚀   |  No License |
 |   [Mind Expanding Books](https://github.com/hackerkid/Mind-Expanding-Books)  |   📚 Books everyone should read  |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
