@@ -28,6 +28,7 @@
   - [Opportunities & Programs](#opportunities--programs)
   - [Programming Languages](#programming-languages)
   - [Projects](#projects)
+  - [Reading List](#reading-list)
   - [Web](#web)
 
 ### API
@@ -184,6 +185,13 @@ Repository  |   Description |   License |
 |   [Build your own X](https://github.com/danistefanovic/build-your-own-x)   |   🤓 Build your own (insert technology here)   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 |   [React Projects](https://github.com/ajayns/react-projects)   |   A collection of projects built on the React library    |   No License |
 |   [Vanilla Web Projects](https://github.com/bradtraversy/vanillawebprojects)   |    Mini projects built with HTML5, CSS & JavaScript. No frameworks or libraries   |   No License |
+
+**[⬆ Back to Index](#index)**
+
+### Reading List
+Repository  |   Description |   License |
+|---|---|---|
+|   [Gopher](https://github.com/enocom/gopher-reading-list)   |   A curated selection of blog posts on Go    |   [Apache-2.0](https://github.com/enocom/gopher-reading-list/blob/main/LICENSE) |
 
 **[⬆ Back to Index](#index)**
 
