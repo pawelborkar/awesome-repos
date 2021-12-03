@@ -68,6 +68,7 @@ Repository  |   Description |   License |
 ### Books
 Repository  |   Description |   License |
 |---|---|---|
+|   [Free OReilly Books](https://github.com/mohnkhan/Free-OReilly-Books)  |   Free O Reilly Books  |   No License |
 |   [Free Programming Books](https://github.com/EbookFoundation/free-programming-books)  |   📚 Freely available programming books  |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [GoBooks](https://github.com/dariubs/GoBooks)  |   List of Golang books  |  [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode ) |
 |   [JavaScript](https://github.com/javascript-society/javascript-path)  |    📚 List of books to master JavaScript Development 🚀   |  No License |
