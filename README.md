@@ -23,6 +23,7 @@
   - [Competitive Programming](#competitive-programming)
   - [Courses & Certifications](#courses--certifications)
   - [Development](#development)
+  - [Education](#education)
   - [Frameworks](#frameworks)
   - [FrontEnd](#frontend)
   - [Opportunities & Programs](#opportunities--programs)
@@ -132,6 +133,13 @@ Repository  |   Description |   License |
 Repository  |   Description |   License |
 |---|---|---|
 |   [DevYouTubeList](https://github.com/ErikCH/DevYouTubeList)  |    List of Development YouTube Channels   |   [MIT](https://github.com/ErikCH/DevYouTubeList/blob/master/LICENSE) |
+
+**[⬆ Back to Index](#index)**
+
+### Education
+Repository  |   Description |   License |
+|---|---|---|
+|   [Math](https://github.com/rossant/awesome-math)  |    A curated list of awesome mathematics resources   |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
 
