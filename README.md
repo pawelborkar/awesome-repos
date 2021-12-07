@@ -133,6 +133,7 @@ Repository  |   Description |   License |
 Repository  |   Description |   License |
 |---|---|---|
 |   [DevYouTubeList](https://github.com/ErikCH/DevYouTubeList)  |    List of Development YouTube Channels   |   [MIT](https://github.com/ErikCH/DevYouTubeList/blob/master/LICENSE) |
+|   [Programming Talks](https://github.com/hellerve/programming-talks)  |    Awesome & interesting talks about programming   |   No License |
 
 **[⬆ Back to Index](#index)**
 
