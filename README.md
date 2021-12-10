@@ -90,6 +90,7 @@ Repository  |   Description |   License |
 |   [FrontEnd Developer Interview Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions)  |   A list of helpful front-end related questions you can use to interview potential candidates, test yourself or completely ignore  |   [MIT](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/main/LICENSE.md ) |
 |   [JavaScript Algorithms](https://github.com/trekhleb/javascript-algorithms)  |   📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings  |   [MIT](https://github.com/trekhleb/javascript-algorithms/blob/master/LICENSE ) |
 |   [Leetcode Patterns](https://github.com/seanprashad/leetcode-patterns)  |   A curated list of leetcode questions grouped by their common patterns   |   [GPL-3.0](https://github.com/seanprashad/leetcode-patterns/blob/master/LICENSE.md ) |
+|   [System Design Primer](https://github.com/donnemartin/system-design-primer)  |   Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.   |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
 ### CheatSheets
