@@ -134,6 +134,7 @@ Repository  |   Description |   License |
 ### Development
 Repository  |   Description |   License |
 |---|---|---|
+|   [Beautiful Docs](https://github.com/PharkMillups/beautiful-docs)  |    Pointers to useful, well-written, and otherwise beautiful documentation.   |   No License |
 |   [DevYouTubeList](https://github.com/ErikCH/DevYouTubeList)  |    List of Development YouTube Channels   |   [MIT](https://github.com/ErikCH/DevYouTubeList/blob/master/LICENSE) |
 |   [Programming Talks](https://github.com/hellerve/programming-talks)  |    Awesome & interesting talks about programming   |   No License |
 
