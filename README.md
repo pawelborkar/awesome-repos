@@ -88,6 +88,7 @@ Repository  |   Description |   License |
 |   [Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)  |   Roadmap to becoming a web developer in 2021     |   [Custom](https://github.com/kamranahmedse/developer-roadmap/blob/master/LICENSE) |
 |   [Easy Application](https://github.com/j-delaney/easy-application)  |   Over 400 software engineering companies that are easy to apply to     |   [MIT](https://github.com/j-delaney/easy-application/blob/master/LICENSE) |
 |   [FrontEnd Developer Interview Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions)  |   A list of helpful front-end related questions you can use to interview potential candidates, test yourself or completely ignore  |   [MIT](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/main/LICENSE.md ) |
+|   [Interview This](https://github.com/Twipped/InterviewThis)  |   An open source list of developer questions to ask prospective employers  |   [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US ) |
 |   [JavaScript Algorithms](https://github.com/trekhleb/javascript-algorithms)  |   📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings  |   [MIT](https://github.com/trekhleb/javascript-algorithms/blob/master/LICENSE ) |
 |   [Leetcode Patterns](https://github.com/seanprashad/leetcode-patterns)  |   A curated list of leetcode questions grouped by their common patterns   |   [GPL-3.0](https://github.com/seanprashad/leetcode-patterns/blob/master/LICENSE.md ) |
 |   [System Design Primer](https://github.com/donnemartin/system-design-primer)  |   Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.   |   [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode) |
@@ -134,7 +135,7 @@ Repository  |   Description |   License |
 ### Development
 Repository  |   Description |   License |
 |---|---|---|
-|   [Beautiful Docs](https://github.com/PharkMillups/beautiful-docs)  |    Pointers to useful, well-written, and otherwise beautiful documentation.   |   No License |
+|   [Beautiful Docs](https://github.com/PharkMillups/beautiful-docs)  |    Pointers to useful, well-written, and otherwise beautiful documentation.   |   No Licensecd |
 |   [DevYouTubeList](https://github.com/ErikCH/DevYouTubeList)  |    List of Development YouTube Channels   |   [MIT](https://github.com/ErikCH/DevYouTubeList/blob/master/LICENSE) |
 |   [Programming Talks](https://github.com/hellerve/programming-talks)  |    Awesome & interesting talks about programming   |   No License |
 
