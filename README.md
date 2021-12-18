@@ -83,6 +83,7 @@ Repository  |   Description |   License |
 |---|---|---|
 |   [Become A Full Stack Web Developer](https://github.com/bmorelli25/Become-A-Full-Stack-Web-Developer)  |   Free resources for learning Full Stack Web Development  |   [MIT](https://github.com/bmorelli25/Become-A-Full-Stack-Web-Developer/blob/master/LICENSE) |
 |   [Clean Code JavaScript](https://github.com/ryanmcdermott/clean-code-javascript)  |   🛁 Clean Code concepts adapted for JavaScript  |   [MIT](https://github.com/ryanmcdermott/clean-code-javascript/blob/master/LICENSE ) |
+|   [Coding Interview University](https://github.com/jwasham/coding-interview-university)  |   A complete computer science study plan to become a software engineer.  |   [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 |   [Computer Science (OSSU)](https://github.com/ossu/computer-science)  |   🎓 Path to a free self-taught education in Computer Science!    |   [MIT](https://github.com/ossu/computer-science/blob/master/LICENSE ) |
 |   [CS Courses](https://github.com/prakhar1989/awesome-courses)  |   📚 List of awesome university courses for learning Computer Science!     |   No License |
 |   [Developer Roadmap](https://github.com/kamranahmedse/developer-roadmap)  |   Roadmap to becoming a web developer in 2021     |   [Custom](https://github.com/kamranahmedse/developer-roadmap/blob/master/LICENSE) |
