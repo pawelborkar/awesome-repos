@@ -30,6 +30,7 @@
   - [Programming Languages](#programming-languages)
   - [Projects](#projects)
   - [Reading List](#reading-list)
+  - [Security](#security)
   - [Web](#web)
 
 ### API
@@ -212,6 +213,13 @@ Repository  |   Description |   License |
 |---|---|---|
 |   [EthList](https://github.com/Scanate/EthList)   |   The Comprehensive Ethereum Reading List    |   No License |
 |   [Gopher](https://github.com/enocom/gopher-reading-list)   |   A curated selection of blog posts on Go    |   [Apache-2.0](https://github.com/enocom/gopher-reading-list/blob/main/LICENSE) |
+
+**[⬆ Back to Index](#index)**
+
+### Security
+Repository  |   Description |   License |
+|---|---|---|
+|   [Hacking](https://github.com/Hack-with-Github/Awesome-Hacking)   |   A collection of various awesome lists for hackers, pentesters and security researchers    |   [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
 
