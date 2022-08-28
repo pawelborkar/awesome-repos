@@ -31,6 +31,7 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 -   [Projects](#projects)
 -   [Reading List](#reading-list)
 -   [Security](#security)
+-   [System Design](#system-design)
 -   [Web](#web)
 
 ### API
@@ -101,7 +102,6 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 | [Interview This](https://github.com/Twipped/InterviewThis) | An open source list of developer questions to ask prospective employers | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US) |
 | [JavaScript Algorithms](https://github.com/trekhleb/javascript-algorithms) | 📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings | [MIT](https://github.com/trekhleb/javascript-algorithms/blob/master/LICENSE) |
 | [Leetcode Patterns](https://github.com/seanprashad/leetcode-patterns) | A curated list of leetcode questions grouped by their common patterns | [GPL-3.0](https://github.com/seanprashad/leetcode-patterns/blob/master/LICENSE.md) |
-| [System Design Primer](https://github.com/donnemartin/system-design-primer) | Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards. | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
 
@@ -250,6 +250,17 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 | --- | --- | --- |
 | [Hacking](https://github.com/Hack-with-Github/Awesome-Hacking) | A collection of various awesome lists for hackers, pentesters and security researchers | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 | [Web Security](https://github.com/qazbnm456/awesome-web-security) | 🐶 A curated list of Web Security materials and resources. | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
+
+**[⬆ Back to Index](#index)**
+
+### System Design
+
+| Repository | Description | License |
+| --- | --- | --- |
+| [Grokking System Design](https://github.com/Jeevan-kumar-Raj/Grokking-System-Design) | Systems design is the process of defining the architecture, modules, interfaces, and data for a system to satisfy specified requirements. Systems design could be seen as the application of systems theory to product development. | [GPL-3.0](https://github.com/Jeevan-kumar-Raj/Grokking-System-Design/blob/master/LICENSE) |
+| [System Design Interview](https://github.com/checkcheckzz/system-design-interview) | System design interview for IT companies | No License |
+| [System Design Primer](https://github.com/donnemartin/system-design-primer) | Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards. | [CC-BY-SA-4.0](https://github.com/donnemartin/system-design-primer/blob/master/LICENSE.txt) |
+| [System Design Resources](https://github.com/InterviewReady/system-design-resources) | These are the best resources for System Design on the Internet | [GPL-3.0](https://github.com/InterviewReady/system-design-resources/blob/main/LICENSE) |
 
 **[⬆ Back to Index](#index)**
 
