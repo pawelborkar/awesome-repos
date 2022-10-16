@@ -32,6 +32,7 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 -   [Reading List](#reading-list)
 -   [Security](#security)
 -   [System Design](#system-design)
+-   [Vim](#vim)
 -   [Web](#web)
 
 ### API
@@ -263,6 +264,15 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 | [System Design Resources](https://github.com/InterviewReady/system-design-resources) | These are the best resources for System Design on the Internet | [GPL-3.0](https://github.com/InterviewReady/system-design-resources/blob/main/LICENSE) |
 
 **[⬆ Back to Index](#index)**
+
+### Vim
+
+| Repository | Description | License |
+| --- | --- | --- |
+| [Vim Galore](https://github.com/mhinz/vim-galore) | 🎓 All things Vim! | [CC-BY-SA-4.0](https://github.com/mhinz/vim-galore/blob/master/LICENSE.txt) |
+| [Awesome Vim](https://github.com/akrawchyk/awesome-vim)|The Vim plugin shortlist|[MIT](https://github.com/akrawchyk/awesome-vim/blob/master/LICENSE)|
+| [Learn Vim](https://github.com/iggredible/Learn-Vim)| Learning Vim and Vimscript doesn't have to be hard. This is the guide that you're looking for 📖 | [CCC](https://github.com/iggredible/Learn-Vim/blob/master/LICENSE.txt)|
+
 
 ### Web
 
