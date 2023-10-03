@@ -23,7 +23,7 @@ Repository  |   Description |   License |
 
 - Continue to follow the alphabetical ordering that is in place per section.
 - Each table column should be padded with one space on either side.
-- Make sure the repository has quality content, to do so by look at the stars the repository has received.
+- Make sure the repository has quality content, to do so look at the stars the repository has received.
 - Add one link per Pull Request.
 - Make sure the PR title is in the format of `Add repository-name` *for e.g.*: `Add awesome-python`
 - Use a short descriptive commit message. *for e.g.*: ❌Update README.md ✔Add Git to the CheatSheets
