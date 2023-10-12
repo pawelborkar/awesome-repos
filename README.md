@@ -82,7 +82,8 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 | [JavaScript](https://github.com/javascript-society/javascript-path) | 📚 List of books to master JavaScript Development 🚀 | No License |
 | [Mind Expanding Books](https://github.com/hackerkid/Mind-Expanding-Books) | 📚 Books everyone should read | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 | [Python Books](https://github.com/Junnplus/awesome-python-books) | 📚 Directory of Python books | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode) |
-| [TypeScript Books](https://github.com/basarat/typescript-book) | :books: The definitive guide to TypeScript and possibly the best TypeScript book 📖. Free and Open Source 🌹 | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode) |
+| [TypeScript Books](https://github.com/basarat/typescript-book) | 📚 The definitive guide to TypeScript and possibly the best TypeScript book 📖. Free and Open Source 🌹 | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode) |
+| [The Concise TypeScript Book](https://github.com/gibbok/typescript-book) | 📚 A Concise Guide to Effective Development in TypeScript. Free and Open Source | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
 
