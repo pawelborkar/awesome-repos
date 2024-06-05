@@ -158,6 +158,7 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 | [Design Resources for Developers](https://github.com/bradtraversy/design-resources-for-developers) | Curated list of design and UI resources from stock photos, web templates, CSS frameworks, UI libraries, tools and much more | [MIT](https://github.com/bradtraversy/design-resources-for-developers/blob/master/LICENSE) |
 | [DevYouTubeList](https://github.com/ErikCH/DevYouTubeList) | List of Development YouTube Channels | [MIT](https://github.com/ErikCH/DevYouTubeList/blob/master/LICENSE) |
 | [Programming Talks](https://github.com/hellerve/programming-talks) | Awesome & interesting talks about programming | No License |
+| [Crawlbase](https://crawlbase.com/) | Best Web Crawling & web Scraping | first 1000 requests free  |
 
 **[⬆ Back to Index](#index)**
 
