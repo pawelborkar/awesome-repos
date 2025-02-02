@@ -1,5 +1,5 @@
 {
-    "prettier.bracketSpacing": false,
+    "prettier.bracketSpacing": true,
     "prettier.quoteProps": "consistent",
     "prettier.proseWrap": "never",
     "prettier.insertPragma": false,
