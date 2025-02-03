@@ -103,6 +103,7 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 | [Interview This](https://github.com/Twipped/InterviewThis) | An open source list of developer questions to ask prospective employers | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US) |
 | [JavaScript Algorithms](https://github.com/trekhleb/javascript-algorithms) | 📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings | [MIT](https://github.com/trekhleb/javascript-algorithms/blob/master/LICENSE) |
 | [Leetcode Patterns](https://github.com/seanprashad/leetcode-patterns) | A curated list of leetcode questions grouped by their common patterns | [GPL-3.0](https://github.com/seanprashad/leetcode-patterns/blob/master/LICENSE.md) |
+| [Sales Engineering](https://github.com/vladar107/awesome-sales-engineer) | A curated list of resources, tools, and guides for mastering sales engineering and excelling in pre-sales roles | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
 
