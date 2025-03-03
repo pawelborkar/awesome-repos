@@ -61,6 +61,7 @@ _A curated list of GitHub Repositories full of FREE Resources._ <br>
 | [Awesome](https://github.com/sindresorhus/awesome) | 😎 Awesome lists about all kinds of interesting topics | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 | [Awesome](https://github.com/awesome-windows/awesome) | 💻 🎉 An awesome & curated list of best applications and tools for **Windows** | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 | [Awesomeness](https://github.com/bayandin/awesome-awesomeness) | A curated list of awesome awesomeness | [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode) |
+| [Awesome Github Profiles](https://github.com/abhisheknaidu/awesome-github-profile-readmes)  | :sunglasses: A curated list of awesome GitHub Profile which updates in real time | [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) |
 
 **[⬆ Back to Index](#index)**
 
