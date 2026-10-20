@@ -1,0 +1,7 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+type Props = HTMLAttributes<'button'> & {href?:string;variant?:'primary'|'secondary'|'tertiary';size?:'sm'|'md'|'lg'};
+const {href,variant='primary',size='md',class:className,...attrs}=Astro.props;
+const Tag=href?'a':'button';
+---
+<Tag href={href} class:list={['button',`button--${variant}`,`button--${size}`,className]} {...attrs}><slot/></Tag>

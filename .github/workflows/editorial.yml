@@ -1,0 +1,60 @@
+name: Draft a curated collection
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: New collection slug (lowercase, hyphen-separated)
+        required: true
+        type: string
+      topic:
+        description: Reader goal and intended topic
+        required: true
+        type: string
+      resources:
+        description: Five to eight comma-separated owner/repository keys already in the README
+        required: true
+        type: string
+      mode:
+        description: Save a draft artifact or propose a review PR
+        type: choice
+        options: [report, propose]
+        default: report
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: curation-publication
+  cancel-in-progress: false
+jobs:
+  draft:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GROQ_MODEL: ${{ vars.GROQ_MODEL || 'qwen/qwen3.8-27b' }}
+      DRAFT_SLUG: ${{ inputs.slug }}
+      DRAFT_TOPIC: ${{ inputs.topic }}
+      DRAFT_RESOURCES: ${{ inputs.resources }}
+      DRAFT_MODE: ${{ inputs.mode }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm test
+      - run: python3 scripts/editorial.py --slug "$DRAFT_SLUG" --topic "$DRAFT_TOPIC" --resources "$DRAFT_RESOURCES" --mode "$DRAFT_MODE"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: editorial-draft
+          path: reports/
+          if-no-files-found: warn

@@ -1,0 +1,55 @@
+name: Deploy website
+on:
+  workflow_run:
+    workflows: [Validate catalog and website]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: production-deployment
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    env:
+      PRODUCTION: 'true'
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      PUBLIC_CF_ANALYTICS_TOKEN: ${{ vars.PUBLIC_CF_ANALYTICS_TOKEN }}
+      PUBLIC_SEARCH_CONSOLE_VERIFICATION: ${{ vars.PUBLIC_SEARCH_CONSOLE_VERIFICATION }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/cache@v4
+        with:
+          path: .cache/
+          key: catalog-production-${{ github.run_id }}
+          restore-keys: catalog-production-
+      - run: npm run metadata
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - run: npm test && npm run check && npm run build && npm run validate
+      - name: Require deployment credentials
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo 'Set repository secret CLOUDFLARE_API_TOKEN.'; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo 'Set repository variable CLOUDFLARE_ACCOUNT_ID.'; exit 1; }
+      - name: Refuse stale deployments
+        run: |
+          git fetch origin main
+          test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || { echo 'A newer main commit exists; refusing stale deployment.'; exit 1; }
+      - run: npm run deploy
+      - name: Verify live routing and indexing
+        run: node scripts/verify-live.mjs https://awesome.pawel.in
