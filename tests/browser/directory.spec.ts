@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
-test('home, navigation, themes, and responsive layout',async({page},testInfo)=>{
+test('home, navigation, readable dim theme, and responsive layout',async({page},testInfo)=>{
  await page.goto('/');await expect(page.getByRole('heading',{level:1})).toHaveText('All repositories');
- const before=await page.locator('html').getAttribute('data-theme');await page.getByRole('button',{name:'Switch color theme'}).click();const theme=await page.locator('html').getAttribute('data-theme');expect(theme).not.toBe(before);await page.reload();await expect(page.locator('html')).toHaveAttribute('data-theme',theme!);
+ await expect(page.locator('html')).toHaveAttribute('data-theme','dim');await page.emulateMedia({colorScheme:'light'});await expect(page.locator('html')).toHaveCSS('color-scheme','dark');expect(await page.locator('.card-content p').first().evaluate(el=>parseFloat(getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(14);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.screenshot({path:`reports/${testInfo.project.name}-home.png`,fullPage:false});
  if(testInfo.project.name==='mobile'){await page.locator('.mobile-menu summary').click();await page.getByRole('navigation',{name:'Mobile navigation'}).getByRole('link',{name:'Learn',exact:true}).click();}else await page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:'Learn',exact:true}).click();await expect(page).toHaveURL(/\/learn\//);

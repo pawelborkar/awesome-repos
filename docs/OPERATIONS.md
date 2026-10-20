@@ -27,9 +27,9 @@ npm run test:performance
 
 ## Interface
 
-The app uses a persistent library sidebar, compact resource rows, a focused content column, and a native mobile browse menu, inspired by [Brian Lovin](https://brianlovin.com/). Geist is self-hosted, and themes follow the system preference unless a visitor chooses an override.
+The app uses a persistent library sidebar, compact resource rows, a focused content column, and a native mobile browse menu, inspired by [Brian Lovin](https://brianlovin.com/). Geist is self-hosted. A fixed DaisyUI dim theme uses soft charcoal/slate surfaces, high-contrast light text, generous line height, and 14–16px primary reading text for comfortable scanning and reading.
 
-Controls follow [HeroUI's design principles](https://heroui.com/en/docs/react/getting-started/design-principles): semantic action variants, visible focus, accessible names, progressive disclosure, and predictable state. The shared Astro action component exposes typed primary/secondary/tertiary variants and sm/md/lg sizes. Advanced filters sit behind More filters; text, category, sort, and list/grid controls remain available in the main toolbar. Filter state is shareable through URL fragments; the view preference is saved locally.
+Controls follow [HeroUI's design principles](https://heroui.com/en/docs/react/getting-started/design-principles): semantic action variants, visible focus, accessible names, progressive disclosure, and predictable state. DaisyUI 5 is integrated through Tailwind CSS 4’s Vite plugin. Only the button, input, select, badge, join, and menu components are included. The shared Astro action component maps typed primary/secondary/tertiary variants and sm/md/lg sizes to DaisyUI classes. Advanced filters sit behind More filters; text, category, sort, and list/grid controls remain available in the main toolbar. Filter state is shareable through URL fragments; the view preference is saved locally.
 
 ## Catalog and editorial content
 

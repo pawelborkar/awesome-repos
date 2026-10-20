@@ -12,16 +12,15 @@ const analytics=import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
 const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dim">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>{title} | Awesome Repositories</title><meta name="description" content={description}/>
   <link rel="canonical" href={canonical}/><meta name="robots" content={production && indexable?'index,follow':'noindex,follow'}/>
-  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)"/><meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)"/>
+  <meta name="theme-color" content="#252b35"/>
   <meta property="og:type" content="website"/><meta property="og:site_name" content="Awesome Repositories"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={`${origin}/social.png`}/><meta name="twitter:card" content="summary_large_image"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
   {verification && <meta name="google-site-verification" content={verification}/>}
-  <script is:inline>try{const t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch{}</script>
   <script type="application/ld+json" set:html={json({'@context':'https://schema.org','@type':'WebSite',name:'Awesome Repositories',url:origin})}/>
   {breadcrumbs.length>0 && <script type="application/ld+json" set:html={json({'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{name:'Home',path:'/'},...breadcrumbs].map((b,i)=>({'@type':'ListItem',position:i+1,name:b.name,item:new URL(b.path,origin).href}))})}/>}
   {schema && <script type="application/ld+json" set:html={json({'@context':'https://schema.org',...schema})}/>}
@@ -33,21 +32,21 @@ const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
     <a class="app-brand" href="/"><span class="brand-mark"><Icon name="repo" size={19}/></span><span>Awesome Repositories<small>A library for curious builders</small></span></a>
     <a class="sidebar-search" href="/search/"><Icon name="search" size={16}/><span>Search resources</span><kbd>/</kbd></a>
     <div class="nav-label">Library</div>
-    <nav class="sidebar-nav" aria-label="Main navigation">
-      <a href="/" aria-current={Astro.url.pathname==='/'?'page':undefined}><Icon name="library"/><span>All repositories</span><span class="nav-count">{resources.length}</span></a>
-      <a href="/learn/" aria-current={Astro.url.pathname==='/learn/'?'page':undefined}><Icon name="book"/><span>Learn</span></a>
-      <a href="/tools/" aria-current={Astro.url.pathname==='/tools/'?'page':undefined}><Icon name="code"/><span>Build</span></a>
-      <a href="/discover/" aria-current={Astro.url.pathname.startsWith('/discover/')?'page':undefined}><Icon name="grid"/><span>Collections</span></a>
-      <a href="/categories/" aria-current={Astro.url.pathname==='/categories/'?'page':undefined}><Icon name="list"/><span>Explore</span></a>
-    </nav>
+    <nav aria-label="Main navigation"><ul class="menu menu-sm sidebar-nav">
+      <li><a href="/" aria-current={Astro.url.pathname==='/'?'page':undefined}><Icon name="library"/><span>All repositories</span><span class="badge badge-ghost badge-xs nav-count">{resources.length}</span></a></li>
+      <li><a href="/learn/" aria-current={Astro.url.pathname==='/learn/'?'page':undefined}><Icon name="book"/><span>Learn</span></a></li>
+      <li><a href="/tools/" aria-current={Astro.url.pathname==='/tools/'?'page':undefined}><Icon name="code"/><span>Build</span></a></li>
+      <li><a href="/discover/" aria-current={Astro.url.pathname.startsWith('/discover/')?'page':undefined}><Icon name="grid"/><span>Collections</span></a></li>
+      <li><a href="/categories/" aria-current={Astro.url.pathname==='/categories/'?'page':undefined}><Icon name="list"/><span>Explore</span></a></li>
+    </ul></nav>
     <div class="nav-label">Topics <a href="/categories/" aria-label="See every topic">View all</a></div>
-    <nav class="sidebar-nav topic-nav" aria-label="Popular topics">{['ai-learning','python','javascript','react','rust','typescript','system-design'].map(slug=>{const category=categories.find(c=>c.slug===slug);return category&&<a href={`/categories/${slug}/`} aria-current={Astro.url.pathname===`/categories/${slug}/`?'page':undefined}><span class="topic-dot" aria-hidden="true"></span><span>{category.name}</span><span class="nav-count">{resources.filter(r=>r.categories.includes(slug)).length}</span></a>})}</nav>
-    <div class="sidebar-bottom"><nav class="sidebar-nav" aria-label="Project"><a href="/contribute/"><Icon name="plus"/><span>Suggest a repository</span></a><a href="/about/"><Icon name="info"/><span>How we curate</span></a><a href="https://github.com/pawelborkar/awesome-repos"><Icon name="github"/><span>View on GitHub</span><Icon name="arrow" size={14}/></a></nav><div class="sidebar-credit"><span class="avatar">p</span><span>A collection by <a href="https://pawel.in">Pawel</a><small>Open source, always curious.</small></span></div></div>
+    <nav aria-label="Popular topics"><ul class="menu menu-sm sidebar-nav topic-nav">{['ai-learning','python','javascript','react','rust','typescript','system-design'].map(slug=>{const category=categories.find(c=>c.slug===slug);return category&&<li><a href={`/categories/${slug}/`} aria-current={Astro.url.pathname===`/categories/${slug}/`?'page':undefined}><span class="topic-dot" aria-hidden="true"></span><span>{category.name}</span><span class="badge badge-ghost badge-xs nav-count">{resources.filter(r=>r.categories.includes(slug)).length}</span></a></li>})}</ul></nav>
+    <div class="sidebar-bottom"><nav aria-label="Project"><ul class="menu menu-sm sidebar-nav"><li><a href="/contribute/"><Icon name="plus"/><span>Suggest a repository</span></a></li><li><a href="/about/"><Icon name="info"/><span>How we curate</span></a></li><li><a href="https://github.com/pawelborkar/awesome-repos"><Icon name="github"/><span>View on GitHub</span><Icon name="arrow" size={14}/></a></li></ul></nav><div class="sidebar-credit"><span class="avatar">p</span><span>A collection by <a href="https://pawel.in">Pawel</a><small>Open source, always curious.</small></span></div></div>
   </aside>
   <div class="app-frame">
     <header class="app-topbar">
       <div class="topbar-location"><Icon name="repo" size={16}/><a href="/">Library</a><span aria-hidden="true">/</span><span>{breadcrumbs.at(-1)?.name || 'All repositories'}</span></div>
-      <div class="topbar-actions"><a href="/contribute/" aria-label="Suggest a resource"><Icon name="plus" size={15}/><span>Suggest a resource</span></a><span class="topbar-divider"></span><button id="theme-toggle" class="theme-toggle" aria-label="Switch color theme" title="Switch color theme" hidden><Icon name="sun" size={18}/></button></div>
+      <div class="topbar-actions"><a href="/contribute/" aria-label="Suggest a resource"><Icon name="plus" size={15}/><span>Suggest a resource</span></a></div>
     </header>
     <details class="mobile-menu"><summary><Icon name="list" size={18}/><span>Browse the library</span></summary><nav aria-label="Mobile navigation"><a href="/">All repositories</a><a href="/learn/">Learn</a><a href="/tools/">Build</a><a href="/discover/">Collections</a><a href="/categories/">Explore categories</a><a href="/search/">Search</a><a href="/contribute/">Suggest a resource</a></nav></details>
     <main id="main" class="wrap">
@@ -57,12 +56,6 @@ const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
     <footer class="app-footer wrap"><span>Curated on GitHub. Made for learning and building.</span><div><a href="/about/">About</a><a href="/contribute/">Contribute</a><a href="https://github.com/pawelborkar/awesome-repos">Source <Icon name="arrow" size={12}/></a></div></footer>
   </div>
   <script>
-    const button=document.querySelector<HTMLButtonElement>('#theme-toggle');
-    if(button){button.hidden=false;button.addEventListener('click',()=>{
-      const dark=document.documentElement.dataset.theme==='dark'||(!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
-      const theme=dark?'light':'dark';document.documentElement.dataset.theme=theme;
-      try{localStorage.setItem('theme',theme)}catch{}
-    });}
     document.addEventListener('keydown',event=>{if(event.key==='/' && !event.ctrlKey && !event.metaKey && !['INPUT','TEXTAREA','SELECT'].includes((event.target as HTMLElement)?.tagName)){event.preventDefault();location.href='/search/';}});
   </script>
 </body>
