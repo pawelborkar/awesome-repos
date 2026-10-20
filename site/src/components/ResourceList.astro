@@ -6,6 +6,7 @@ interface Props {resources:Resource[];filters?:boolean}
 const {resources,filters=true}=Astro.props;
 const unique=(values:string[])=>[...new Set(values)].sort();
 const filterCategories=unique(resources.flatMap(r=>r.categories));
+const sortedResources=[...resources].sort((a,b)=>a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 ---
 <section class="directory" aria-label="Resource directory" data-view="list">
 {filters && <form class="filter-bar" data-filters hidden>
@@ -16,7 +17,7 @@ const filterCategories=unique(resources.flatMap(r=>r.categories));
   <label class="sort-control">Sort by<select class="select select-sm" name="sort"><option value="name">A–Z</option><option value="stars">Most starred</option></select></label><button class="btn btn-ghost btn-xs text-button" type="reset">Reset</button><div class="join view-switch" role="group" aria-label="Resource view"><button class="btn btn-ghost btn-square btn-xs join-item" type="button" data-set-view="list" aria-label="List view" aria-pressed="true"><Icon name="list" size={16}/></button><button class="btn btn-ghost btn-square btn-xs join-item" type="button" data-set-view="grid" aria-label="Grid view" aria-pressed="false"><Icon name="grid" size={16}/></button></div>
 </form>}
 <h2 class="screen-reader-only">Repository directory</h2><p class="result-count" role="status" aria-live="polite" data-result-count>{resources.length} resources</p>
-<div class="resource-grid" data-resource-grid>{resources.map(r=><ResourceCard resource={r}/>)}</div>
+<div class="resource-grid" data-resource-grid>{sortedResources.map(r=><ResourceCard resource={r}/>)}</div>
 <p class="empty-state" data-empty hidden>No resources match these filters. Try a broader selection.</p>
 </section>
 <script>
@@ -28,11 +29,16 @@ const filterCategories=unique(resources.flatMap(r=>r.categories));
     const setView=(view:string)=>{directory.dataset.view=view;for(const button of directory.querySelectorAll<HTMLButtonElement>('[data-set-view]'))button.setAttribute('aria-pressed',String(button.dataset.setView===view));try{localStorage.setItem('resource-view',view)}catch{}};
     try{setView(localStorage.getItem('resource-view')==='grid'?'grid':'list')}catch{}
     directory.querySelectorAll<HTMLButtonElement>('[data-set-view]').forEach(button=>button.addEventListener('click',()=>setView(button.dataset.setView!)));
+    let currentSort='name';
     const update=()=>{
       const values=new FormData(form);const params=new URLSearchParams();let visible=0;
       for(const field of fields){const v=String(values.get(field)||'');if(v && !(field==='sort'&&v==='name'))params.set(field,v);}
-      cards.sort((a,b)=>values.get('sort')==='stars'?Number(b.dataset.stars)-Number(a.dataset.stars)||a.dataset.name!.localeCompare(b.dataset.name!):a.dataset.name!.localeCompare(b.dataset.name!));
-      for(const card of cards){card.hidden=!fields.slice(0,4).every(f=>!values.get(f)||(card.dataset[f]||'').split(',').includes(String(values.get(f))))||!!(values.get('q')&&!`${card.dataset.name} ${card.dataset.description}`.includes(String(values.get('q')).toLowerCase()));if(!card.hidden)visible++;grid.append(card);}
+      const sort=String(values.get('sort')||'name');
+      if(sort!==currentSort){
+        cards.sort((a,b)=>sort==='stars'?Number(b.dataset.stars)-Number(a.dataset.stars)||a.dataset.name!.localeCompare(b.dataset.name!):a.dataset.name!.localeCompare(b.dataset.name!));
+        const fragment=document.createDocumentFragment();fragment.append(...cards);grid.append(fragment);currentSort=sort;
+      }
+      for(const card of cards){const hidden=!fields.slice(0,4).every(f=>!values.get(f)||(card.dataset[f]||'').split(',').includes(String(values.get(f))))||!!(values.get('q')&&!`${card.dataset.name} ${card.dataset.description}`.includes(String(values.get('q')).toLowerCase()));if(card.hidden!==hidden)card.hidden=hidden;if(!hidden)visible++;}
       directory.querySelector('[data-result-count]')!.textContent=`${visible} resource${visible===1?'':'s'}`;
       directory.querySelector<HTMLElement>('[data-empty]')!.hidden=visible>0;
       history.replaceState(null,'',location.pathname+(params.size?`#${params}`:''));
