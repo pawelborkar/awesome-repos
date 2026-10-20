@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ResourceList from '../../components/ResourceList.astro';
+import {categories,resources,collections} from '../../lib/catalog';
+export function getStaticPaths(){return categories.map(c=>({params:{slug:c.slug},props:{category:c}}));}
+const {category}=Astro.props;
+const selected=resources.filter(r=>r.categories.includes(category.slug));
+const curated=collections.filter(c=>c.indexable&&c.resources.some(k=>selected.some(r=>r.key===k)));
+const editorial=category.editorial;
+const indexable=!!(editorial?.reviewed && selected.length>=5);
+---
+<Layout title={editorial?.title || `${category.name} repositories and resources`} description={`Explore ${selected.length} curated ${category.name} repositories, with source links, license information, and related learning resources and developer tools.`} indexable={indexable} breadcrumbs={[{name:'Categories',path:'/categories/'},{name:category.name,path:`/categories/${category.slug}/`}]}><header class="page-heading"><div class="eyebrow">EXPLORE / {category.name.toUpperCase()}</div><h1>{category.name}</h1><p>Explore the {category.name} collection. Follow each resource to its source for current documentation, requirements, and licensing.</p></header>{editorial?.reviewed && <article class="prose"><p>{editorial.intro}</p><h2>Choose a useful starting point</h2><p>{editorial.selection}</p><p>Selection notes updated <time datetime={editorial.updated}>{editorial.updated}</time>.</p></article>}{curated.length>0 && <section class="prose"><h2>Looking for a starting point?</h2><ul>{curated.slice(0,3).map(c=><li><a href={`/discover/${c.slug}/`}>{c.title}</a> — {c.description}</li>)}</ul></section>}<ResourceList resources={selected}/></Layout>

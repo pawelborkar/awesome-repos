@@ -1,0 +1,5 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {categories,resources} from '../../lib/catalog';
+---
+<Layout title="Explore every category" description="Browse GitHub resources across programming languages, AI, system design, developer tools, books, and more." breadcrumbs={[{name:'Categories',path:'/categories/'}]}><header class="page-heading"><div class="eyebrow">THE WHOLE COLLECTION</div><h1>A topic for every curiosity.</h1><p>Pick a familiar subject or follow something new. Every category leads to a different corner of the open-source world.</p></header><div class="topic-list">{categories.map(c=><a class="topic-chip" href={`/categories/${c.slug}/`}>{c.name}<span>{resources.filter(r=>r.categories.includes(c.slug)).length}</span></a>)}</div></Layout>

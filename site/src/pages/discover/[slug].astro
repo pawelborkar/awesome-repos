@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ResourceList from '../../components/ResourceList.astro';
+import {collections,resources,origin} from '../../lib/catalog';
+import {renderMarkdown} from '../../lib/markdown';
+export function getStaticPaths(){return collections.map(collection=>({params:{slug:collection.slug},props:{collection}}));}
+const {collection:c}=Astro.props;
+const selected=c.resources.map(key=>resources.find(r=>r.key===key)!);
+---
+<Layout title={c.title} description={c.description} indexable={c.indexable} breadcrumbs={[{name:'Collections',path:'/discover/'},{name:c.title,path:`/discover/${c.slug}/`}]} schema={{'@type':'ItemList',name:c.title,numberOfItems:selected.length,itemListElement:selected.map((r,i)=>({'@type':'ListItem',position:i+1,name:r.name,url:`${origin}${r.path}`}))}}><header class="page-heading"><div class="eyebrow">{c.journey==='learn'?'LEARN':'BUILD'} / A CURATED COLLECTION</div><h1>{c.title}</h1><p>{c.description}</p></header><article class="prose"><div set:html={renderMarkdown(c.body)}/><h2>How this collection is selected</h2><p>{c.selection}</p><p>Selection notes updated <time datetime={c.updated}>{c.updated}</time>. Popularity metrics, when available, show their own snapshot date.</p></article><ResourceList resources={selected}/></Layout>

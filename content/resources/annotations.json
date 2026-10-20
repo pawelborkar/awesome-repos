@@ -1,0 +1,200 @@
+[
+  {
+    "key": "microsoft/generative-ai-for-beginners",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "course",
+    "technologies": [
+      "AI"
+    ],
+    "level": "beginner",
+    "audience": "Developers looking for a structured introduction to generative AI applications.",
+    "value": "Work through a course whose focus is building with generative AI, using its lessons as a learning path.",
+    "limitations": "Read the setup and model-provider instructions before starting. Public course access does not establish that every external service used by an example is free.",
+    "sources": [
+      "https://github.com/microsoft/generative-ai-for-beginners"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "microsoft/ml-for-beginners",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "course",
+    "technologies": [
+      "Machine learning"
+    ],
+    "level": "beginner",
+    "audience": "Learners looking for a curriculum covering classic machine learning.",
+    "value": "Use the repository\u2019s 12-week, 26-lesson curriculum to organize practice in classic ML.",
+    "limitations": "This catalog describes classic ML coverage. Choose a generative AI or agent course when that is the application area you need.",
+    "sources": [
+      "https://github.com/microsoft/ml-for-beginners"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "microsoft/ai-for-beginners",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "course",
+    "technologies": [
+      "AI"
+    ],
+    "level": "beginner",
+    "audience": "Learners seeking a structured introduction to neural networks, computer vision, and NLP.",
+    "value": "Follow the curriculum as a route through several areas of AI and use examples to practise.",
+    "limitations": "Read the source prerequisites and environment instructions. A broad curriculum still requires time for practical exercises.",
+    "sources": [
+      "https://github.com/microsoft/ai-for-beginners"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "rust-lang/book",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "book",
+    "technologies": [
+      "Rust"
+    ],
+    "level": "unclassified",
+    "audience": "Readers who want a book-length introduction to the Rust programming language.",
+    "value": "Use the official Rust book as a reading path and a reference while writing your own small programs.",
+    "limitations": "Reading and hands-on practice serve different purposes. Pair explanations with code you compile and change yourself.",
+    "sources": [
+      "https://github.com/rust-lang/book"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "rust-lang/rust-by-example",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "tutorial",
+    "technologies": [
+      "Rust"
+    ],
+    "level": "unclassified",
+    "audience": "Learners who prefer annotated, runnable Rust examples.",
+    "value": "Explore language features through examples and adapt them to test your understanding.",
+    "limitations": "Example-driven material is best used with deliberate experimentation. Check the current source for setup and expected Rust versions.",
+    "sources": [
+      "https://github.com/rust-lang/rust-by-example"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "rust-lang/rustlings",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "exercises",
+    "technologies": [
+      "Rust"
+    ],
+    "level": "unclassified",
+    "audience": "Rust learners looking for small exercises to practise language features.",
+    "value": "Work through exercises and use mistakes as prompts to revisit explanations in a Rust reference.",
+    "limitations": "Exercises provide practice, but their brevity may leave you wanting a longer explanation. Use a book or documentation alongside them.",
+    "sources": [
+      "https://github.com/rust-lang/rustlings"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "trekhleb/learn-python",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "tutorial",
+    "technologies": [
+      "Python"
+    ],
+    "level": "unclassified",
+    "audience": "Python learners looking for runnable examples and a cheatsheet-style reference.",
+    "value": "Run small Python examples and change them to investigate how the language behaves.",
+    "limitations": "A playground is a flexible learning format. Set your own sequence or pair it with a course if you prefer a guided route.",
+    "sources": [
+      "https://github.com/trekhleb/learn-python"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "thealgorithms/python",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "reference",
+    "technologies": [
+      "Python"
+    ],
+    "level": "unclassified",
+    "audience": "Python learners studying how algorithms can be implemented.",
+    "value": "Read and compare algorithm implementations, then try writing an implementation of your own.",
+    "limitations": "Implementation examples are a starting point for study. Check the explanation and test behavior before adapting code for another purpose.",
+    "sources": [
+      "https://github.com/thealgorithms/python"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "astral-sh/uv",
+    "reviewed": true,
+    "journey": "tools",
+    "type": "application",
+    "technologies": [
+      "Python"
+    ],
+    "level": "unclassified",
+    "audience": "Python developers looking for a package and project management tool.",
+    "value": "Explore a tool whose catalog scope covers Python packages and project workflows.",
+    "limitations": "Check the current documentation for installation and project migration guidance before replacing an existing workflow.",
+    "sources": [
+      "https://github.com/astral-sh/uv"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "burntsushi/ripgrep",
+    "reviewed": true,
+    "journey": "tools",
+    "type": "application",
+    "technologies": [],
+    "level": "unclassified",
+    "audience": "Developers who search text from the command line.",
+    "value": "Search files recursively with a tool that respects gitignore rules by default.",
+    "limitations": "Ignore rules and command options affect which files are searched. Read the options when a result is missing or you need broader coverage.",
+    "sources": [
+      "https://github.com/burntsushi/ripgrep"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "kamranahmedse/developer-roadmap",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "reference",
+    "technologies": [],
+    "level": "unclassified",
+    "audience": "Developers looking for a map of topics to explore in their learning.",
+    "value": "Use a roadmap to orient your next learning step and identify a subject to practise.",
+    "limitations": "A roadmap helps organize topics; you still need to choose a goal, a learning resource, and a practical exercise.",
+    "sources": [
+      "https://github.com/kamranahmedse/developer-roadmap"
+    ],
+    "updated": "2026-10-20"
+  },
+  {
+    "key": "danistefanovic/build-your-own-x",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "list",
+    "technologies": [],
+    "level": "unclassified",
+    "audience": "Developers looking for project ideas that explain how a technology works through building it.",
+    "value": "Choose an implementation project and learn by constructing a working example.",
+    "limitations": "Different linked projects have different prerequisites and scope. Inspect the individual project before committing to it.",
+    "sources": [
+      "https://github.com/danistefanovic/build-your-own-x"
+    ],
+    "updated": "2026-10-20"
+  }
+]

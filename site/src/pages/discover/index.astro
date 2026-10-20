@@ -1,0 +1,5 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {collections} from '../../lib/catalog';
+---
+<Layout title="Curated collections for learning and building" description="Purposeful collections of GitHub resources with guidance on what to choose, who each collection helps, and where to begin." breadcrumbs={[{name:'Collections',path:'/discover/'}]}><header class="page-heading"><div class="eyebrow">CURATED WITH A PURPOSE</div><h1>Find your starting point.</h1><p>A handful of useful paths through the collection. Each one brings related resources together and helps you decide where to begin.</p></header><div class="collection-grid">{collections.map(c=><a class="collection-card" href={`/discover/${c.slug}/`}><h2>{c.title} ↗</h2><p>{c.description}</p><small>{c.resources.length} resources</small></a>)}</div><div class="section-spaced"></div></Layout>

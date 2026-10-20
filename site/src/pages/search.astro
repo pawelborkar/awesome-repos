@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Search the repository collection" description="Search our curated GitHub catalog by topic, technology, resource format, and experience level." indexable={false} breadcrumbs={[{name:'Search',path:'/search/'}]}><header class="page-heading"><div class="eyebrow">FOLLOW A THREAD</div><h1>What are you curious about?</h1><p>Search the full collection. Try a language, a concept, or a tool you have been meaning to explore.</p></header><div class="search-panel"><form id="search-form" role="search"><label for="query" class="screen-reader-only">Search repositories</label><input id="query" type="search" placeholder="Search resources, topics, or technologies…" autocomplete="off"/><div class="search-filters" id="search-filters"></div></form><p id="search-status" class="result-count" role="status" aria-live="polite">Type to search the collection.</p><ol id="search-results" class="search-results"></ol><button id="load-more" class="button secondary" hidden>Show more results</button><noscript><p>Search needs JavaScript. You can <a href="/categories/">browse every category</a> without it.</p></noscript></div></Layout>
+<script>
+  type Result={url:string;meta:Record<string,string>;excerpt:string;};
+  type SearchResponse={results:{data:()=>Promise<Result>}[]};
+  type Pagefind={init:()=>Promise<void>;filters:()=>Promise<Record<string,Record<string,number>>>;search:(q:string|null,options:Record<string,unknown>)=>Promise<SearchResponse>};
+  const input=document.querySelector<HTMLInputElement>('#query')!;
+  const form=document.querySelector<HTMLFormElement>('#search-form')!;
+  const status=document.querySelector<HTMLElement>('#search-status')!;
+  const results=document.querySelector<HTMLOListElement>('#search-results')!;
+  const more=document.querySelector<HTMLButtonElement>('#load-more')!;
+  let engine:Promise<Pagefind>|undefined, sequence=0, pending:SearchResponse['results']=[], offset=0;
+  const getEngine=()=>engine??=(async()=>{
+    const modulePath='/pagefind/pagefind.js';
+    const p=await import(/* @vite-ignore */ modulePath) as Pagefind;await p.init();
+    const filters=await p.filters();const target=document.querySelector('#search-filters')!;
+    for(const [name,label] of Object.entries({category:'Category',type:'Format',technology:'Technology',level:'Level'})){
+      if(!filters[name])continue;const field=document.createElement('label');field.textContent=label;const select=document.createElement('select');select.name=name;select.add(new Option(`All ${label.toLowerCase()}s`,''));
+      for(const value of Object.keys(filters[name]).sort())select.add(new Option(value,value));field.append(select);target.append(field);
+    }
+    const field=document.createElement('label');field.textContent='Sort';const sort=document.createElement('select');sort.name='sort';for(const [label,value]of [['Relevance',''],['A–Z','name:asc'],['Most starred','stars:desc']])sort.add(new Option(label,value));field.append(sort);target.append(field);return p;
+  })();
+  async function renderBatch(id:number){const batch=await Promise.all(pending.slice(offset,offset+15).map(r=>r.data()));if(id!==sequence)return;offset+=batch.length;
+    for(const item of batch){const li=document.createElement('li'),h=document.createElement('h2'),a=document.createElement('a'),p=document.createElement('p');a.href=item.url;a.textContent=item.meta.title||item.url;h.append(a);p.textContent=item.excerpt.replace(/<[^>]+>/g,'');li.append(h,p);results.append(li);}more.hidden=offset>=pending.length;
+  }
+  async function search(restore=false){const id=++sequence;status.textContent='Searching…';try{
+    const p=await getEngine();if(id!==sequence)return;
+    if(restore){const state=new URLSearchParams(location.hash.slice(1));input.value=state.get('q')||'';for(const select of form.querySelectorAll('select'))select.value=state.get(select.name)||'';}
+    const state=new URLSearchParams();const filters:Record<string,string>={};if(input.value.trim())state.set('q',input.value.trim());
+    for(const select of form.querySelectorAll('select'))if(select.value)state.set(select.name,select.value);
+    for(const name of ['category','type','technology','level'])if(state.get(name))filters[name]=state.get(name)!;
+    const sorting=state.get('sort')?.split(':');const response=await p.search(input.value.trim()||null,{filters,...(sorting?{sort:{[sorting[0]]:sorting[1]}}:{})});if(id!==sequence)return;
+    pending=response.results;offset=0;results.replaceChildren();status.textContent=`${pending.length} resource${pending.length===1?'':'s'} found`;history.replaceState(null,'',location.pathname+(state.size?`#${state}`:''));await renderBatch(id);
+  }catch{if(id===sequence)status.textContent='Search is unavailable. Browse the categories, or try again after refreshing.';engine=undefined;}}
+  let timer:ReturnType<typeof setTimeout>;input.addEventListener('input',()=>{clearTimeout(timer);sequence++;timer=setTimeout(()=>void search(),250);});
+  input.addEventListener('focus',()=>{void getEngine().catch(()=>{engine=undefined;});},{once:true});
+  form.addEventListener('submit',event=>{event.preventDefault();clearTimeout(timer);void search();});form.addEventListener('change',()=>void search());more.addEventListener('click',()=>void renderBatch(sequence));window.addEventListener('hashchange',()=>void search(true));if(location.hash)void search(true);
+</script>

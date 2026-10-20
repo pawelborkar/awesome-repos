@@ -1,0 +1,43 @@
+---
+import ResourceCard from './ResourceCard.astro';
+import Icon from './Icon.astro';
+import {categoryName,type Resource} from '../lib/catalog';
+interface Props {resources:Resource[];filters?:boolean}
+const {resources,filters=true}=Astro.props;
+const unique=(values:string[])=>[...new Set(values)].sort();
+const filterCategories=unique(resources.flatMap(r=>r.categories));
+---
+<section class="directory" aria-label="Resource directory" data-view="list">
+{filters && <form class="filter-bar" data-filters hidden>
+  <div class="filter-search"><Icon name="search" size={16}/><label for="filter-query" class="screen-reader-only">Filter these resources</label><input id="filter-query" name="q" type="search" placeholder="Filter resources…" autocomplete="off"/></div><div class="filter-fields"><label>Category<select name="category"><option value="">All categories</option>{filterCategories.map(c=><option value={c}>{categoryName(c)}</option>)}</select></label><details class="advanced-filters" data-advanced><summary>More filters</summary><div class="advanced-filter-panel">
+  <label>Format<select name="type"><option value="">All formats</option>{unique(resources.map(r=>r.type)).map(t=><option value={t}>{t.replaceAll('-',' ')}</option>)}</select></label>
+  <label>Technology<select name="technology"><option value="">All technologies</option>{unique(resources.flatMap(r=>r.technologies)).map(t=><option value={t}>{t}</option>)}</select></label>
+  <label>Level<select name="level"><option value="">All levels</option>{unique(resources.map(r=>r.level)).map(t=><option value={t}>{t.replaceAll('-',' ')}</option>)}</select></label></div></details></div>
+  <label class="sort-control">Sort by<select name="sort"><option value="name">A–Z</option><option value="stars">Most starred</option></select></label><button class="text-button" type="reset">Reset</button><div class="view-switch" role="group" aria-label="Resource view"><button type="button" data-set-view="list" aria-label="List view" aria-pressed="true"><Icon name="list" size={16}/></button><button type="button" data-set-view="grid" aria-label="Grid view" aria-pressed="false"><Icon name="grid" size={16}/></button></div>
+</form>}
+<h2 class="screen-reader-only">Repository directory</h2><p class="result-count" role="status" aria-live="polite" data-result-count>{resources.length} resources</p>
+<div class="resource-grid" data-resource-grid>{resources.map(r=><ResourceCard resource={r}/>)}</div>
+<p class="empty-state" data-empty hidden>No resources match these filters. Try a broader selection.</p>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('.directory').forEach(directory=>{
+    const form=directory.querySelector<HTMLFormElement>('[data-filters]');if(!form)return;form.hidden=false;
+    const grid=directory.querySelector<HTMLElement>('[data-resource-grid]')!;
+    const cards=Array.from(grid.querySelectorAll<HTMLElement>('[data-resource]'));
+    const fields=['category','type','technology','level','sort','q'];
+    const setView=(view:string)=>{directory.dataset.view=view;for(const button of directory.querySelectorAll<HTMLButtonElement>('[data-set-view]'))button.setAttribute('aria-pressed',String(button.dataset.setView===view));try{localStorage.setItem('resource-view',view)}catch{}};
+    try{setView(localStorage.getItem('resource-view')==='grid'?'grid':'list')}catch{}
+    directory.querySelectorAll<HTMLButtonElement>('[data-set-view]').forEach(button=>button.addEventListener('click',()=>setView(button.dataset.setView!)));
+    const update=()=>{
+      const values=new FormData(form);const params=new URLSearchParams();let visible=0;
+      for(const field of fields){const v=String(values.get(field)||'');if(v && !(field==='sort'&&v==='name'))params.set(field,v);}
+      cards.sort((a,b)=>values.get('sort')==='stars'?Number(b.dataset.stars)-Number(a.dataset.stars)||a.dataset.name!.localeCompare(b.dataset.name!):a.dataset.name!.localeCompare(b.dataset.name!));
+      for(const card of cards){card.hidden=!fields.slice(0,4).every(f=>!values.get(f)||(card.dataset[f]||'').split(',').includes(String(values.get(f))))||!!(values.get('q')&&!`${card.dataset.name} ${card.dataset.description}`.includes(String(values.get('q')).toLowerCase()));if(!card.hidden)visible++;grid.append(card);}
+      directory.querySelector('[data-result-count]')!.textContent=`${visible} resource${visible===1?'':'s'}`;
+      directory.querySelector<HTMLElement>('[data-empty]')!.hidden=visible>0;
+      history.replaceState(null,'',location.pathname+(params.size?`#${params}`:''));
+    };
+    const restore=()=>{const params=new URLSearchParams(location.hash.slice(1));if(['type','technology','level'].some(f=>params.get(f)))form.querySelector<HTMLDetailsElement>('[data-advanced]')!.open=true;for(const f of fields){const select=form.elements.namedItem(f) as HTMLSelectElement|HTMLInputElement;select.value=params.get(f)||(f==='sort'?'name':'');}update();};
+    form.addEventListener('change',update);form.querySelector('input')?.addEventListener('input',update);form.addEventListener('reset',()=>setTimeout(update,0));window.addEventListener('hashchange',restore);restore();
+  });
+</script>

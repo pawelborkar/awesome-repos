@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ResourceList from '../components/ResourceList.astro';
+import {matching} from '../lib/catalog';
+import {readFileSync} from 'node:fs';
+import matter from 'gray-matter';
+import {renderMarkdown} from '../lib/markdown';
+export function getStaticPaths(){return ['learn','tools'].map(journey=>({params:{journey}}));}
+const journey=Astro.params.journey!;
+const {data,content}=matter(readFileSync(new URL(`../../../content/hubs/${journey}.md`,import.meta.url),'utf8'));
+const selected=matching(journey);
+const name=journey==='learn'?'Learning resources':'Developer tools';
+const description=journey==='learn'?'Find programming books, courses, exercises, and learning references from our curated GitHub catalog.':'Explore frameworks, libraries, applications, and practical developer tools from our curated GitHub catalog.';
+---
+<Layout title={name} description={description} indexable={selected.length>=5} breadcrumbs={[{name,path:`/${journey}/`}]}><header class="page-heading"><div class="eyebrow">{journey==='learn'?'THE LEARNING PATH':'THE BUILDING PATH'}</div><h1>{data.title}</h1><p>{description}</p></header><div class="prose" set:html={renderMarkdown(content)}/><ResourceList resources={selected}/></Layout>
