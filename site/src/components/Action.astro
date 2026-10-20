@@ -3,5 +3,6 @@ import type { HTMLAttributes } from 'astro/types';
 type Props = HTMLAttributes<'button'> & {href?:string;variant?:'primary'|'secondary'|'tertiary';size?:'sm'|'md'|'lg'};
 const {href,variant='primary',size='md',class:className,...attrs}=Astro.props;
 const Tag=href?'a':'button';
+const sizes={sm:'btn-sm',md:'btn-md',lg:'btn-lg'};
 ---
-<Tag href={href} class:list={['button',`button--${variant}`,`button--${size}`,className]} {...attrs}><slot/></Tag>
+<Tag href={href} class:list={['btn',sizes[size],variant==='primary'?'btn-neutral':variant==='secondary'?'btn-outline':'btn-ghost',className]} {...attrs}><slot/></Tag>

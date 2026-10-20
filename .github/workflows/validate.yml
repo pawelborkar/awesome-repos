@@ -28,7 +28,10 @@ jobs:
       - run: npm run build && npm run validate
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
-      - run: npm run test:performance
+      - name: Audit the production build
+        run: npm run build && npm run validate && npm run test:performance
+        env:
+          PRODUCTION: 'true'
       - uses: actions/upload-artifact@v4
         if: always()
         with:

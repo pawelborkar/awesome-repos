@@ -31,10 +31,13 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
     "@playwright/test": "^1.56.0",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/sanitize-html": "^2.16.2",
     "cheerio": "^1.1.2",
+    "daisyui": "^5.7.50",
     "lighthouse": "^13.0.0",
     "pagefind": "^1.4.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.0",
     "wrangler": "^4.45.0"
   }
