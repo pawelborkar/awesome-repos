@@ -27,9 +27,9 @@ npm run test:performance
 
 ## Interface
 
-The app uses a persistent library sidebar, compact resource rows, a focused content column, and a native mobile browse menu, inspired by [Brian Lovin](https://brianlovin.com/). Geist is self-hosted. A fixed DaisyUI dim theme uses soft charcoal/slate surfaces, high-contrast light text, generous line height, and 14–16px primary reading text for comfortable scanning and reading.
+The app uses a persistent library sidebar, compact resource rows, a focused content column, and a native mobile browse menu, inspired by [Brian Lovin](https://brianlovin.com/). Geist is self-hosted, and themes follow the system preference unless a visitor chooses an override.
 
-Controls follow [HeroUI's design principles](https://heroui.com/en/docs/react/getting-started/design-principles): semantic action variants, visible focus, accessible names, progressive disclosure, and predictable state. DaisyUI 5 is integrated through Tailwind CSS 4’s Vite plugin. Only the button, input, select, badge, join, and menu components are included. The shared Astro action component maps typed primary/secondary/tertiary variants and sm/md/lg sizes to DaisyUI classes. Advanced filters sit behind More filters; text, category, sort, and list/grid controls remain available in the main toolbar. Filter state is shareable through URL fragments; the view preference is saved locally.
+Controls follow [HeroUI's design principles](https://heroui.com/en/docs/react/getting-started/design-principles): semantic action variants, visible focus, accessible names, progressive disclosure, and predictable state. The shared Astro action component exposes typed primary/secondary/tertiary variants and sm/md/lg sizes. Advanced filters sit behind More filters; text, category, sort, and list/grid controls remain available in the main toolbar. Filter state is shareable through URL fragments; the view preference is saved locally.
 
 ## Catalog and editorial content
 
@@ -105,6 +105,16 @@ node scripts/verify-live.mjs https://awesome.pawel.in
 Build staging without `PRODUCTION=true`. Its robots.txt and X-Robots-Tag prohibit indexing. Production is served only on `awesome.pawel.in`; the production config disables `workers.dev` and version-preview URLs. If the domain has an existing unrelated DNS record or origin, resolve it explicitly before deploying rather than replacing it blindly.
 
 Rollback with `npx wrangler rollback --env production` to restore a previous successful Worker version. Check the deployed URL afterward. Keep metadata caches and validation reports as operational evidence, not credentials.
+
+## Generative engine optimisation (GEO)
+
+The static HTML is the primary source for both readers and crawlers. The home page defines the catalog and links to learning, tools, collections, and the curation policy. Reviewed resource pages expose audience, practical use, limitations, and cited sources under stable section anchors. The About page answers questions about source provenance, review, AI assistance, popularity, and costs.
+
+Every page has connected `WebSite` and page JSON-LD identities. Directory pages use `CollectionPage` with an `ItemList` matching the initial HTML inventory and order. Resource notes identify the original repository as a `CreativeWork`, link its supplied licenses, and include citations and `lastReviewed` only for reviewed annotations. Editorial review dates come from content fields; rebuilds and star snapshots do not advance them. Do not add ratings, reviewer identities, service-cost promises, or review dates without evidence.
+
+Builds also generate `/llms.txt`, an optional Markdown reading guide containing only canonical URLs eligible for the production sitemap. Preview builds contain no discovery links. It is a convenience for tools that read it, not an indexing requirement or a guaranteed ranking improvement. Production `robots.txt` permits crawling; preview robots and headers prevent indexing. Domain-level bot protection must also permit the crawlers you want to reach the production site.
+
+`npm run validate` checks connected page identities, list inventories against HTML, visible citations, license links, review dates, and reading-guide/sitemap parity. Run it after both preview and production builds. Follow [Google's generative AI search guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide): useful original content, crawlable pages, and structured data that matches the content remain foundational. AI citations and rankings are not guaranteed by markup or a reading guide.
 
 ## Analytics and Search Console
 
