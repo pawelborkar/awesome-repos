@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ResourceList from '../components/ResourceList.astro';
+import { resources, categories } from '../lib/catalog';
+import { collectionPage } from '../lib/seo';
+---
+<Layout title="Curated repositories for learning and building" description="A searchable library of curated GitHub repositories. Find programming courses, books, developer tools, frameworks, and practical projects." schema={collectionPage('All repositories', resources)}>
+  <div class="flex flex-col gap-6">
+    <header class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pt-2">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">All repositories</h1>
+        <p class="text-sm text-neutral-400 mt-2 font-normal max-w-2xl">A curated directory of {resources.length} open-source repositories across {categories.length} topics for learning programming and building software.</p>
+      </div>
+      <div class="flex items-center gap-2.5 shrink-0">
+        <a href="/contribute/" class="btn btn-sm bg-[#14161a] hover:bg-neutral-800 border border-[#2b313d] text-neutral-200 text-xs font-normal rounded-lg px-3.5 h-8">Suggest a resource</a>
+        <a href="https://github.com/pawelborkar/awesome-repos" class="btn btn-sm bg-[#eceef2] hover:bg-white text-neutral-900 border-0 text-xs font-medium rounded-lg px-3.5 h-8">Star on GitHub</a>
+      </div>
+    </header>
+
+    <ResourceList resources={resources}/>
+  </div>
+</Layout>

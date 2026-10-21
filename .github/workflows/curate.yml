@@ -1,0 +1,56 @@
+name: Discover learning resources
+on:
+  schedule:
+    - cron: '47 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Report only or propose resource PRs
+        type: choice
+        options: [report, propose]
+        default: report
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
+concurrency:
+  group: curation-publication
+  cancel-in-progress: false
+jobs:
+  discover:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      GROQ_MODEL: ${{ vars.GROQ_MODEL || 'qwen/qwen3.8-27b' }}
+      CURATION_MODE: ${{ github.event_name == 'schedule' && 'propose' || inputs.mode }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm test
+      - uses: actions/cache@v4
+        with:
+          path: .cache/github-metadata.json
+          key: discovery-metadata-${{ github.run_id }}
+          restore-keys: |
+            discovery-metadata-
+            catalog-production-
+      - run: npm run metadata
+      - run: python3 scripts/curate.py --mode "$CURATION_MODE"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: weekly-shortlist
+          path: reports/shortlist.*
+          if-no-files-found: warn

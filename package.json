@@ -1,0 +1,44 @@
+{
+  "name": "awesome-repositories",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "node scripts/catalog.mjs && astro dev --root site --host 127.0.0.1",
+    "build": "node scripts/catalog.mjs && astro build --root site && pagefind --site site/dist && node scripts/postbuild.mjs",
+    "check": "node scripts/catalog.mjs && astro check --root site && tsc --noEmit -p site/tsconfig.json",
+    "test": "node --test tests/*.test.mjs && python3 -m unittest discover -s tests -p 'test_*.py'",
+    "validate": "node scripts/validate-site.mjs",
+    "metadata": "node scripts/metadata.mjs",
+    "curate": "python3 scripts/curate.py",
+    "deploy": "wrangler deploy --env production",
+    "preview": "wrangler dev --env staging",
+    "test:browser": "playwright test",
+    "test:performance": "node scripts/performance.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "astro": "^5.16.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^17.0.0",
+    "sanitize-html": "^2.18.1",
+    "sharp": "^0.35.5",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "@playwright/test": "^1.56.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/sanitize-html": "^2.16.2",
+    "cheerio": "^1.1.2",
+    "daisyui": "^5.7.50",
+    "lighthouse": "^13.0.0",
+    "pagefind": "^1.4.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.45.0"
+  }
+}

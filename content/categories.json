@@ -1,0 +1,58 @@
+{
+  "ai-learning": {
+    "title": "AI learning resources: courses, books, and examples",
+    "intro": "Choose an AI resource by the subject you want to explore: classic machine learning, neural networks, generative applications, or agents. This category includes both guided curricula and practical references. Look at the course or book scope before deciding how much time to commit.",
+    "selection": "Start with a guided curriculum for a new subject. Use cookbooks and focused implementation material when you have a specific question. Check setup instructions and any external service requirements.",
+    "reviewed": true,
+    "updated": "2026-10-20"
+  },
+  "python": {
+    "title": "Python repositories for learning and building",
+    "intro": "Python projects in this category span language practice, data science notebooks, web frameworks, validation, and development tooling. Use the resource description to distinguish a learning exercise from a tool you would integrate into a working project.",
+    "selection": "For language practice, choose examples or exercises. For an application, identify the job first: web serving, data validation, package management, or code quality. Read current installation and compatibility guidance at the source.",
+    "reviewed": true,
+    "updated": "2026-10-20"
+  },
+  "rust": {
+    "title": "Rust resources from first examples to application tools",
+    "intro": "The Rust category brings together books, exercises, design patterns, and libraries used to build applications. A language-learning path and an application dependency solve different problems; choose a reading or practice resource when you want understanding, and a focused tool when you need a capability.",
+    "selection": "Pair a book with exercises when learning the language. Evaluate runtimes, web frameworks, serialization, and desktop tooling through a small project before adopting them. Check each repository for current requirements.",
+    "reviewed": true,
+    "updated": "2026-10-20"
+  },
+  "react": {
+    "title": "React libraries, references, and application architecture",
+    "intro": "React applications involve more than a component model: routing, state, forms, UI, animation, and architecture each introduce their own decisions. This category lets you compare resource responsibilities before you choose an additional dependency or a learning reference.",
+    "selection": "Begin with the React reference when a language or rendering concept is unclear. Choose an application library for one concrete responsibility, then check the current integration documentation and license.",
+    "reviewed": true,
+    "updated": "2026-10-20"
+  },
+  "javascript": {
+    "title": "JavaScript concepts, conventions, and practical references",
+    "intro": "JavaScript resources here cover language understanding, style conventions, interview questions, short examples, and server-side practices. Choose a resource based on whether you want an extended explanation, a reminder, or a small behavior to investigate.",
+    "selection": "Keep language explanations and style preferences distinct. Run snippets in your own environment, then explain their behavior. Use a cheatsheet to refresh knowledge and a deeper resource when a concept needs more context.",
+    "reviewed": true,
+    "updated": "2026-10-20"
+  },
+  "typescript": {
+    "title": "TypeScript references, reusable types, and application tools",
+    "intro": "TypeScript combines a language and compiler with an ecosystem of reusable types, validation libraries, and typed application interfaces. This category includes resources for practising the type system as well as tools you can evaluate for a project.",
+    "selection": "Use exercises or a book when learning type relationships. Check validation and API tools against a real application boundary, and verify current requirements in their documentation before integrating them.",
+    "reviewed": true,
+    "updated": "2026-10-20"
+  },
+  "svelte": {
+    "title": "Svelte frameworks, UI libraries, and creative tools",
+    "intro": "This category covers Svelte application foundations, UI components, Markdown integration, and 3D tooling. Each resource addresses a different layer of building a web interface, so begin with the project you want to make and identify the capability that is missing.",
+    "selection": "Establish the application foundation before choosing UI or content tooling. Try a small component or page and check supported framework versions in the source documentation; inclusion in the category is not a compatibility guarantee.",
+    "reviewed": true,
+    "updated": "2026-10-20"
+  },
+  "career": {
+    "title": "Developer learning paths, practice, and career resources",
+    "intro": "Career resources combine roadmaps, computer science study, coding practice, interview preparation, and ways to discover opportunities. A topic map helps you orient yourself; an exercise or project helps turn a selected topic into something you can explain and use.",
+    "selection": "Choose a goal before choosing a list. Distinguish general learning from interview-specific preparation, and treat employer or opportunity information as a lead to verify at its source. No resource can guarantee an employment outcome.",
+    "reviewed": true,
+    "updated": "2026-10-20"
+  }
+}

@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+type Props = HTMLAttributes<'button'> & {href?:string;variant?:'primary'|'secondary'|'tertiary';size?:'sm'|'md'|'lg'};
+const {href,variant='primary',size='md',class:className,...attrs}=Astro.props;
+const Tag=href?'a':'button';
+
+const variantClasses = {
+  primary: 'bg-[#eceef2] hover:bg-white text-neutral-900 border-0 font-medium',
+  secondary: 'bg-[#14161a] hover:bg-neutral-800 border border-[#2b313d] text-neutral-200 font-normal',
+  tertiary: 'btn-ghost text-neutral-400 hover:text-white',
+};
+
+const sizeClasses = {
+  sm: 'btn-xs h-7 px-2.5 text-xs',
+  md: 'btn-sm h-8 px-3.5 text-xs',
+  lg: 'btn-md h-10 px-4 text-sm',
+};
+---
+<Tag
+  href={href}
+  class:list={[
+    'button btn inline-flex items-center justify-center gap-1.5 rounded-lg transition-all',
+    variantClasses[variant],
+    sizeClasses[size],
+    `button--${variant}`,
+    `button--${size}`,
+    className
+  ]}
+  {...attrs}
+><slot/></Tag>

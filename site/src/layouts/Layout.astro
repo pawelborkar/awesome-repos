@@ -1,0 +1,159 @@
+---
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+import '../styles/global.css';
+import { origin, production, categories, resources, collections } from '../lib/catalog';
+import Icon from '../components/Icon.astro';
+interface Props { title: string; description: string; indexable?: boolean; breadcrumbs?: {name:string;path:string}[]; schema?: Record<string, unknown> }
+const {title,description,indexable=true,breadcrumbs=[],schema}=Astro.props;
+const canonical=new URL(Astro.url.pathname.startsWith('/404')?'/404.html':Astro.url.pathname,origin).href;
+const verification=import.meta.env.PUBLIC_SEARCH_CONSOLE_VERIFICATION;
+const analytics=import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
+const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
+---
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title} | Awesome Repositories</title><meta name="description" content={description}/>
+  <link rel="canonical" href={canonical}/><meta name="robots" content={production && indexable?'index,follow':'noindex,follow'}/>
+  <meta name="theme-color" content="#14161a"/>
+  <meta property="og:type" content="website"/><meta property="og:site_name" content="Awesome Repositories"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={`${origin}/social.png`}/><meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  {verification && <meta name="google-site-verification" content={verification}/>}
+  <script is:inline>try{const t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch{}</script>
+  <script type="application/ld+json" set:html={json({'@context':'https://schema.org','@type':'WebSite','@id':`${origin}/#website`,name:'Awesome Repositories',url:`${origin}/`,description:'A community-maintained catalog of GitHub repositories for learning programming and building software.',inLanguage:'en',sameAs:'https://github.com/pawelborkar/awesome-repos'})}/>
+  {breadcrumbs.length>0 && <script type="application/ld+json" set:html={json({'@context':'https://schema.org','@type':'BreadcrumbList','@id':`${canonical}#breadcrumb`,itemListElement:[{name:'Home',path:'/'},...breadcrumbs].map((b,i)=>({'@type':'ListItem',position:i+1,name:b.name,item:new URL(b.path,origin).href}))})}/>}
+  <script type="application/ld+json" set:html={json({'@context':'https://schema.org','@type':'WebPage',...schema,'@id':`${canonical}#webpage`,url:canonical,name:title,description,inLanguage:'en',isPartOf:{'@id':`${origin}/#website`},...(breadcrumbs.length?{breadcrumb:{'@id':`${canonical}#breadcrumb`}}:{})})}/>
+  {production && analytics && <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({token:analytics})}/>}
+</head>
+<body class="bg-[#14161a] text-neutral-200 min-h-screen flex flex-col font-sans antialiased">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-neutral-800 focus:text-white focus:rounded-md focus:border focus:border-neutral-600" href="#main">Skip to content</a>
+
+  <aside class="hidden md:flex flex-col w-[202px] bg-[#14161a] border-r border-[#20232a] fixed inset-y-0 left-0 z-30 p-4" aria-label="Repository library">
+    <div class="px-2 mb-5">
+      <a class="text-white font-bold text-sm tracking-tight hover:opacity-90 inline-block" href="/">Awesome Repositories</a>
+    </div>
+
+    <nav aria-label="Main navigation" class="w-full">
+      <ul class="menu menu-sm w-full p-0 gap-0.5 text-neutral-300 font-medium">
+        <li>
+          <a href="/" class={`flex justify-between items-center rounded-lg px-2.5 py-1.5 ${Astro.url.pathname==='/' ? 'bg-[#1b2234] text-white font-medium' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/40'}`} aria-current={Astro.url.pathname==='/'?'page':undefined}>
+            <span>All repositories</span>
+            <span class="badge badge-sm border-0 bg-transparent text-[#93c5fd] font-mono text-xs p-0 font-normal">{resources.length}</span>
+          </a>
+        </li>
+        <li>
+          <a href="/learn/" class={`flex justify-between items-center rounded-lg px-2.5 py-1.5 ${Astro.url.pathname==='/learn/' ? 'bg-[#1b2234] text-white font-medium' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/40'}`} aria-current={Astro.url.pathname==='/learn/'?'page':undefined}>
+            <span>Learn</span>
+          </a>
+        </li>
+        <li>
+          <a href="/tools/" class={`flex justify-between items-center rounded-lg px-2.5 py-1.5 ${Astro.url.pathname==='/tools/' ? 'bg-[#1b2234] text-white font-medium' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/40'}`} aria-current={Astro.url.pathname==='/tools/'?'page':undefined}>
+            <span>Build</span>
+          </a>
+        </li>
+        <li>
+          <a href="/discover/" class={`flex justify-between items-center rounded-lg px-2.5 py-1.5 ${Astro.url.pathname.startsWith('/discover/') ? 'bg-[#1b2234] text-white font-medium' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/40'}`} aria-current={Astro.url.pathname.startsWith('/discover/')?'page':undefined}>
+            <span>Collections</span>
+            <span class="text-xs text-neutral-400 font-mono">{collections.length}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="px-2.5 pt-6 pb-2 text-[11px] font-semibold text-neutral-400 tracking-wider">TOPICS</div>
+    <nav class="w-full" aria-label="Popular topics">
+      <ul class="menu menu-sm w-full p-0 gap-0.5 text-neutral-300">
+        {[
+          { slug: 'ai-learning', name: 'AI Learning' },
+          { slug: 'react', name: 'React' },
+          { slug: 'python', name: 'Python' },
+          { slug: 'rust', name: 'Rust' },
+          { slug: 'javascript', name: 'JavaScript' }
+        ].map(t => {
+          const count = resources.filter(r => r.categories.includes(t.slug)).length;
+          const isCurrent = Astro.url.pathname === `/categories/${t.slug}/`;
+          return (
+            <li>
+              <a href={`/categories/${t.slug}/`} class={`flex justify-between items-center rounded-lg px-2.5 py-1 text-xs ${isCurrent ? 'bg-[#1b2234] text-white font-medium' : 'text-neutral-300 hover:text-white hover:bg-neutral-800/40'}`} aria-current={isCurrent ? 'page' : undefined}>
+                <span>{t.name}</span>
+                <span class="text-xs text-neutral-400 font-mono">{count}</span>
+              </a>
+            </li>
+          );
+        })}
+        <li class="mt-2">
+          <a href="/categories/" class="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-neutral-300 hover:text-white font-medium">
+            <span>All {categories.length} topics</span>
+            <span class="text-neutral-400">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button id="theme-toggle" class="fixed bottom-2 right-2 p-1.5 rounded opacity-0 pointer-events-auto z-50 text-xs" aria-label="Switch color theme" title="Switch color theme" hidden><Icon name="sun" size={16}/></button>
+  </aside>
+
+  <details class="mobile-menu md:hidden bg-[#14161a] border-b border-[#20232a] px-4 py-2.5">
+    <summary class="cursor-pointer text-sm text-neutral-400 flex items-center gap-2 list-none">
+      <Icon name="list" size={18}/><span>Browse the library</span>
+    </summary>
+    <nav aria-label="Mobile navigation" class="grid grid-cols-2 gap-2 pt-3 pb-2">
+      <a href="/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">All repositories</a>
+      <a href="/learn/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Learn</a>
+      <a href="/tools/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Build</a>
+      <a href="/discover/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Collections</a>
+      <a href="/categories/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Explore categories</a>
+      <a href="/search/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Search</a>
+      <a href="/contribute/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Suggest a resource</a>
+    </nav>
+  </details>
+
+  <div class="md:ml-[202px] min-h-screen bg-[#14161a] flex flex-col">
+    <main id="main" class="w-full max-w-4xl mx-auto px-6 md:px-12 py-8 flex-1">
+      {breadcrumbs.length > 1 && (
+        <nav class="flex items-center gap-2 text-xs text-neutral-400 mb-6" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-neutral-300">Home</a>
+          {breadcrumbs.map(b => (
+            <>
+              <span aria-hidden="true">/</span>
+              <a href={b.path} class="hover:text-neutral-300">{b.name}</a>
+            </>
+          ))}
+        </nav>
+      )}
+      <slot/>
+    </main>
+    <footer class="w-full max-w-4xl mx-auto px-6 md:px-12 py-8 border-t border-[#20232a] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
+      <span>Curated on GitHub. Made for learning and building.</span>
+      <div class="flex items-center gap-4">
+        <a href="/about/" class="hover:text-neutral-300">About</a>
+        <a href="/contribute/" class="hover:text-neutral-300">Contribute</a>
+        <a href="https://github.com/pawelborkar/awesome-repos" class="hover:text-neutral-300 inline-flex items-center gap-1">Source <Icon name="arrow" size={12}/></a>
+      </div>
+    </footer>
+  </div>
+
+  <button id="theme-toggle-mobile" class="md:hidden fixed bottom-2 right-2 p-1.5 rounded opacity-0 pointer-events-auto z-50 text-xs" aria-label="Switch color theme" title="Switch color theme" hidden><Icon name="sun" size={16}/></button>
+
+ <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('[id^="theme-toggle"]');
+    buttons.forEach(button => {
+      button.hidden = false;
+      button.addEventListener('click', () => {
+        const dark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+        const theme = dark ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+        try { localStorage.setItem('theme', theme); } catch {}
+      });
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === '/' && !event.ctrlKey && !event.metaKey && !['INPUT','TEXTAREA','SELECT'].includes((event.target as HTMLElement)?.tagName)) {
+        event.preventDefault();
+        location.href = '/search/';
+      }
+    });
+  </script>
+</body>
+</html>

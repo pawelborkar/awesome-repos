@@ -1,0 +1,204 @@
+---
+import ResourceCard from './ResourceCard.astro';
+import Icon from './Icon.astro';
+import { categoryName, categories, collections, type Resource } from '../lib/catalog';
+interface Props { resources: Resource[]; filters?: boolean }
+const { resources, filters = true } = Astro.props;
+const unique = (values: string[]) => [...new Set(values)].sort();
+const filterCategories = unique(resources.flatMap(r => r.categories));
+const lastChecked = resources.map(r => r.metrics?.fetchedAt || '').sort().at(-1);
+const formattedDate = lastChecked
+  ? new Date(lastChecked).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+  : null;
+const isHome = Astro.url.pathname === '/';
+---
+<section class="directory flex flex-col w-full" aria-label="Resource directory" data-view="list">
+  {filters && (
+    <form class="filter-bar flex flex-col gap-2.5 w-full" data-filters hidden>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full">
+        <label class="input input-sm flex items-center gap-2 flex-1 bg-[#181b22] border border-[#272b34] rounded-lg text-neutral-200 focus-within:border-neutral-500 h-9 px-3">
+          <label for="filter-query" class="sr-only">Filter these resources</label>
+          <Icon name="search" size={15}/>
+          <input
+            id="filter-query"
+            name="q"
+            type="search"
+            class="grow bg-transparent text-sm placeholder:text-neutral-500 text-neutral-200 outline-none"
+            placeholder={`Search ${resources.length} repositories`}
+            autocomplete="off"
+          />
+          <kbd class="kbd kbd-sm bg-neutral-800/80 text-neutral-400 border border-neutral-700/60 font-mono text-xs px-1.5 py-0.5 rounded">/</kbd>
+        </label>
+
+        <div class="flex items-center gap-2 shrink-0">
+          <select name="category" aria-label="Filter by category" class="select select-sm bg-[#181b22] border border-[#272b34] rounded-lg text-xs md:text-sm text-neutral-200 font-normal focus:border-neutral-500 h-9">
+            <option value="">All categories</option>
+            {filterCategories.map(c => <option value={c}>{categoryName(c)}</option>)}
+          </select>
+
+          <select name="sort" aria-label="Sort resources" class="select select-sm bg-[#181b22] border border-[#272b34] rounded-lg text-xs md:text-sm text-neutral-200 font-normal focus:border-neutral-500 h-9">
+            <option value="stars">Most starred</option>
+            <option value="name">A–Z</option>
+          </select>
+
+          <div class="join border border-[#272b34] rounded-lg bg-[#181b22] p-0.5 h-9 flex items-center" role="group" aria-label="Resource view">
+            <button
+              type="button"
+              class="btn btn-xs join-item bg-[#282d38] border-0 text-white px-2.5 h-7.5 rounded"
+              data-set-view="list"
+              aria-label="List view"
+              aria-pressed="true"
+            >
+              <Icon name="list" size={15}/>
+            </button>
+            <button
+              type="button"
+              class="btn btn-xs join-item bg-transparent border-0 hover:bg-neutral-800 text-neutral-400 px-2.5 h-7.5 rounded"
+              data-set-view="grid"
+              aria-label="Grid view"
+              aria-pressed="false"
+            >
+              <Icon name="grid" size={15}/>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class:list={["flex items-center justify-between text-xs text-neutral-400 pt-1", isHome ? "hidden" : ""]}>
+        <details class="advanced-filters" data-advanced>
+          <summary class="cursor-pointer hover:text-neutral-200 font-medium">More filters</summary>
+          <div class="flex flex-wrap gap-3 mt-2 p-3 bg-[#181b22] border border-[#272b34] rounded-lg">
+            <label class="flex flex-col gap-1 text-neutral-400 text-xs">
+              Format
+              <select name="type" class="select select-xs bg-neutral-900 border-neutral-700 text-neutral-200">
+                <option value="">All formats</option>
+                {unique(resources.map(r => r.type)).map(t => <option value={t}>{t.replaceAll('-', ' ')}</option>)}
+              </select>
+            </label>
+            <label class="flex flex-col gap-1 text-neutral-400 text-xs">
+              Technology
+              <select name="technology" class="select select-xs bg-neutral-900 border-neutral-700 text-neutral-200">
+                <option value="">All technologies</option>
+                {unique(resources.flatMap(r => r.technologies)).map(t => <option value={t}>{t}</option>)}
+              </select>
+            </label>
+            <label class="flex flex-col gap-1 text-neutral-400 text-xs">
+              Level
+              <select name="level" class="select select-xs bg-neutral-900 border-neutral-700 text-neutral-200">
+                <option value="">All levels</option>
+                {unique(resources.map(r => r.level)).map(t => <option value={t}>{t.replaceAll('-', ' ')}</option>)}
+              </select>
+            </label>
+          </div>
+        </details>
+        <button class="text-button btn btn-xs btn-ghost text-xs text-neutral-400 hover:text-white" type="reset">Reset</button>
+      </div>
+    </form>
+  )}
+
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-neutral-400 py-2.5 gap-2 border-b border-[#20232a] mt-2 mb-1">
+    <div class="flex items-center gap-1.5 font-normal">
+      <span role="status" aria-live="polite" data-result-count>{resources.length} resources</span>
+      <span>·</span>
+      <span>{categories.length} topics</span>
+      <span>·</span>
+      <span>{collections.length} collections</span>
+    </div>
+    {lastChecked && <div data-metrics>
+      <span>Latest star snapshot <time datetime={lastChecked}>{formattedDate}</time></span>
+    </div>}
+  </div>
+
+  <h2 class="sr-only">Repository directory</h2>
+
+  <div
+    class="divide-y divide-[#20232a] border-t border-[#20232a] [.directory[data-view=grid]_&]:divide-y-0 [.directory[data-view=grid]_&]:border-t-0 [.directory[data-view=grid]_&]:grid [.directory[data-view=grid]_&]:grid-cols-1 md:[.directory[data-view=grid]_&]:grid-cols-2 [.directory[data-view=grid]_&]:gap-3.5 mt-0.5"
+    data-resource-grid
+  >
+    {resources.map(r => <ResourceCard resource={r}/>)}
+  </div>
+
+  <p class="text-sm text-neutral-400 text-center py-12" data-empty hidden>
+    No resources match these filters. Try a broader selection.
+  </p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.directory').forEach(directory => {
+    const form = directory.querySelector<HTMLFormElement>('[data-filters]');
+    if (!form) return;
+    form.hidden = false;
+
+    const grid = directory.querySelector<HTMLElement>('[data-resource-grid]')!;
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('[data-resource]'));
+    const fields = ['category', 'type', 'technology', 'level', 'sort', 'q'];
+
+    const setView = (view: string) => {
+      directory.dataset.view = view;
+      for (const button of directory.querySelectorAll<HTMLButtonElement>('[data-set-view]')) {
+        const active = button.dataset.setView === view;
+        button.setAttribute('aria-pressed', String(active));
+        if (active) {
+          button.classList.add('bg-[#282d38]', 'text-white');
+          button.classList.remove('bg-transparent', 'text-neutral-400');
+        } else {
+          button.classList.remove('bg-[#282d38]', 'text-white');
+          button.classList.add('bg-transparent', 'text-neutral-400');
+        }
+      }
+      try { localStorage.setItem('resource-view', view); } catch {}
+    };
+
+    try {
+      setView(localStorage.getItem('resource-view') === 'grid' ? 'grid' : 'list');
+    } catch {}
+
+    directory.querySelectorAll<HTMLButtonElement>('[data-set-view]').forEach(button => {
+      button.addEventListener('click', () => setView(button.dataset.setView!));
+    });
+
+    const update = () => {
+      const values = new FormData(form);
+      const params = new URLSearchParams();
+      let visible = 0;
+      for (const field of fields) {
+        const v = String(values.get(field) || '');
+        if (v && !(field === 'sort' && v === 'stars')) params.set(field, v);
+      }
+      cards.sort((a, b) => {
+        const sortVal = values.get('sort');
+        if (sortVal === 'name') {
+          return a.dataset.name!.localeCompare(b.dataset.name!);
+        }
+        return Number(b.dataset.stars) - Number(a.dataset.stars) || a.dataset.name!.localeCompare(b.dataset.name!);
+      });
+      for (const card of cards) {
+        card.hidden = !fields.slice(0, 4).every(f => !values.get(f) || (card.dataset[f] || '').split(',').includes(String(values.get(f)))) || !!(values.get('q') && !`${card.dataset.name} ${card.dataset.description}`.includes(String(values.get('q')).toLowerCase()));
+        if (!card.hidden) visible++;
+        grid.append(card);
+      }
+      const countEl = directory.querySelector('[data-result-count]');
+      if (countEl) countEl.textContent = `${visible} resource${visible === 1 ? '' : 's'}`;
+      const emptyEl = directory.querySelector<HTMLElement>('[data-empty]');
+      if (emptyEl) emptyEl.hidden = visible > 0;
+      history.replaceState(null, '', location.pathname + (params.size ? `#${params}` : ''));
+    };
+
+    const restore = () => {
+      const params = new URLSearchParams(location.hash.slice(1));
+      const adv = form.querySelector<HTMLDetailsElement>('[data-advanced]');
+      if (adv && ['type', 'technology', 'level'].some(f => params.get(f))) adv.open = true;
+      for (const f of fields) {
+        const select = form.elements.namedItem(f) as HTMLSelectElement | HTMLInputElement;
+        if (select) select.value = params.get(f) || (f === 'sort' ? 'stars' : '');
+      }
+      update();
+    };
+
+    form.addEventListener('change', update);
+    form.querySelector('input')?.addEventListener('input', update);
+    form.addEventListener('reset', () => setTimeout(update, 0));
+    window.addEventListener('hashchange', restore);
+    restore();
+  });
+</script>
