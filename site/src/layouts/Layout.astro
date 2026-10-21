@@ -10,6 +10,21 @@ const canonical=new URL(Astro.url.pathname.startsWith('/404')?'/404.html':Astro.
 const verification=import.meta.env.PUBLIC_SEARCH_CONSOLE_VERIFICATION;
 const analytics=import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
 const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
+
+const categoryCounts = new Map<string, number>();
+for (const r of resources) {
+  for (const cat of r.categories) {
+    categoryCounts.set(cat, (categoryCounts.get(cat) || 0) + 1);
+  }
+}
+const topCategories = categories
+  .map(c => ({
+    slug: c.slug,
+    name: c.name,
+    count: categoryCounts.get(c.slug) || 0,
+  }))
+  .sort((a, b) => (b.count - a.count) || a.name.localeCompare(b.name))
+  .slice(0, 10);
 ---
 <!doctype html>
 <html lang="en" data-theme="dark">
@@ -30,7 +45,7 @@ const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
 <body class="bg-[#14161a] text-neutral-200 min-h-screen flex flex-col font-sans antialiased">
   <a class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-neutral-800 focus:text-white focus:rounded-md focus:border focus:border-neutral-600" href="#main">Skip to content</a>
 
-  <aside class="hidden md:flex flex-col w-[202px] bg-[#14161a] border-r border-[#20232a] fixed inset-y-0 left-0 z-30 p-4" aria-label="Repository library">
+  <aside class="hidden md:flex flex-col w-[202px] bg-[#14161a] border-r border-[#20232a] fixed inset-y-0 left-0 z-30 p-4 overflow-y-auto overflow-x-hidden" aria-label="Repository library">
     <div class="px-2 mb-5">
       <a class="text-white font-bold text-sm tracking-tight hover:opacity-90 inline-block" href="/">Awesome Repositories</a>
     </div>
@@ -65,6 +80,7 @@ const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
     <div class="px-2.5 pt-6 pb-2 text-[11px] font-semibold text-neutral-400 tracking-wider">TOPICS</div>
     <nav class="w-full" aria-label="Popular topics">
       <ul class="menu menu-sm w-full p-0 gap-0.5 text-neutral-300">
+        {topCategories.map(t => {
         {[
           { slug: 'ai-learning', name: 'AI Learning' },
           { slug: 'react', name: 'React' },
@@ -77,8 +93,8 @@ const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
           return (
             <li>
               <a href={`/categories/${t.slug}/`} class={`flex justify-between items-center rounded-lg px-2.5 py-1 text-xs ${isCurrent ? 'bg-[#1b2234] text-white font-medium' : 'text-neutral-300 hover:text-white hover:bg-neutral-800/40'}`} aria-current={isCurrent ? 'page' : undefined}>
-                <span>{t.name}</span>
-                <span class="text-xs text-neutral-400 font-mono">{count}</span>
+                <span class="truncate">{t.name}</span>
+                <span class="text-xs text-neutral-400 font-mono shrink-0 ml-1.5">{t.count}</span>
               </a>
             </li>
           );
