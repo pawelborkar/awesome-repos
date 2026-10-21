@@ -2,7 +2,7 @@
   "model": "qwen/qwen3.8-27b",
   "establishedStars": 1000,
   "emergingStars": 200,
-  "emergingMonths": 18,
+  "emergingMonths": 12,
   "screenLimit": 20,
   "qualityThreshold": 8,
   "weeklyPrLimit": 3,
