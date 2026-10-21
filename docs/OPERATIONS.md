@@ -23,7 +23,7 @@ npm run test:browser
 npm run test:performance
 ```
 
-`npm run build` defaults to a non-indexable preview. Use `PRODUCTION=true npm run build` and `PRODUCTION=true npm run validate` for a production build. Browser tests use local Chrome on macOS when available; CI installs Chromium. Lighthouse tests evaluate mobile home, collection, and detail pages. Preview SEO intentionally permits the single noindex audit failure; production must score at least 95 in all three tested categories. Field Core Web Vitals need actual production traffic.
+`npm run build` defaults to a non-indexable preview. Use `PRODUCTION=true npm run build` and `PRODUCTION=true npm run validate` for a production build. Browser tests use local Chrome on macOS when available; CI installs Chromium. Lighthouse tests evaluate mobile home, collection, and detail pages. Preview audits skip the intentional noindex check; every scored category must reach 95. Production includes the indexing audit. Field Core Web Vitals need actual production traffic.
 
 ## Interface
 
