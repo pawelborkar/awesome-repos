@@ -1,4 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Page not found" description="This resource page could not be found. Explore the Awesome Repositories catalog to find your next starting point." indexable={false}><header class="page-heading"><div class="eyebrow">404 / A SMALL DETOUR</div><h1>Nothing at this address.</h1><p>There are plenty of useful places to go from here.</p><a class="btn btn-neutral btn-sm" href="/categories/">Explore the collection →</a></header></Layout>
+<Layout title="Page not found" description="This resource page could not be found. Explore the Awesome Repositories catalog to find your next starting point." indexable={false}>
+  <div class="flex flex-col gap-6">
+    <header class="page-heading flex flex-col gap-2 pt-2">
+      <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">404 / A SMALL DETOUR</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Nothing at this address.</h1>
+      <p class="text-sm text-neutral-400 mt-1 font-normal leading-relaxed max-w-2xl">There are plenty of useful places to go from here.</p>
+      <div class="pt-2">
+        <a class="button btn btn-sm bg-[#eceef2] hover:bg-white text-neutral-900 border-0 text-xs font-medium rounded-lg px-4 h-9" href="/categories/">Explore the collection →</a>
+      </div>
+    </header>
+  </div>
+</Layout>

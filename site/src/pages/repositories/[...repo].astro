@@ -3,16 +3,110 @@ import Layout from '../../layouts/Layout.astro';
 import Action from '../../components/Action.astro';
 import ResourceCard from '../../components/ResourceCard.astro';
 import {resources,categoryName,compact} from '../../lib/catalog';
+import {resourcePage} from '../../lib/seo';
 export function getStaticPaths(){return resources.map(resource=>({params:{repo:resource.key},props:{resource}}));}
 const {resource:r}=Astro.props;
 const a=r.annotation;
 const related=resources.filter(x=>x.key!==r.key && x.categories.some(c=>r.categories.includes(c))).slice(0,3);
 ---
-<Layout title={`${r.name} (${r.owner}/${r.repository}): overview`} description={r.description.slice(0,155)} indexable={r.indexable} breadcrumbs={[{name:categoryName(r.categories[0]),path:`/categories/${r.categories[0]}/`},{name:r.name,path:r.path}]} schema={{'@type':'WebPage',name:r.name,about:{'@type':'CreativeWork',name:r.name,url:r.url},url:`https://awesome.pawel.in${r.path}`}}>
-<header class="page-heading"><div class="eyebrow">{r.owner} / {r.repository}</div><h1 data-pagefind-body>{r.name}</h1><p data-pagefind-body>{r.description}</p><Action href={r.url} variant="primary" size="md">Explore on GitHub <span aria-hidden="true">↗</span></Action></header>
-<div class="detail-layout"><article class="prose" data-pagefind-body>
-{a?.reviewed ? <><h2>Who it is for</h2><p>{a.audience}</p><h2>What you can do with it</h2><p>{a.value}</p><h2>Before you start</h2><p>{a.limitations}</p><h2>Source and context</h2><p>These selection notes describe the resource's scope. Check the source for current details.</p><ul>{a.sources.map(url=><li><a href={url}>{new URL(url).hostname}{new URL(url).pathname}</a></li>)}</ul><p>Selection notes updated <time datetime={a.updated}>{a.updated}</time>.</p></> : <><h2>Explore the source</h2><p>This repository is part of the community-maintained Awesome Repositories catalog. Its description and license information come from the catalog README.</p><p>Visit the repository to check its documentation, examples, requirements, and current status before choosing it for your project or learning plan.</p><h2>Help others find their starting point</h2><p>Used this resource? <a href="/contribute/">Contribute selection notes</a> about who it helps and what to expect.</p></>}
-</article><aside class="detail-sidebar" aria-label="Resource information"><h2>At a glance</h2><dl><dt>Categories</dt><dd>{r.categories.map((c,i)=><>{i>0?' · ':''}<a href={`/categories/${c}/`}>{categoryName(c)}</a></>)}</dd><dt>Format</dt><dd>{r.type==='unclassified'?'Not yet classified':r.type}</dd><dt>Experience level</dt><dd>{r.level==='unclassified'?'Not yet classified':r.level.replaceAll('-',' ')}</dd>{r.technologies.length>0&&<><dt>Technologies</dt><dd>{r.technologies.join(', ')}</dd></>}<dt>License</dt><dd>{r.licenses.map((l,i)=><>{i>0?' / ':''}{l.url?<a href={l.url}>{l.name}</a>:l.name}</>)}</dd>{r.metrics && <><dt>GitHub popularity</dt><dd data-metrics>☆ {compact(r.metrics.stars)} stars · ⑂ {compact(r.metrics.forks)} forks</dd><dt>Metrics checked</dt><dd data-metrics><time datetime={r.metrics.fetchedAt}>{r.metrics.fetchedAt.slice(0,10)}</time></dd></>}<dt>Source</dt><dd><a href={r.url}>{r.owner}/{r.repository}</a></dd></dl></aside></div>
-<section class="section-spaced"><div class="section-heading"><h2>Keep exploring</h2><a href={`/categories/${r.categories[0]}/`}>Explore the category →</a></div><div class="resource-grid">{related.map(resource=><ResourceCard resource={resource}/>)}</div></section><div class="section-spaced"></div>
+<Layout title={`${r.name} (${r.owner}/${r.repository}): overview`} description={r.description.slice(0,155)} indexable={r.indexable} breadcrumbs={[{name:categoryName(r.categories[0]),path:`/categories/${r.categories[0]}/`},{name:r.name,path:r.path}]} schema={resourcePage(r)}>
+  <div class="flex flex-col gap-6">
+    <header class="page-heading flex flex-col gap-3 pt-2">
+      <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">{r.owner} / {r.repository}</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight" data-pagefind-body>{r.name}</h1>
+      <p class="text-sm text-neutral-400 mt-1 font-normal leading-relaxed max-w-2xl" data-pagefind-body>{r.description}</p>
+      <div class="pt-2">
+        <Action href={r.url} variant="primary" size="md">Explore on GitHub <span aria-hidden="true">↗</span></Action>
+      </div>
+    </header>
+
+    <div class="detail-layout grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6 items-start">
+      <article class="prose max-w-none text-neutral-300 text-sm leading-relaxed space-y-4 border border-[#20232a] bg-[#14161a] p-6 rounded-xl" data-pagefind-body>
+        {a?.reviewed ? (
+          <>
+            <h2 id="audience" class="text-base font-bold text-white tracking-tight">Who it is for</h2>
+            <p class="text-neutral-400">{a.audience}</p>
+            <h2 id="practical-use" class="text-base font-bold text-white tracking-tight pt-2 border-t border-[#20232a]">What you can do with it</h2>
+            <p class="text-neutral-400">{a.value}</p>
+            <h2 id="limitations" class="text-base font-bold text-white tracking-tight pt-2 border-t border-[#20232a]">Before you start</h2>
+            <p class="text-neutral-400">{a.limitations}</p>
+            <h2 id="sources" class="text-base font-bold text-white tracking-tight pt-2 border-t border-[#20232a]">Source and context</h2>
+            <p class="text-neutral-400">These selection notes describe the resource's scope. Check the source for current details.</p>
+            <ul class="list-disc list-inside space-y-1 text-neutral-400">
+              {a.sources.map(url => (
+                <li><a href={url} class="text-white hover:underline">{new URL(url).hostname}{new URL(url).pathname}</a></li>
+              ))}
+            </ul>
+            <p class="text-xs text-neutral-500 font-mono pt-2 border-t border-[#20232a]">Selection notes updated <time datetime={a.updated}>{a.updated}</time>. <a href="/about/#selection-notes" class="underline hover:no-underline">How selection notes are reviewed</a>.</p>
+          </>
+        ) : (
+          <>
+            <h2 class="text-base font-bold text-white tracking-tight">Explore the source</h2>
+            <p class="text-neutral-400">This repository is part of the community-maintained Awesome Repositories catalog. Its description and license information come from the catalog README.</p>
+            <p class="text-neutral-400">Visit the repository to check its documentation, examples, requirements, and current status before choosing it for your project or learning plan.</p>
+            <h2 class="text-base font-bold text-white tracking-tight pt-2 border-t border-[#20232a]">Help others find their starting point</h2>
+            <p class="text-neutral-400">Used this resource? <a href="/contribute/" class="text-white underline hover:no-underline">Contribute selection notes</a> about who it helps and what to expect.</p>
+          </>
+        )}
+      </article>
+
+      <aside class="detail-sidebar border border-[#20232a] bg-[#14161a] p-5 rounded-xl text-xs space-y-3" aria-label="Resource information">
+        <h2 class="text-xs font-semibold text-neutral-400 tracking-wider font-mono uppercase mb-3">At a glance</h2>
+        <dl class="space-y-3">
+          <div>
+            <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">Categories</dt>
+            <dd class="text-neutral-300">{r.categories.map((c, i) => <>{i > 0 ? ' · ' : ''}<a href={`/categories/${c}/`} class="hover:text-white hover:underline">{categoryName(c)}</a></>)}</dd>
+          </div>
+          <div>
+            <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">Format</dt>
+            <dd class="text-neutral-300">{r.type === 'unclassified' ? 'Not yet classified' : r.type}</dd>
+          </div>
+          <div>
+            <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">Experience level</dt>
+            <dd class="text-neutral-300">{r.level === 'unclassified' ? 'Not yet classified' : r.level.replaceAll('-', ' ')}</dd>
+          </div>
+          {r.technologies.length > 0 && (
+            <div>
+              <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">Technologies</dt>
+              <dd class="text-neutral-300">{r.technologies.join(', ')}</dd>
+            </div>
+          )}
+          <div>
+            <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">License</dt>
+            <dd class="text-neutral-300">{r.licenses.map((l, i) => <>{i > 0 ? ' / ' : ''}{l.url ? <a href={l.url} class="hover:text-white hover:underline">{l.name}</a> : l.name}</>)}</dd>
+          </div>
+          {r.metrics && (
+            <div>
+              <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">GitHub popularity</dt>
+              <dd class="text-neutral-300 font-mono" data-metrics>☆ {compact(r.metrics.stars)} stars · ⑂ {compact(r.metrics.forks)} forks</dd>
+            </div>
+          )}
+          {r.metrics && (
+            <div>
+              <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">Metrics checked</dt>
+              <dd class="text-neutral-400 font-mono" data-metrics><time datetime={r.metrics.fetchedAt}>{r.metrics.fetchedAt.slice(0, 10)}</time></dd>
+            </div>
+          )}
+          <div>
+            <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">Source</dt>
+            <dd><a href={r.url} class="text-neutral-300 hover:text-white hover:underline truncate block">{r.owner}/{r.repository}</a></dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+
+    {related.length > 0 && (
+      <section class="section-spaced pt-6 border-t border-[#20232a] mt-4">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-base font-bold text-white tracking-tight">Keep exploring</h2>
+          <a href={`/categories/${r.categories[0]}/`} class="text-xs text-neutral-400 hover:text-white font-medium">Explore the category →</a>
+        </div>
+        <div class="resource-grid flex flex-col divide-y divide-[#20232a]">
+          {related.map(resource => <ResourceCard resource={resource} />)}
+        </div>
+      </section>
+    )}
+  </div>
+
 <meta data-pagefind-meta="title[content]" content={r.name}/>{r.categories.map(c=><meta data-pagefind-filter={`category:${categoryName(c)}`}/>)}<span data-pagefind-filter={`type:${r.type}`}></span><span data-pagefind-filter={`level:${r.level}`}></span>{r.technologies.map(t=><span data-pagefind-filter={`technology:${t}`}></span>)}<meta data-pagefind-sort="name[content]" content={r.name.toLowerCase()}/><meta data-pagefind-sort="stars[content]" content={String(r.metrics?.stars??-1)}/>
 </Layout>

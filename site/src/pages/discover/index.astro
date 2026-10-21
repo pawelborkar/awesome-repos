@@ -1,5 +1,39 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import {collections} from '../../lib/catalog';
+import { collections } from '../../lib/catalog';
+import { collectionPage } from '../../lib/seo';
 ---
-<Layout title="Curated collections for learning and building" description="Purposeful collections of GitHub resources with guidance on what to choose, who each collection helps, and where to begin." breadcrumbs={[{name:'Collections',path:'/discover/'}]}><header class="page-heading"><div class="eyebrow">CURATED WITH A PURPOSE</div><h1>Find your starting point.</h1><p>A handful of useful paths through the collection. Each one brings related resources together and helps you decide where to begin.</p></header><div class="collection-grid">{collections.map(c=><a class="collection-card" href={`/discover/${c.slug}/`}><h2>{c.title} ↗</h2><p>{c.description}</p><small>{c.resources.length} resources</small></a>)}</div><div class="section-spaced"></div></Layout>
+<Layout
+  title="Curated collections for learning and building"
+  description="Purposeful collections of GitHub resources with guidance on what to choose, who each collection helps, and where to begin."
+  breadcrumbs={[{ name: 'Collections', path: '/discover/' }]}
+  schema={collectionPage('Curated collections', collections.map(c => ({ name: c.title, path: `/discover/${c.slug}/`, description: c.description })))}
+>
+  <div class="flex flex-col gap-6">
+    <header class="page-heading flex flex-col gap-2 pt-2">
+      <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">CURATED WITH A PURPOSE</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Find your starting point.</h1>
+      <p class="text-sm text-neutral-400 mt-1 font-normal leading-relaxed max-w-2xl">Hand-picked collections of open-source repositories organized by learning goal and technology.</p>
+    </header>
+
+    <div class="collection-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+      {collections.map(c => (
+        <a
+          class="collection-card group flex flex-col justify-between p-5 rounded-xl border border-[#20232a] bg-[#14161a] hover:bg-[#181d27] hover:border-neutral-700 transition-all text-neutral-300 hover:text-white"
+          href={`/discover/${c.slug}/`}
+        >
+          <div>
+            <h2 class="text-base font-bold text-white group-hover:underline tracking-tight flex items-center justify-between">
+              <span>{c.title}</span>
+              <span class="text-xs text-neutral-400 group-hover:text-white transition-colors">↗</span>
+            </h2>
+            <p class="text-xs md:text-sm text-neutral-400 mt-2 font-normal leading-relaxed">{c.description}</p>
+          </div>
+          <small class="badge badge-sm rounded bg-[#181d27] border border-[#2b3547] text-neutral-400 font-mono text-xs px-2.5 py-1 mt-4 self-start group-hover:border-neutral-500 group-hover:text-neutral-300 transition-colors">
+            {c.resources.length} resources
+          </small>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

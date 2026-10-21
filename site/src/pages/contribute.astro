@@ -2,4 +2,37 @@
 import Layout from '../layouts/Layout.astro';
 import Action from '../components/Action.astro';
 ---
-<Layout title="Contribute a resource" description="Suggest a useful GitHub repository, improve selection notes, or help maintain the Awesome Repositories catalog." breadcrumbs={[{name:'Contribute',path:'/contribute/'}]}><header class="page-heading"><div class="eyebrow">GOOD FINDS ARE BETTER SHARED</div><h1>Bring your next great find.</h1><p>Help someone else find their starting point. Every contribution begins with a pull request.</p></header><article class="prose"><h2>Add a repository</h2><ol><li>Search the catalog and previous pull requests for duplicates.</li><li>Choose the most relevant existing README category.</li><li>Add one repository, alphabetically, using its original GitHub About description and correct license link.</li><li>Open a PR titled <code>Add repository-name</code> and explain why the resource is useful.</li></ol><p><Action variant="primary" href="https://github.com/pawelborkar/awesome-repos/blob/main/CONTRIBUTING.md">Read the contribution guide ↗</Action></p><h2>Share selection notes</h2><p>Tell us who a resource helps, what you can do with it, and what a newcomer should know before starting. Include source links and avoid unsupported claims about quality or experience level.</p><h2>Correct an entry</h2><p>Licenses, repository names, and documentation change. Open a correction with the source of the updated information. The README remains the catalog's source of truth.</p></article></Layout>
+<Layout title="Contribute a resource" description="Suggest a useful GitHub repository, improve selection notes, or help maintain the Awesome Repositories catalog." breadcrumbs={[{name:'Contribute',path:'/contribute/'}]}>
+  <div class="flex flex-col gap-6">
+    <header class="page-heading flex flex-col gap-2 pt-2">
+      <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">GOOD FINDS ARE BETTER SHARED</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Bring your next great find.</h1>
+      <p class="text-sm text-neutral-400 mt-1 font-normal leading-relaxed max-w-2xl">How to suggest new repositories, improve selection notes, and contribute to the catalog.</p>
+    </header>
+
+    <article class="prose max-w-none text-neutral-300 text-sm leading-relaxed space-y-4 border border-[#20232a] bg-[#14161a] p-6 rounded-xl divide-y divide-[#20232a]">
+      <div class="space-y-3">
+        <h2 class="text-base font-bold text-white tracking-tight">Add a repository</h2>
+        <ol class="list-decimal list-inside space-y-2 text-neutral-400">
+          <li>Search the catalog and previous pull requests for duplicates.</li>
+          <li>Choose the most relevant existing README category.</li>
+          <li>Add one repository, alphabetically, using its original GitHub About description and correct license link.</li>
+          <li>Open a PR titled <code class="px-1.5 py-0.5 rounded bg-[#181d27] border border-[#2b3547] text-neutral-300 font-mono text-xs">Add repository-name</code> and explain why the resource is useful.</li>
+        </ol>
+        <div class="pt-2">
+          <Action variant="primary" href="https://github.com/pawelborkar/awesome-repos/blob/main/CONTRIBUTING.md">Read the contribution guide ↗</Action>
+        </div>
+      </div>
+
+      <div class="pt-4 space-y-2">
+        <h2 class="text-base font-bold text-white tracking-tight">Share selection notes</h2>
+        <p class="text-neutral-400">Tell us who a resource helps, what you can do with it, and what a newcomer should know before starting. Include source links and avoid unsupported claims about quality or experience level.</p>
+      </div>
+
+      <div class="pt-4 space-y-2">
+        <h2 class="text-base font-bold text-white tracking-tight">Correct an entry</h2>
+        <p class="text-neutral-400">Licenses, repository names, and documentation change. Open a correction with the source of the updated information. The README remains the catalog's source of truth.</p>
+      </div>
+    </article>
+  </div>
+</Layout>
