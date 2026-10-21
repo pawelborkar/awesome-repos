@@ -4,8 +4,6 @@
 
 _A curated list of GitHub Repositories full of FREE Resources._
 
-[Explore the searchable directory](https://awesome.pawel.in) · [Website and automation setup](docs/OPERATIONS.md)
-
 ![Message](https://img.shields.io/badge/I%20%E2%9D%A4%20-OpenSource-%23ff0055) ![Awesome-Repos](https://img.shields.io/badge/Awesome--repos-%23ff0055) 
 ![GitHub](https://img.shields.io/github/license/pawelborkar/awesome-repos?color=%23ff0055)
 
