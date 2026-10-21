@@ -4,6 +4,7 @@ import {execFileSync} from 'node:child_process';
 import {load} from 'cheerio';
 import path from 'node:path';
 import sharp from 'sharp';
+import {discoveryGuide} from './discovery.mjs';
 await sharp('site/public/social.svg').png().toFile('site/dist/social.png');
 const production=process.env.PRODUCTION==='true';
 const root='site/dist';const origin='https://awesome.pawel.in';
@@ -20,10 +21,11 @@ for(const file of files(root).filter(f=>f.endsWith('.html'))){
  const previous=dates[canonical];
  const date=previous?.hash===fingerprint?previous.date:previous?today:baseline;
  dates[canonical]={hash:fingerprint,date};
- if(production && $('meta[name=robots]').attr('content')==='index,follow')entries.push({canonical,date});
+ if(production && $('meta[name=robots]').attr('content')==='index,follow')entries.push({canonical,date,title:$('title').text().replace(/ \| Awesome Repositories$/,''),description:$('meta[name=description]').attr('content')||''});
 }
 const escape=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
 writeFileSync(`${root}/sitemap.xml`,`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${entries.map(e=>`<url><loc>${escape(e.canonical)}</loc><lastmod>${e.date}</lastmod></url>`).join('')}</urlset>\n`);
+writeFileSync(`${root}/llms.txt`,discoveryGuide(entries));
 writeFileSync(`${root}/robots.txt`,production?`User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n');
 const redirects=JSON.parse(readFileSync('config/redirects.json','utf8'));
 for(const[from,to]of Object.entries(redirects)){if(!/^\/repositories\/[^/]+\/[^/]+\/$/.test(from)||!/^\/repositories\/[^/]+\/[^/]+\/$/.test(to)||from===to||redirects[to])throw Error('Redirects must be explicit repository paths without chains or loops');const target=`${root}${to}index.html`;if(!existsSync(target))throw Error(`Redirect target does not exist: ${to}`);if(existsSync(`${root}${from}index.html`))throw Error(`Redirect shadows an existing resource: ${from}`);}
