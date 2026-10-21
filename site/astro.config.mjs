@@ -5,5 +5,8 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory', inlineStylesheets: 'never' },
-  vite: { plugins: [tailwindcss()], build: { cssMinify: true } },
+  vite: {
+    plugins: [tailwindcss()],
+    build: { cssMinify: true }
+  },
 });

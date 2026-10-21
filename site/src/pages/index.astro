@@ -1,13 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ResourceList from '../components/ResourceList.astro';
-import Icon from '../components/Icon.astro';
-import {resources,categories,collections} from '../lib/catalog';
-const lastChecked=resources.map(r=>r.metrics?.fetchedAt||'').sort().at(-1);
+import { resources, categories } from '../lib/catalog';
+import { collectionPage } from '../lib/seo';
 ---
-<Layout title="Curated repositories for learning and building" description="A searchable library of curated GitHub repositories. Find programming courses, books, developer tools, frameworks, and practical projects.">
-  <header class="library-heading"><div><div class="eyebrow">YOUR NEXT STARTING POINT</div><h1>All repositories</h1><p>A considered collection of resources for learning and building.<br class="desktop-break"/> Find something useful. Make something of your own.</p></div><a class="btn btn-outline btn-sm source-button" href="https://github.com/pawelborkar/awesome-repos"><Icon name="github" size={16}/><span>Star on GitHub</span><Icon name="arrow" size={14}/></a></header>
-  <div class="library-overview"><span><strong>{resources.length}</strong> repositories</span><span><strong>{categories.length}</strong> topics</span><span><strong>{collections.length}</strong> curated collections</span>{lastChecked&&<span class="snapshot-status"><span class="status-dot"></span>Metrics checked <time datetime={lastChecked}>{lastChecked.slice(0,10)}</time></span>}</div>
-  <nav class="library-tabs" aria-label="Resource journeys"><a href="/" aria-current="page">Everything <span>{resources.length}</span></a><a href="/learn/">Learning resources</a><a href="/tools/">Developer tools</a><a href="/discover/">Curated collections</a></nav>
-  <ResourceList resources={resources}/>
+<Layout title="Curated repositories for learning and building" description="A searchable library of curated GitHub repositories. Find programming courses, books, developer tools, frameworks, and practical projects." schema={collectionPage('All repositories', resources)}>
+  <div class="flex flex-col gap-6">
+    <header class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pt-2">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">All repositories</h1>
+        <p class="text-sm text-neutral-400 mt-2 font-normal max-w-2xl">A curated directory of {resources.length} open-source repositories across {categories.length} topics for learning programming and building software.</p>
+      </div>
+      <div class="flex items-center gap-2.5 shrink-0">
+        <a href="/contribute/" class="btn btn-sm bg-[#14161a] hover:bg-neutral-800 border border-[#2b313d] text-neutral-200 text-xs font-normal rounded-lg px-3.5 h-8">Suggest a resource</a>
+        <a href="https://github.com/pawelborkar/awesome-repos" class="btn btn-sm bg-[#eceef2] hover:bg-white text-neutral-900 border-0 text-xs font-medium rounded-lg px-3.5 h-8">Star on GitHub</a>
+      </div>
+    </header>
+
+    <ResourceList resources={resources}/>
+  </div>
 </Layout>

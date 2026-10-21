@@ -2,14 +2,30 @@
 import Layout from '../layouts/Layout.astro';
 import ResourceList from '../components/ResourceList.astro';
 import {matching} from '../lib/catalog';
+import {collectionPage} from '../lib/seo';
 import {readFileSync} from 'node:fs';
 import matter from 'gray-matter';
-import {renderMarkdown} from '../lib/markdown';
 export function getStaticPaths(){return ['learn','tools'].map(journey=>({params:{journey}}));}
 const journey=Astro.params.journey!;
-const {data,content}=matter(readFileSync(new URL(`../../../content/hubs/${journey}.md`,import.meta.url),'utf8'));
+const {data}=matter(readFileSync(new URL(`../../../content/hubs/${journey}.md`,import.meta.url),'utf8'));
 const selected=matching(journey);
 const name=journey==='learn'?'Learning resources':'Developer tools';
 const description=journey==='learn'?'Find programming books, courses, exercises, and learning references from our curated GitHub catalog.':'Explore frameworks, libraries, applications, and practical developer tools from our curated GitHub catalog.';
 ---
-<Layout title={name} description={description} indexable={selected.length>=5} breadcrumbs={[{name,path:`/${journey}/`}]}><header class="page-heading"><div class="eyebrow">{journey==='learn'?'THE LEARNING PATH':'THE BUILDING PATH'}</div><h1>{data.title}</h1><p>{description}</p></header><div class="prose" set:html={renderMarkdown(content)}/><ResourceList resources={selected}/></Layout>
+<Layout
+  title={name}
+  description={description}
+  indexable={selected.length >= 5}
+  breadcrumbs={[{ name, path: `/${journey}/` }]}
+  schema={collectionPage(name, selected)}
+>
+  <div class="flex flex-col gap-6">
+    <header class="page-heading flex flex-col gap-2 pt-2">
+      <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">{journey === 'learn' ? 'THE LEARNING PATH' : 'THE BUILDING PATH'}</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">{data.title}</h1>
+      <p class="text-sm text-neutral-300 font-normal leading-relaxed max-w-2xl">{description}</p>
+    </header>
+
+    <ResourceList resources={selected}/>
+  </div>
+</Layout>
