@@ -4,6 +4,9 @@ Production URL: https://awesome.pawel.in
 
 ## Local development
 
+For the complete Awesome Repos-only event contract, privacy controls, dashboards,
+cost gates, configuration and rollout, see [ANALYTICS.md](ANALYTICS.md).
+
 Use Node.js 22.12+ (Node 22 LTS in CI), npm, and Python 3.12+.
 
 ```sh
@@ -85,6 +88,10 @@ Set these in **Repository Settings → Secrets and variables → Actions**:
 | `CLOUDFLARE_ACCOUNT_ID` | Variable | Cloudflare account that owns the Worker and domain |
 | `GROQ_MODEL` | Optional variable | Defaults to `qwen/qwen3.8-27b`; must be available to your Groq account |
 | `PUBLIC_CF_ANALYTICS_TOKEN` | Optional variable | Public Web Analytics beacon token |
+| `PUBLIC_POSTHOG_PROJECT_TOKEN` | Variable | Public PostHog ingestion token for Awesome Repos |
+| `PUBLIC_POSTHOG_HOST` | Variable | `https://a.awesome.pawel.in` ingestion proxy |
+| `PUBLIC_POSTHOG_UI_HOST` | Optional variable | Defaults to `https://us.posthog.com` dashboard host |
+| `ANALYTICS_ENABLED` | Optional variable | Set to `false` to disable capture; otherwise enabled when token and host are set |
 | `PUBLIC_SEARCH_CONSOLE_VERIFICATION` | Optional variable | Google URL-prefix property's HTML verification token |
 
 Use a Cloudflare API token scoped to the target account with **Workers Scripts Edit**, **Workers Routes Edit**, and **Zone Read** for `pawel.in`. The custom domain requires that zone in the same Cloudflare account. Do not place a personal OAuth/refresh token into GitHub; use a dedicated deployment token. Enable “Allow GitHub Actions to create and approve pull requests”; the workflows create proposals but never approve or merge them.
@@ -105,6 +112,30 @@ node scripts/verify-live.mjs https://awesome.pawel.in
 Build staging without `PRODUCTION=true`. Its robots.txt and X-Robots-Tag prohibit indexing. Production is served only on `awesome.pawel.in`; the production config disables `workers.dev` and version-preview URLs. If the domain has an existing unrelated DNS record or origin, resolve it explicitly before deploying rather than replacing it blindly.
 
 Rollback with `npx wrangler rollback --env production` to restore a previous successful Worker version. Check the deployed URL afterward. Keep metadata caches and validation reports as operational evidence, not credentials.
+
+### PostHog proxy
+
+Browser analytics uses the existing PostHog managed proxy at
+`https://a.awesome.pawel.in`. Its DNS CNAME points to PostHog's `proxyhog.com`
+infrastructure; keep that record in place. No additional Worker is needed.
+See [PostHog's managed proxy guide](https://posthog.com/docs/advanced/proxy/managed-reverse-proxy).
+
+Set `PUBLIC_POSTHOG_PROJECT_TOKEN` and
+`PUBLIC_POSTHOG_HOST=https://a.awesome.pawel.in` in the repository-root `.env` and
+GitHub Actions repository variables. These are the only PostHog values required for
+analytics. Astro reads the root env directory explicitly. The optional
+`PUBLIC_POSTHOG_UI_HOST` defaults to `https://us.posthog.com` for this US Cloud project.
+
+Production capture starts when token and host are configured. Set
+`ANALYTICS_ENABLED=false` to disable it. Development and preview builds remain disabled.
+Organization/project IDs and a personal API key are only for the optional dashboard
+and diagnostics provisioning tool; they are not required in application or CI config.
+See [ANALYTICS.md](ANALYTICS.md) for optional tooling and privacy details.
+
+Verify the proxy with `curl -I https://a.awesome.pawel.in/static/array.js`; it should
+return JavaScript with status 200. Changing the frontend host requires rebuilding
+and deploying the static site. `ui_host` stays on `https://us.posthog.com` so
+PostHog's toolbar and dashboard links use the application host.
 
 ## Generative engine optimisation (GEO)
 

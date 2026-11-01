@@ -23,6 +23,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm ci
+      - run: python3 -m pip install -r requirements.txt
       - run: npm test
       - run: npm run check
       - run: npm run build && npm run validate

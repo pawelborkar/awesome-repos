@@ -18,10 +18,14 @@ jobs:
     timeout-minutes: 20
     environment: production
     env:
+      ANALYTICS_ENABLED: ${{ vars.ANALYTICS_ENABLED }}
       PRODUCTION: 'true'
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
       PUBLIC_CF_ANALYTICS_TOKEN: ${{ vars.PUBLIC_CF_ANALYTICS_TOKEN }}
+      PUBLIC_POSTHOG_PROJECT_TOKEN: ${{ vars.PUBLIC_POSTHOG_PROJECT_TOKEN }}
+      PUBLIC_POSTHOG_HOST: ${{ vars.PUBLIC_POSTHOG_HOST }}
+      PUBLIC_POSTHOG_UI_HOST: ${{ vars.PUBLIC_POSTHOG_UI_HOST }}
       PUBLIC_SEARCH_CONSOLE_VERIFICATION: ${{ vars.PUBLIC_SEARCH_CONSOLE_VERIFICATION }}
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +36,11 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - run: npm ci
+      - run: python3 -m pip install -r requirements.txt
       - uses: actions/cache@v4
         with:
           path: .cache/
@@ -41,7 +49,13 @@ jobs:
       - run: npm run metadata
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - run: npm test && npm run check && npm run build && npm run validate
+      - run: npm test
+        env:
+          ANALYTICS_ENABLED: 'false'
+      - run: npm run check && npm run build && npm run validate
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - run: npm run test:performance
       - name: Require deployment credentials
         run: |
           test -n "$CLOUDFLARE_API_TOKEN" || { echo 'Set repository secret CLOUDFLARE_API_TOKEN.'; exit 1; }

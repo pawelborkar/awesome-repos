@@ -1,0 +1,10 @@
+---
+import { analyticsRuntime } from '../lib/analytics-runtime.mjs';
+import { browserAnalyticsConfig } from '../../../scripts/analytics-config.mjs';
+import manifest from '../../../config/analytics-manifest.json';
+import contract from '../../../.posthog-events.json';
+const config = browserAnalyticsConfig({ ...import.meta.env, ...process.env }, manifest);
+const settings = { ...config, events: Object.fromEntries(contract.events.map(event => [event.event_name, event.properties])) };
+const bootstrap = `(${analyticsRuntime.toString()})(${JSON.stringify(settings).replace(/</g, '\\u003c')}, window);`;
+---
+<script is:inline set:html={bootstrap}></script>
