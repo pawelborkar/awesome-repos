@@ -4,11 +4,14 @@ import '@fontsource-variable/geist-mono';
 import '../styles/global.css';
 import { origin, production, categories, resources, collections } from '../lib/catalog';
 import Icon from '../components/Icon.astro';
+import PostHog from '../components/posthog.astro';
 interface Props { title: string; description: string; indexable?: boolean; breadcrumbs?: {name:string;path:string}[]; schema?: Record<string, unknown> }
 const {title,description,indexable=true,breadcrumbs=[],schema}=Astro.props;
 const canonical=new URL(Astro.url.pathname.startsWith('/404')?'/404.html':Astro.url.pathname,origin).href;
 const verification=import.meta.env.PUBLIC_SEARCH_CONSOLE_VERIFICATION;
 const analytics=import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
+const analyticsEnv={...import.meta.env,...process.env};
+const analyticsEnabled=analyticsEnv.ANALYTICS_ENABLED !== 'false' && Boolean(analyticsEnv.PUBLIC_POSTHOG_PROJECT_TOKEN?.trim() && analyticsEnv.PUBLIC_POSTHOG_HOST?.trim());
 const json=(v:unknown)=>JSON.stringify(v).replace(/</g,'\\u003c');
 
 const categoryCounts = new Map<string, number>();
@@ -35,6 +38,7 @@ const topCategories = categories
   <meta name="theme-color" content="#14161a"/>
   <meta property="og:type" content="website"/><meta property="og:site_name" content="Awesome Repositories"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={`${origin}/social.png`}/><meta name="twitter:card" content="summary_large_image"/>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <PostHog />
   {verification && <meta name="google-site-verification" content={verification}/>}
   <script is:inline>try{const t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch{}</script>
   <script type="application/ld+json" set:html={json({'@context':'https://schema.org','@type':'WebSite','@id':`${origin}/#website`,name:'Awesome Repositories',url:`${origin}/`,description:'A community-maintained catalog of GitHub repositories for learning programming and building software.',inLanguage:'en',sameAs:'https://github.com/pawelborkar/awesome-repos'})}/>
@@ -81,14 +85,6 @@ const topCategories = categories
     <nav class="w-full" aria-label="Popular topics">
       <ul class="menu menu-sm w-full p-0 gap-0.5 text-neutral-300">
         {topCategories.map(t => {
-        {[
-          { slug: 'ai-learning', name: 'AI Learning' },
-          { slug: 'react', name: 'React' },
-          { slug: 'python', name: 'Python' },
-          { slug: 'rust', name: 'Rust' },
-          { slug: 'javascript', name: 'JavaScript' }
-        ].map(t => {
-          const count = resources.filter(r => r.categories.includes(t.slug)).length;
           const isCurrent = Astro.url.pathname === `/categories/${t.slug}/`;
           return (
             <li>
@@ -145,6 +141,7 @@ const topCategories = categories
       <span>Curated on GitHub. Made for learning and building.</span>
       <div class="flex items-center gap-4">
         <a href="/about/" class="hover:text-neutral-300">About</a>
+        {production && analyticsEnabled && <button type="button" data-analytics-opt-out class="hover:text-neutral-300">Disable analytics</button>}
         <a href="/contribute/" class="hover:text-neutral-300">Contribute</a>
         <a href="https://github.com/pawelborkar/awesome-repos" class="hover:text-neutral-300 inline-flex items-center gap-1">Source <Icon name="arrow" size={12}/></a>
       </div>
@@ -154,6 +151,7 @@ const topCategories = categories
   <button id="theme-toggle-mobile" class="md:hidden fixed bottom-2 right-2 p-1.5 rounded opacity-0 pointer-events-auto z-50 text-xs" aria-label="Switch color theme" title="Switch color theme" hidden><Icon name="sun" size={16}/></button>
 
  <script>
+    import { track } from '../lib/analytics';
     const buttons = document.querySelectorAll<HTMLButtonElement>('[id^="theme-toggle"]');
     buttons.forEach(button => {
       button.hidden = false;
@@ -162,7 +160,27 @@ const topCategories = categories
         const theme = dark ? 'light' : 'dark';
         document.documentElement.dataset.theme = theme;
         try { localStorage.setItem('theme', theme); } catch {}
+        track('theme_changed', { theme });
       });
+    });
+    const captureLink = (event: MouseEvent) => {
+      if ((event.type === 'click' && event.button !== 0) || (event.type === 'auxclick' && event.button !== 1)) return;
+      const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a');
+      if (!link) return;
+      const card = link.closest<HTMLElement>('[data-resource]');
+      const key = link.dataset.resourceKey || card?.dataset.resourceKey;
+      const source = link.dataset.analyticsSource || (card ? 'resource_card' : 'resource_detail');
+      const data = { resource_key: key || '', source, resource_category: card?.dataset.category?.split(',')[0] || link.dataset.resourceCategory, resource_type: card?.dataset.type || link.dataset.resourceType, search_id: link.dataset.searchId, ...(link.dataset.resultPosition ? { result_position: Number(link.dataset.resultPosition) } : {}) };
+      if (link.matches('.card-source, [data-resource-source]')) track('resource_opened', data);
+      else if (key && new URL(link.href).pathname.startsWith('/repositories/')) track('resource_selected', data);
+      if (link.dataset.collectionSlug) track('collection_opened', { collection_slug: link.dataset.collectionSlug, resource_count: Number(link.dataset.resourceCount), source: 'collections_directory' });
+      if (link.hasAttribute('data-contribution-guide')) track('contribution_guide_opened', { source: 'contribute_page' });
+    };
+    document.addEventListener('click', captureLink);
+    document.addEventListener('auxclick', captureLink);
+    document.querySelector('[data-analytics-opt-out]')?.addEventListener('click', event => {
+      window.awesomeAnalytics?.optOut();
+      (event.currentTarget as HTMLButtonElement).textContent = 'Analytics disabled';
     });
     document.addEventListener('keydown', event => {
       if (event.key === '/' && !event.ctrlKey && !event.metaKey && !['INPUT','TEXTAREA','SELECT'].includes((event.target as HTMLElement)?.tagName)) {

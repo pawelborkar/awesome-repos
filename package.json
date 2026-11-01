@@ -16,7 +16,8 @@
     "deploy": "wrangler deploy --env production",
     "preview": "wrangler dev --env staging",
     "test:browser": "playwright test",
-    "test:performance": "node scripts/performance.mjs"
+    "test:performance": "node scripts/performance.mjs",
+    "analytics:provision": "node --env-file-if-exists=.env scripts/analytics-provision.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.3.0",
@@ -24,6 +25,7 @@
     "astro": "^5.16.0",
     "gray-matter": "^4.0.3",
     "marked": "^17.0.0",
+    "posthog-js": "^1.438.21",
     "sanitize-html": "^2.18.1",
     "sharp": "^0.35.5",
     "zod": "^4.1.0"

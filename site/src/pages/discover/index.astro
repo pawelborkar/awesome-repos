@@ -21,6 +21,8 @@ import { collectionPage } from '../../lib/seo';
         <a
           class="collection-card group flex flex-col justify-between p-5 rounded-xl border border-[#20232a] bg-[#14161a] hover:bg-[#181d27] hover:border-neutral-700 transition-all text-neutral-300 hover:text-white"
           href={`/discover/${c.slug}/`}
+          data-collection-slug={c.slug}
+          data-resource-count={c.resources.length}
         >
           <div>
             <h2 class="text-base font-bold text-white group-hover:underline tracking-tight flex items-center justify-between">

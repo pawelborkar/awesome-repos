@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "target": null,
+  "controls": {
+    "verified": false,
+    "products": { "analytics": false, "replay": false, "errors": false, "logs": false },
+    "replay_sample_rate": 0.1,
+    "paid_usage_allowed": false
+  },
+  "assets": { "dashboards": {}, "insights": {}, "alerts": {} },
+  "baseline_started_at": null
+}

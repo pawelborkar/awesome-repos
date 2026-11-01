@@ -1,0 +1,237 @@
+{
+  "schema_version": 2,
+  "common_properties": [
+    "schema_version",
+    "site",
+    "environment",
+    "release",
+    "actor_type",
+    "page_type",
+    "page_path",
+    "visitor_status",
+    "is_internal"
+  ],
+  "privacy": "No search text, query hashes, personal identifiers, arbitrary errors, prompts, or model outputs.",
+  "events": [
+    {
+      "event_name": "resource_searched",
+      "event_description": "A visitor completed a repository search, including active filter count and result count without recording the query text.",
+      "file": "site/src/pages/search.astro",
+      "properties": [
+        "search_id",
+        "trigger",
+        "result_count",
+        "duration_ms",
+        "has_query",
+        "active_filter_count",
+        "sort",
+        "category",
+        "resource_type",
+        "technology",
+        "level"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "resource_filter_changed",
+      "event_description": "A visitor changed directory filters or sorting, recording only structured filter selections and the visible result count.",
+      "file": "site/src/components/ResourceList.astro",
+      "properties": [
+        "category",
+        "resource_type",
+        "technology",
+        "level",
+        "sort",
+        "has_query",
+        "result_count"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "resource_view_changed",
+      "event_description": "A visitor switched the repository directory between list and grid presentation.",
+      "file": "site/src/components/ResourceList.astro",
+      "properties": [
+        "view"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "resource_opened",
+      "event_description": "Visitor follows an original GitHub repository link, keyed by canonical owner/repository.",
+      "file": "site/src/layouts/Layout.astro",
+      "properties": [
+        "resource_key",
+        "source",
+        "resource_category",
+        "resource_type",
+        "search_id",
+        "result_position"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "collection_opened",
+      "event_description": "A visitor selected a curated collection from the collections directory.",
+      "file": "site/src/pages/discover/index.astro",
+      "properties": [
+        "collection_slug",
+        "resource_count",
+        "source"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "contribution_guide_opened",
+      "event_description": "A visitor opened the contribution guide from the contribution page.",
+      "file": "site/src/pages/contribute.astro",
+      "properties": [
+        "source"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "theme_changed",
+      "event_description": "A visitor changed the site color theme, recording the selected theme.",
+      "file": "site/src/layouts/Layout.astro",
+      "properties": [
+        "theme"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "search_failed",
+      "event_description": "Latest search attempt could not render results; contains no search text.",
+      "properties": [
+        "search_id",
+        "trigger",
+        "failure_type",
+        "duration_ms"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "resource_selected",
+      "event_description": "Visitor follows a canonical internal repository detail link.",
+      "properties": [
+        "resource_key",
+        "source",
+        "resource_category",
+        "resource_type",
+        "search_id",
+        "result_position"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "automation_run_started",
+      "event_description": "Production curation or editorial run begins.",
+      "properties": [
+        "workflow",
+        "run_id",
+        "mode",
+        "scheduled"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "automation_run_completed",
+      "event_description": "Production run completes with aggregate outcome counts.",
+      "properties": [
+        "workflow",
+        "run_id",
+        "mode",
+        "scheduled",
+        "duration_ms",
+        "candidate_count",
+        "screened_count",
+        "qualified_count",
+        "proposal_count",
+        "warning_count"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "automation_run_failed",
+      "event_description": "Production run terminates with a bounded failure code.",
+      "properties": [
+        "workflow",
+        "run_id",
+        "mode",
+        "scheduled",
+        "duration_ms",
+        "failure_code"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "$ai_generation",
+      "event_description": "One provider attempt, successful or failed; prompts and outputs omitted.",
+      "properties": [
+        "$ai_trace_id",
+        "$ai_span_id",
+        "$ai_session_id",
+        "$ai_provider",
+        "$ai_model",
+        "$ai_input_tokens",
+        "$ai_output_tokens",
+        "$ai_latency",
+        "$ai_http_status",
+        "$ai_is_error",
+        "$ai_error",
+        "run_id",
+        "workflow",
+        "attempt",
+        "failure_code",
+        "cost_status",
+        "$ai_stream",
+        "request_elapsed_ms",
+        "backoff_ms"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "$pageview",
+      "event_description": "One document load with sanitized URL and page context.",
+      "properties": [],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "$pageleave",
+      "event_description": "Document exit with sanitized page context.",
+      "properties": [],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "$web_vitals",
+      "event_description": "LCP, INP, or CLS diagnostic.",
+      "properties": [],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    },
+    {
+      "event_name": "$exception",
+      "event_description": "Sanitized exception; arbitrary messages and stack payloads excluded.",
+      "properties": [
+        "flow"
+      ],
+      "owner": "Awesome Repos",
+      "schema_version": 2
+    }
+  ]
+}

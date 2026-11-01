@@ -31,6 +31,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
+      ANALYTICS_ENABLED: ${{ vars.ANALYTICS_ENABLED }}
+      PRODUCTION: 'true'
+      PUBLIC_POSTHOG_PROJECT_TOKEN: ${{ vars.PUBLIC_POSTHOG_PROJECT_TOKEN }}
+      PUBLIC_POSTHOG_HOST: ${{ vars.PUBLIC_POSTHOG_HOST }}
       GITHUB_TOKEN: ${{ github.token }}
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       GROQ_MODEL: ${{ vars.GROQ_MODEL || 'qwen/qwen3.8-27b' }}
@@ -50,7 +54,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm ci
+      - run: python3 -m pip install -r requirements.txt
       - run: npm test
+        env:
+          ANALYTICS_ENABLED: 'false'
       - run: python3 scripts/editorial.py --slug "$DRAFT_SLUG" --topic "$DRAFT_TOPIC" --resources "$DRAFT_RESOURCES" --mode "$DRAFT_MODE"
       - uses: actions/upload-artifact@v4
         if: always()
