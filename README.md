@@ -366,6 +366,7 @@ _A curated list of GitHub Repositories full of FREE Resources._
 | --- | --- | --- |
 | [n8n](https://github.com/n8n-io/n8n) | Fair-code workflow automation platform with native AI capabilities | [Custom](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) |
 | [Excalidraw](https://github.com/excalidraw/excalidraw) | Virtual whiteboard for sketching hand-drawn like diagrams | [MIT](https://github.com/excalidraw/excalidraw/blob/master/LICENSE) |
+| [Fillvisa OS](https://github.com/athos2113/fillvisa-os) | Open-source platform for U.S. immigration forms. Fill DS-160 and USCIS forms in-browser, generate ready-to-review PDFs, and self-host anywhere. | [AGPL-3.0](https://github.com/athos2113/fillvisa-os/blob/main/LICENSE) |
 | [AppFlowy](https://github.com/AppFlowy-IO/AppFlowy) | An open-source, privacy-first alternative to Notion | [AGPL-3.0](https://github.com/AppFlowy-IO/AppFlowy/blob/main/LICENSE) |
 | [Logseq](https://github.com/logseq/logseq) | A privacy-first, open-source platform for knowledge management and collaboration | [AGPL-3.0](https://github.com/logseq/logseq/blob/master/LICENSE.md) |
 | [SiYuan](https://github.com/siyuan-note/siyuan) | A privacy-first, self-hosted personal knowledge management system | [AGPL-3.0](https://github.com/siyuan-note/siyuan/blob/master/LICENSE) |
