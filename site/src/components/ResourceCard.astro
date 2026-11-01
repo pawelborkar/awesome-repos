@@ -6,6 +6,7 @@ const { resource: r } = Astro.props;
 <article
   class="resource-card group py-4 px-0 [.directory[data-view=grid]_&]:border [.directory[data-view=grid]_&]:border-[#20232a] [.directory[data-view=grid]_&]:rounded-xl [.directory[data-view=grid]_&]:p-4 md:[.directory[data-view=grid]_&]:p-5 [.directory[data-view=grid]_&]:hover:border-neutral-700 [.directory[data-view=grid]_&]:bg-[#14161a] transition-all grid grid-cols-[1fr_auto] grid-rows-[auto_auto] items-center gap-x-4 gap-y-2"
   data-resource
+  data-resource-key={r.key}
   data-name={r.name.toLowerCase()}
   data-description={r.description.toLowerCase()}
   data-category={r.categories.join(',')}

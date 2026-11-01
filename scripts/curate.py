@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Bounded discovery and review-first publishing. Uses only the Python standard library."""
-import argparse, base64, calendar, datetime as dt, html, json, math, os, pathlib, re, subprocess, sys, time
+"""Bounded discovery and review-first publishing. Core curation works without optional telemetry dependencies."""
+import argparse, base64, calendar, datetime as dt, html, json, math, os, pathlib, re, subprocess, sys, time, uuid
 from urllib import request, error, parse
+from analytics_telemetry import Telemetry
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CONFIG = json.loads((ROOT/'config/curation.json').read_text())
@@ -11,10 +12,11 @@ class ApiError(Exception): pass
 class QuotaError(ApiError): pass
 
 class Client:
-    def __init__(self, token=None, groq_key=None):
+    def __init__(self, token=None, groq_key=None, telemetry=None):
         self.token=token or os.getenv('GITHUB_TOKEN'); self.groq_key=groq_key or os.getenv('GROQ_API_KEY'); self.calls=0
+        self.telemetry=telemetry or Telemetry('curation')
     def call(self, path, method='GET', data=None, groq=False):
-        self.calls+=1
+        self.calls+=1;trace_id=str(uuid.uuid4())
         if self.calls>600: raise QuotaError('Per-run API budget exhausted')
         base='https://api.groq.com/openai/v1' if groq else 'https://api.github.com'
         headers={'Accept':'application/json','User-Agent':'awesome-repos-curator'}
@@ -23,27 +25,51 @@ class Client:
         if not groq: headers['X-GitHub-Api-Version']='2022-11-28'
         body=json.dumps(data).encode() if data is not None else None
         if body is not None: headers['Content-Type']='application/json'
+        instrument = groq and path == '/chat/completions' and data is not None
+        logical_started=time.monotonic(); backoff_seconds=0
         for attempt in range(3):
+            started=time.monotonic(); attempt_finished=None; response_status=None; generation_result=None; generation_error=None
             try:
                 with request.urlopen(request.Request(base+path,body,headers,method=method),timeout=20) as response:
+                    response_status=response.status
                     raw=response.read(4_000_001)
                     if len(raw)>4_000_000: raise ApiError('Response exceeds size limit')
-                    return json.loads(raw)
+                    result=json.loads(raw)
+                    choices=result.get('choices') if isinstance(result,dict) else None
+                    if instrument and (not isinstance(choices,list) or not choices or not isinstance(choices[0],dict) or not isinstance(choices[0].get('message'),dict) or not isinstance(choices[0]['message'].get('content'),str)):
+                        raise ApiError('Provider returned an invalid generation response')
+                    generation_result=result
+                    if instrument and data.get('response_format',{}).get('type')=='json_object':
+                        try:
+                            if not isinstance(json.loads(choices[0]['message']['content']),dict):generation_error=ValueError('Invalid JSON object')
+                        except (ValueError,TypeError) as exc:generation_error=exc
+                    return result
             except error.HTTPError as exc:
+                generation_error=exc;response_status=exc.code;attempt_finished=time.monotonic()
+                exc.close()
                 if exc.code==404: return None
                 if exc.code in (401,403): raise QuotaError(f'Authentication or rate limit prevented access ({exc.code})') from None
                 if exc.code==429:
                     wait=int(exc.headers.get('Retry-After','10')) if exc.headers.get('Retry-After','10').isdigit() else 10
                     if attempt==2 or wait>30: raise QuotaError('Provider quota exhausted') from None
-                    time.sleep(min(wait,30));continue
-                if exc.code>=500 and attempt<2: time.sleep(2**attempt);continue
+                    backoff_seconds+=min(wait,30);time.sleep(min(wait,30));continue
+                if exc.code>=500 and attempt<2: backoff_seconds+=2**attempt;time.sleep(2**attempt);continue
                 raise ApiError(f'API request failed ({exc.code})') from None
-            except json.JSONDecodeError:
+            except json.JSONDecodeError as exc:
+                generation_error=exc;attempt_finished=time.monotonic()
                 if attempt==2:raise ApiError('API returned malformed or truncated JSON after retries') from None
-                time.sleep(2**attempt)
-            except (error.URLError, TimeoutError):
+                backoff_seconds+=2**attempt;time.sleep(2**attempt)
+            except (error.URLError, TimeoutError) as exc:
+                generation_error=exc;attempt_finished=time.monotonic()
                 if attempt==2: raise ApiError('API connection failed') from None
-                time.sleep(2**attempt)
+                backoff_seconds+=2**attempt;time.sleep(2**attempt)
+            except ApiError as exc:
+                generation_error=exc;attempt_finished=time.monotonic()
+                raise
+            finally:
+                if instrument:
+                    try:self.telemetry.generation(data,generation_result,trace_id,attempt+1,started,response_status,generation_error,finished=attempt_finished,request_elapsed_ms=round((time.monotonic()-logical_started)*1000),backoff_ms=round(backoff_seconds*1000))
+                    except Exception:print('Optional generation telemetry failed',file=sys.stderr)
         raise ApiError('Retry budget exhausted')
     def pages(self,path):
         output=[]
@@ -228,7 +254,11 @@ def report(candidates,warnings,now):
     print(f'Report written: {len(candidates)} candidates, {len(warnings)} warnings')
 
 def run(args):
-    now=TODAY();client=Client();warnings=[];candidates=[]
+    with Telemetry('curation',args.mode) as telemetry:
+        return run_curation(args,telemetry)
+
+def run_curation(args,telemetry):
+    now=TODAY();client=Client(telemetry=telemetry);warnings=[];candidates=[]
     markdown=(ROOT/'README.md').read_text();categories,keys=catalog(markdown)
     target=os.getenv('GITHUB_REPOSITORY','pawelborkar/awesome-repos')
     prs=[];history_complete=False
@@ -243,6 +273,7 @@ def run(args):
         except ApiError as exc:warnings.append(str(exc))
     else:warnings.append('GROQ_API_KEY is not set; candidates remain unscreened')
     repos,identity_complete=discover(client,categories,keys,prs,now,warnings)
+    telemetry.counts['candidate_count']=len(repos)
     quota=False
     for i,repo in enumerate(repos):
         item={'repository':repo,'lane':lane(repo,now),'popularity':rank(repo),'assessment':None,'qualified':False,'license':None,'status':'Unscreened'};candidates.append(item)
@@ -251,6 +282,7 @@ def run(args):
             source=client.call(f"/repos/{repo['full_name']}/readme")
             if not source or source.get('size',0)>1_000_000:item['status']='README unavailable or exceeds size limit';continue
             readme=base64.b64decode(source.get('content','')).decode('utf8',errors='replace')[:10000]
+            telemetry.counts['screened_count']+=1
             assessment=screen(client,repo,categories,readme);item['assessment']=assessment
             if not assessment:item['status']='Assessment invalid or unsupported evidence';continue
             item['qualified']=assessment['educational'] and assessment['free_access'] and assessment['quality']>=CONFIG['qualityThreshold']
@@ -282,8 +314,10 @@ def run(args):
                     subprocess.run(['node',str(ROOT/'scripts/validate-proposal.mjs')],input=patched,text=True,check=True,capture_output=True,cwd=ROOT)
                     body=f"<!-- {MARKER} resource:{r['id']} -->\n\nAdds [{r['full_name']}]({r['html_url']}) to {a['category']}.\n\n{a['audience']}\n\n{a['value']}\n\nBefore starting: {a['limitations']}\n\nGroq assessment: {a['quality']}/10. Stars: {r['stargazers_count']}; forks: {r['forks_count']}; checked {now.isoformat()}.\n\nEvidence from the source README:\n"+'\n'.join('- '+markdown_cell(e) for e in a['evidence'])+'\n\nHuman review required. Closing without merging suppresses future proposals.'
                     pr=create_pr(client,target,branch,f"feature/0-resource-{r['id']}",{'README.md':patched},'Add '+r['name'],body)
+                    telemetry.counts['proposal_count']+=1
                     candidate['status']='PR opened: '+pr['html_url']
                 except (ApiError,ValueError,subprocess.CalledProcessError) as exc:warnings.append('Proposal failed: '+str(exc));break
+    telemetry.counts.update(qualified_count=sum(bool(c.get('qualified')) for c in candidates),warning_count=len(warnings))
     report(candidates,warnings,now)
 
 if __name__=='__main__':

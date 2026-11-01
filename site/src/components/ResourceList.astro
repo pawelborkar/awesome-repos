@@ -124,6 +124,7 @@ const isHome = Astro.url.pathname === '/';
 </section>
 
 <script>
+  import { track } from '../lib/analytics';
   document.querySelectorAll<HTMLElement>('.directory').forEach(directory => {
     const form = directory.querySelector<HTMLFormElement>('[data-filters]');
     if (!form) return;
@@ -154,7 +155,12 @@ const isHome = Astro.url.pathname === '/';
     } catch {}
 
     directory.querySelectorAll<HTMLButtonElement>('[data-set-view]').forEach(button => {
-      button.addEventListener('click', () => setView(button.dataset.setView!));
+      button.addEventListener('click', () => {
+        const view = button.dataset.setView!;
+        if (view === directory.dataset.view) return;
+        setView(view);
+        track('resource_view_changed', { view });
+      });
     });
 
     const update = () => {
@@ -181,7 +187,21 @@ const isHome = Astro.url.pathname === '/';
       if (countEl) countEl.textContent = `${visible} resource${visible === 1 ? '' : 's'}`;
       const emptyEl = directory.querySelector<HTMLElement>('[data-empty]');
       if (emptyEl) emptyEl.hidden = visible > 0;
-      history.replaceState(null, '', location.pathname + (params.size ? `#${params}` : ''));
+      history.replaceState(null, '', location.pathname + location.search + (params.size ? `#${params}` : ''));
+      return visible;
+    };
+
+    const captureFilters = (visible: number) => {
+      const values = new FormData(form);
+      track('resource_filter_changed', {
+        category: String(values.get('category') || 'all'),
+        resource_type: String(values.get('type') || 'all'),
+        technology: String(values.get('technology') || 'all'),
+        level: String(values.get('level') || 'all'),
+        sort: String(values.get('sort') || 'stars'),
+        has_query: Boolean(String(values.get('q') || '').trim()),
+        result_count: visible,
+      });
     };
 
     const restore = () => {
@@ -195,9 +215,18 @@ const isHome = Astro.url.pathname === '/';
       update();
     };
 
-    form.addEventListener('change', update);
-    form.querySelector('input')?.addEventListener('input', update);
-    form.addEventListener('reset', () => setTimeout(update, 0));
+    form.addEventListener('change', event => {
+      if (!(event.target instanceof HTMLSelectElement)) return;
+      clearTimeout(filterTimer);
+      captureFilters(update());
+    });
+    let filterTimer: ReturnType<typeof setTimeout>;
+    form.querySelector('input')?.addEventListener('input', () => {
+      const visible = update();
+      clearTimeout(filterTimer);
+      filterTimer = setTimeout(() => captureFilters(visible), 400);
+    });
+    form.addEventListener('reset', () => { clearTimeout(filterTimer); setTimeout(() => captureFilters(update()), 0); });
     window.addEventListener('hashchange', restore);
     restore();
   });

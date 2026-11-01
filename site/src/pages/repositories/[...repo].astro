@@ -13,10 +13,10 @@ const related=resources.filter(x=>x.key!==r.key && x.categories.some(c=>r.catego
   <div class="flex flex-col gap-6">
     <header class="page-heading flex flex-col gap-3 pt-2">
       <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">{r.owner} / {r.repository}</div>
-      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight" data-pagefind-body>{r.name}</h1>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight" data-pagefind-body data-pagefind-meta={`resource_key:${r.key}`}>{r.name}</h1>
       <p class="text-sm text-neutral-400 mt-1 font-normal leading-relaxed max-w-2xl" data-pagefind-body>{r.description}</p>
       <div class="pt-2">
-        <Action href={r.url} variant="primary" size="md">Explore on GitHub <span aria-hidden="true">↗</span></Action>
+        <Action href={r.url} variant="primary" size="md" data-resource-source data-resource-key={r.key} data-resource-category={r.categories[0]} data-resource-type={r.type}>Explore on GitHub <span aria-hidden="true">↗</span></Action>
       </div>
     </header>
 
@@ -89,7 +89,7 @@ const related=resources.filter(x=>x.key!==r.key && x.categories.some(c=>r.catego
           )}
           <div>
             <dt class="text-neutral-500 font-mono text-[11px] mb-0.5">Source</dt>
-            <dd><a href={r.url} class="text-neutral-300 hover:text-white hover:underline truncate block">{r.owner}/{r.repository}</a></dd>
+            <dd><a data-resource-source data-resource-key={r.key} data-resource-category={r.categories[0]} data-resource-type={r.type} href={r.url} class="text-neutral-300 hover:text-white hover:underline truncate block">{r.owner}/{r.repository}</a></dd>
           </div>
         </dl>
       </aside>
