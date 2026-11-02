@@ -121,6 +121,7 @@ _A curated list of GitHub Repositories full of FREE Resources._
 
 | Repository | Description | License |
 | --- | --- | --- |
+| [Breatic](https://github.com/orime-org/breatic) | The real-time collaborative AI workspace for creative teams | [Custom Breatic License](https://github.com/orime-org/breatic/blob/main/LICENSE) |
 | [Ollama](https://github.com/ollama/ollama) | Get up and running with large language models locally | [MIT](https://github.com/ollama/ollama/blob/main/LICENSE) |
 | [llama.cpp](https://github.com/ggml-org/llama.cpp) | LLM inference in C/C++ | [MIT](https://github.com/ggml-org/llama.cpp/blob/master/LICENSE) |
 | [Open WebUI](https://github.com/open-webui/open-webui) | User-friendly, self-hosted AI interface that works with Ollama and OpenAI-compatible APIs | [Custom](https://github.com/open-webui/open-webui/blob/main/LICENSE) |
