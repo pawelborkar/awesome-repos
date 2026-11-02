@@ -25,6 +25,7 @@ jobs:
       - run: npm ci
       - run: python3 -m pip install -r requirements.txt
       - run: npm test
+      - run: npm run seo:review
       - run: npm run check
       - run: npm run build && npm run validate
       - run: npx playwright install --with-deps chromium

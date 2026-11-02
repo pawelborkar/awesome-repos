@@ -1,0 +1,33 @@
+---
+import type { Collection } from '../lib/catalog';
+import { resources } from '../lib/catalog';
+interface Props { collection: Collection }
+const { collection: c } = Astro.props;
+const named = new Map(resources.map(r => [r.key, r]));
+---
+{c.reviewed && <>
+  {c.comparison.length > 0 && <section aria-labelledby="compare-resources" class="min-w-0 max-w-full">
+    <h2 id="compare-resources" class="text-base font-bold text-white mb-3">Compare the starting points</h2>
+    <div class="overflow-x-auto rounded-xl border border-[#20232a] focus-visible:outline-2 focus-visible:outline-blue-400" role="region" aria-label="Resource comparison" tabindex="0">
+      <table class="comparison-table w-full text-left text-sm">
+        <caption class="sr-only">Choose a resource by task, prerequisites, and limitations</caption>
+        <thead><tr><th scope="col">Resource</th><th scope="col">Use it for</th><th scope="col">Prerequisites</th><th scope="col">Before you start</th></tr></thead>
+        <tbody>{c.comparison.map(row => <tr>
+          <th scope="row"><a href={named.get(row.key)!.path}>{named.get(row.key)!.name}</a></th>
+          <td>{row.use}</td><td>{row.prerequisites}</td>
+          <td>{row.limitations}<span class="block mt-2">{row.sources.map((url, i) => <a href={url} class="mr-2" aria-label={`${named.get(row.key)!.name}: source ${i + 1}`}>Source {i + 1}</a>)}</span></td>
+        </tr>)}</tbody>
+      </table>
+    </div>
+  </section>}
+  {c.questions.length > 0 && <section class="prose space-y-5" aria-labelledby="choosing-questions">
+    <h2 id="choosing-questions">Questions before choosing</h2>
+    {c.questions.map(q => <div><h3>{q.question}</h3><p>{q.answer}</p>
+      {q.sources.length > 0 && <ul>{q.sources.map(url => <li><a href={url}>{new URL(url).hostname}{new URL(url).pathname}</a></li>)}</ul>}
+    </div>)}
+  </section>}
+  {c.sources.length > 0 && <section class="prose" aria-labelledby="collection-sources">
+    <h2 id="collection-sources">Original sources</h2>
+    <ul>{c.sources.map(url => <li><a href={url}>{new URL(url).hostname}{new URL(url).pathname}</a></li>)}</ul>
+  </section>}
+</>}

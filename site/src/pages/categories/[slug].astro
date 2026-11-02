@@ -7,15 +7,15 @@ export function getStaticPaths(){return categories.map(c=>({params:{slug:c.slug}
 const {category}=Astro.props;
 const selected=resources.filter(r=>r.categories.includes(category.slug));
 const curated=collections.filter(c=>c.indexable&&c.resources.some(k=>selected.some(r=>r.key===k)));
-const editorial=category.editorial;
+const editorial=category.editorial?.reviewed ? category.editorial : null;
 const indexable=!!(editorial?.reviewed && selected.length>=5);
 ---
 <Layout
   title={editorial?.title || `${category.name} repositories and resources`}
-  description={`Explore ${selected.length} curated ${category.name} repositories, with source links, license information, and related learning resources and developer tools.`}
+  description={editorial?.description || `Explore ${selected.length} curated ${category.name} repositories, with source links, license information, and related learning resources and developer tools.`}
   indexable={indexable}
   breadcrumbs={[{ name: 'Categories', path: '/categories/' }, { name: category.name, path: `/categories/${category.slug}/` }]}
-  schema={{ ...collectionPage(category.name, selected), ...(editorial?.reviewed ? { lastReviewed: editorial.updated } : {}) }}
+  schema={{ ...collectionPage(category.name, selected), ...(editorial ? { lastReviewed: editorial.updated, citation: editorial.sources } : {}) }}
 >
   <div class="flex flex-col gap-6">
     <header class="page-heading flex flex-col gap-2 pt-2">
@@ -29,7 +29,11 @@ const indexable=!!(editorial?.reviewed && selected.length>=5);
         <p>{editorial.intro}</p>
         <h2 id="selection" class="text-base font-bold text-white tracking-tight">Choose a useful starting point</h2>
         <p class="text-neutral-400">{editorial.selection}</p>
-        <p class="text-xs text-neutral-500 font-mono">Selection notes updated <time datetime={editorial.updated}>{editorial.updated}</time>.</p>
+        {editorial.sources.length > 0 && <div class="space-y-2">
+          <h2 class="text-base font-bold text-white">Original sources</h2>
+          <ul>{editorial.sources.map(url => <li><a href={url}>{new URL(url).hostname}{new URL(url).pathname}</a></li>)}</ul>
+        </div>}
+        <p class="text-xs text-neutral-400 font-mono">Selection notes updated <time datetime={editorial.updated}>{editorial.updated}</time>.</p>
       </article>
     )}
 

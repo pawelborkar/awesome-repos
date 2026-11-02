@@ -2,12 +2,13 @@
 import Layout from '../../layouts/Layout.astro';
 import Action from '../../components/Action.astro';
 import ResourceCard from '../../components/ResourceCard.astro';
-import {resources,categoryName,compact} from '../../lib/catalog';
+import {resources,collections,categoryName,compact} from '../../lib/catalog';
 import {resourcePage} from '../../lib/seo';
 export function getStaticPaths(){return resources.map(resource=>({params:{repo:resource.key},props:{resource}}));}
 const {resource:r}=Astro.props;
 const a=r.annotation;
 const related=resources.filter(x=>x.key!==r.key && x.categories.some(c=>r.categories.includes(c))).slice(0,3);
+const guides=collections.filter(c=>c.indexable && c.resources.includes(r.key));
 ---
 <Layout title={`${r.name} (${r.owner}/${r.repository}): overview`} description={r.description.slice(0,155)} indexable={r.indexable} breadcrumbs={[{name:categoryName(r.categories[0]),path:`/categories/${r.categories[0]}/`},{name:r.name,path:r.path}]} schema={resourcePage(r)}>
   <div class="flex flex-col gap-6">
@@ -30,6 +31,9 @@ const related=resources.filter(x=>x.key!==r.key && x.categories.some(c=>r.catego
             <p class="text-neutral-400">{a.value}</p>
             <h2 id="limitations" class="text-base font-bold text-white tracking-tight pt-2 border-t border-[#20232a]">Before you start</h2>
             <p class="text-neutral-400">{a.limitations}</p>
+            {a.prerequisites && <><h2 class="text-base font-bold text-white">Prerequisites</h2><p>{a.prerequisites}</p></>}
+            {a.service_costs && <><h2 class="text-base font-bold text-white">Costs and external services</h2><p>{a.service_costs}</p></>}
+            {a.first_step && <><h2 class="text-base font-bold text-white">Try this first</h2><p>{a.first_step}</p></>}
             <h2 id="sources" class="text-base font-bold text-white tracking-tight pt-2 border-t border-[#20232a]">Source and context</h2>
             <p class="text-neutral-400">These selection notes describe the resource's scope. Check the source for current details.</p>
             <ul class="list-disc list-inside space-y-1 text-neutral-400">
@@ -37,7 +41,7 @@ const related=resources.filter(x=>x.key!==r.key && x.categories.some(c=>r.catego
                 <li><a href={url} class="text-white hover:underline">{new URL(url).hostname}{new URL(url).pathname}</a></li>
               ))}
             </ul>
-            <p class="text-xs text-neutral-500 font-mono pt-2 border-t border-[#20232a]">Selection notes updated <time datetime={a.updated}>{a.updated}</time>. <a href="/about/#selection-notes" class="underline hover:no-underline">How selection notes are reviewed</a>.</p>
+            <p class="text-xs text-neutral-400 font-mono pt-2 border-t border-[#20232a]">Selection notes updated <time datetime={a.updated}>{a.updated}</time>. <a href="/about/#selection-notes" class="underline hover:no-underline">How selection notes are reviewed</a>.</p>
           </>
         ) : (
           <>
@@ -94,6 +98,11 @@ const related=resources.filter(x=>x.key!==r.key && x.categories.some(c=>r.catego
         </dl>
       </aside>
     </div>
+
+    {guides.length > 0 && <section class="border border-[#20232a] p-5 rounded-xl" aria-labelledby="guided-next-steps">
+      <h2 id="guided-next-steps" class="text-base font-bold text-white mb-3">Choose your next step</h2>
+      <ul class="space-y-3 text-sm text-neutral-400">{guides.map(c => <li><a href={`/discover/${c.slug}/`} class="text-white hover:underline">{c.title}</a><p>{c.description}</p></li>)}</ul>
+    </section>}
 
     {related.length > 0 && (
       <section class="section-spaced pt-6 border-t border-[#20232a] mt-4">

@@ -31,23 +31,44 @@ export function parseReadme(markdown) {
   if (!categories.length || !resources.size) throw Error('README contains no catalog');
   return { categories, resources: [...resources.values()].sort((a,b) => a.name.localeCompare(b.name)) };
 }
+const sourceUrl = z.url().refine(url => {
+  try {
+    const parsed=new URL(url);
+    return ['http:','https:'].includes(parsed.protocol) && !parsed.username && !parsed.password;
+  } catch { return false; }
+}, 'Source must use HTTP(S) without credentials');
+const sourceFields = {
+  sources: z.array(sourceUrl).default([]),
+  source_checked: z.iso.date().optional(),
+};
 export const annotationSchema = z.object({
   key: z.string().regex(/^[^/\s]+\/[^/\s]+$/), reviewed: z.boolean().default(false),
   journey: z.enum(['learn','tools','both']), type: z.enum(['course','book','tutorial','exercises','list','library','framework','application','sdk','reference','unclassified']),
   technologies: z.array(z.string()).default([]), level: z.enum(['beginner','intermediate','advanced','all-levels','unclassified']).default('unclassified'),
   audience: z.string().default(''), value: z.string().default(''), limitations: z.string().default(''),
-  sources: z.array(z.url().refine(url => /^https?:\/\//.test(url), "Source must use HTTP(S)")).default([]), updated: z.iso.date(),
+  ...sourceFields, updated: z.iso.date(),
+  prerequisites: z.string().default(''), service_costs: z.string().default(''), first_step: z.string().default(''),
+});
+export const categorySchema = z.object({
+  title: z.string().min(10), description: z.string().min(25).optional(),
+  intro: z.string().min(160), selection: z.string().min(40), reviewed: z.boolean(), updated: z.iso.date(),
+  ...sourceFields,
 });
 export const collectionSchema = z.object({
   title: z.string().min(8), description: z.string().min(25), reviewed: z.boolean().default(false), updated: z.iso.date(),
   journey: z.enum(['learn','tools','both']), resources: z.array(z.string()).min(1), selection: z.string().min(40),
+  ...sourceFields,
+  comparison: z.array(z.object({
+    key: z.string(), use: z.string().min(15), prerequisites: z.string().min(10),
+    limitations: z.string().min(15), sources: z.array(sourceUrl).min(1),
+  })).default([]),
+  questions: z.array(z.object({ question: z.string().min(10), answer: z.string().min(30), sources: z.array(sourceUrl).default([]) })).default([]),
 });
 export const collectionIndexable = (reviewed, keys, body) => reviewed && new Set(keys).size>=5 && body.trim().length>=160;
 export function loadCatalog() {
   const catalog = parseReadme(readFileSync(path.join(root, 'README.md'), 'utf8'));
   const categoryNotes=JSON.parse(readFileSync(path.join(root,'content/categories.json'),'utf8'));
-  const categorySchema=z.object({title:z.string().min(10),intro:z.string().min(160),selection:z.string().min(40),reviewed:z.boolean(),updated:z.iso.date()});
-  for(const [key,note] of Object.entries(categoryNotes)){if(!catalog.categories.some(c=>c.slug===key))throw Error(`Unknown category editorial: ${key}`);categorySchema.parse(note);}
+  for(const [key,note] of Object.entries(categoryNotes)){if(!catalog.categories.some(c=>c.slug===key))throw Error(`Unknown category editorial: ${key}`);categoryNotes[key]=categorySchema.parse(note);}
   for(const category of catalog.categories)category.editorial=categoryNotes[category.slug]||null;
   const annotations = JSON.parse(readFileSync(path.join(root,'content/resources/annotations.json'),'utf8')).map(x => annotationSchema.parse(x));
   if (new Set(annotations.map(a=>a.key)).size !== annotations.length) throw Error('Duplicate resource annotation');
@@ -64,7 +85,7 @@ export function loadCatalog() {
     resource.path = `/repositories/${resource.key}/`;
     const snapshot = snapshots[resource.key];
     resource.metrics = snapshot && Number.isSafeInteger(snapshot.stars) && snapshot.stars >= 0 && Number.isSafeInteger(snapshot.forks) && snapshot.forks >= 0 && !Number.isNaN(Date.parse(snapshot.fetchedAt)) ? snapshot : null;
-    resource.indexable = !!(annotation?.reviewed && annotation.audience && annotation.value && annotation.limitations && annotation.sources.length);
+    resource.indexable = !!(annotation?.reviewed && annotation.audience.trim() && annotation.value.trim() && annotation.limitations.trim() && annotation.sources.length);
   }
   for (const a of annotations) if (!catalog.resources.some(r=>r.key===a.key)) throw Error(`Unknown annotation: ${a.key}`);
   const collections = readdirSync(path.join(root,'content/collections')).filter(f=>f.endsWith('.md')).map(file=>{
@@ -72,6 +93,8 @@ export function loadCatalog() {
     const parsed=collectionSchema.parse(data);
     const keys=[...new Set(parsed.resources)];
     for(const key of keys) if(!catalog.resources.some(r=>r.key===key)) throw Error(`Unknown collection resource: ${key}`);
+    if(new Set(parsed.comparison.map(row=>row.key)).size!==parsed.comparison.length)throw Error(`Duplicate comparison resource: ${file}`);
+    for(const row of parsed.comparison)if(!keys.includes(row.key))throw Error(`Comparison outside collection: ${row.key}`);
     return {...parsed,resources:keys,slug:file.slice(0,-3),body:content,indexable:collectionIndexable(parsed.reviewed,keys,content)};
   });
   return {...catalog,collections};

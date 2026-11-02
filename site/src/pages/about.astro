@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {collections} from '../lib/catalog';
+const selectionGuide=collections.find(c=>c.slug==='choosing-github-learning-resources' && c.indexable);
 ---
 <Layout title="How we curate the collection" description="Learn how Awesome Repositories selects resources, uses GitHub popularity signals, reviews AI suggestions, and keeps its catalog open." breadcrumbs={[{name:'How we curate',path:'/about/'}]} schema={{'@type':'AboutPage'}}>
   <div class="flex flex-col gap-6">
@@ -38,6 +40,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="pt-4 space-y-2">
         <h2 id="choosing" class="text-base font-bold text-white tracking-tight">What should I check before choosing?</h2>
         <p class="text-neutral-400">Read the source documentation, check the license, and try a small example. Course scope, installation requirements, and maintenance can change. A completed book can still be useful without frequent commits; a popular tool can still be a poor fit for your task.</p>
+        {selectionGuide && <p><a href={`/discover/${selectionGuide.slug}/`} class="text-white underline hover:no-underline">Use the learning-resource checklist</a> to compare purpose, format, prerequisites, evidence, reuse, costs, and a first exercise.</p>}
       </div>
 
       <div class="pt-4 space-y-2">

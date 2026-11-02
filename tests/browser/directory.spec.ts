@@ -1,4 +1,5 @@
 import {test,expect} from '@playwright/test';
+import {loadCatalog} from '../../scripts/catalog.mjs';
 test('home, navigation, themes, and responsive layout',async({page},testInfo)=>{
  await page.goto('/');await expect(page.getByRole('heading',{level:1})).toHaveText('All repositories');
  const before=await page.locator('html').getAttribute('data-theme');await page.getByRole('button',{name:'Switch color theme'}).click();const theme=await page.locator('html').getAttribute('data-theme');expect(theme).not.toBe(before);await page.reload();await expect(page.locator('html')).toHaveAttribute('data-theme',theme!);
@@ -31,5 +32,6 @@ test('app directory supports text filtering and persistent view mode',async({pag
 });
 
 test('advanced filters disclose predictably and restore active values',async({page})=>{
- await page.goto('/learn/');await expect(page.locator('[data-advanced]')).not.toHaveAttribute('open','');await page.getByText('More filters',{exact:true}).click();await page.locator('.directory select[name="technology"]').selectOption('Rust');await expect(page.locator('[data-resource]:visible')).toHaveCount(3);await page.reload();await expect(page.locator('[data-advanced]')).toHaveAttribute('open','');await expect(page.locator('.directory select[name="technology"]')).toHaveValue('Rust');
+ const expected=loadCatalog().resources.filter(r=>(r.journey==='learn'||r.journey==='both')&&r.technologies.includes('Rust')).length;
+ await page.goto('/learn/');await expect(page.locator('[data-advanced]')).not.toHaveAttribute('open','');await page.getByText('More filters',{exact:true}).click();await page.locator('.directory select[name="technology"]').selectOption('Rust');await expect(page.locator('[data-resource]:visible')).toHaveCount(expected);await page.reload();await expect(page.locator('[data-advanced]')).toHaveAttribute('open','');await expect(page.locator('.directory select[name="technology"]')).toHaveValue('Rust');
 });
