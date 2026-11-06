@@ -58,6 +58,7 @@ _A curated list of GitHub Repositories full of FREE Resources._
 
 | Repository | Description | License |
 | --- | --- | --- |
+| [agent-qa](https://github.com/vostride/agent-qa) | Open-source self-improving QA agent for software teams. A test harness with memory. Write tests in natural language for web and mobile. agent-qa learns from every run, adapts to UI changes, and catches regressions before you ship. | [FSL-1.1-ALv2](https://github.com/vostride/agent-qa/blob/main/LICENSE.md) |
 | [LangGraph](https://github.com/langchain-ai/langgraph) | Build resilient language agents as graphs | [MIT](https://github.com/langchain-ai/langgraph/blob/main/LICENSE) |
 | [CrewAI](https://github.com/crewAIInc/crewAI) | A framework for orchestrating role-playing, autonomous AI agents | [MIT](https://github.com/crewAIInc/crewAI/blob/main/LICENSE) |
 | [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) | A framework for building, orchestrating and deploying AI agents and multi-agent workflows in Python and .NET | [MIT](https://github.com/microsoft/agent-framework/blob/main/LICENSE) |
