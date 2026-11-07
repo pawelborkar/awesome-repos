@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Search the repository collection" description="Search our curated GitHub catalog by topic, technology, resource format, and experience level." indexable={false} breadcrumbs={[{name:'Search',path:'/search/'}]}>
+  <div class="flex flex-col gap-6">
+    <header class="page-heading flex flex-col gap-2 pt-2">
+      <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">FOLLOW A THREAD</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">What are you curious about?</h1>
+      <p class="text-sm text-neutral-400 mt-1 font-normal leading-relaxed max-w-2xl">Search the repository collection by topic, technology, resource format, and experience level.</p>
+    </header>
+    <div class="search-panel">
+      <form id="search-form" role="search">
+        <label for="query" class="screen-reader-only">Search repositories</label>
+        <input id="query" type="search" placeholder="Search resources, topics, or technologies…" autocomplete="off"/>
+        <div class="search-filters" id="search-filters"></div>
+      </form>
+      <p id="search-status" class="result-count text-xs text-neutral-400 font-mono mt-4" role="status" aria-live="polite">Type to search the collection.</p>
+      <ol id="search-results" class="search-results"></ol>
+      <button id="load-more" class="button secondary btn btn-sm bg-[#14161a] hover:bg-neutral-800 border border-[#2b313d] text-neutral-200 font-normal rounded-lg px-4 h-8 mt-4" hidden>Show more results</button>
+      <noscript><p class="text-xs text-neutral-400 mt-4">Search needs JavaScript. You can <a href="/categories/" class="underline text-white">browse every category</a> without it.</p></noscript>
+    </div>
+  </div>
+</Layout>
+<script>
+  import { track, captureSearchFailure } from '../lib/analytics';
+  type Result = { url: string; meta: Record<string, string>; excerpt: string };
+  type SearchResponse = { results: { data: () => Promise<Result> }[] };
+  type Pagefind = { init: () => Promise<void>; filters: () => Promise<Record<string, Record<string, number>>>; search: (q: string | null, options: Record<string, unknown>) => Promise<SearchResponse> };
+  const input = document.querySelector<HTMLInputElement>('#query')!;
+  const form = document.querySelector<HTMLFormElement>('#search-form')!;
+  const status = document.querySelector<HTMLElement>('#search-status')!;
+  const results = document.querySelector<HTMLOListElement>('#search-results')!;
+  const more = document.querySelector<HTMLButtonElement>('#load-more')!;
+  let engine: Promise<Pagefind> | undefined, sequence = 0, pending: SearchResponse['results'] = [], offset = 0;
+  let lastCompleted = '', currentSearchId = '';
+  const getEngine = () => engine ??= (async () => {
+    const modulePath = '/pagefind/pagefind.js';
+    const p = await import(/* @vite-ignore */ modulePath) as Pagefind;
+    await p.init();
+    const filters = await p.filters();
+    const target = document.querySelector('#search-filters')!;
+    target.replaceChildren();
+    for (const [name, label] of Object.entries({ category: 'Category', type: 'Format', technology: 'Technology', level: 'Level' })) {
+      if (!filters[name]) continue;
+      const field = document.createElement('label'); field.textContent = label;
+      const select = document.createElement('select'); select.name = name;
+      select.add(new Option(`All ${label.toLowerCase()}s`, ''));
+      for (const value of Object.keys(filters[name]).sort()) select.add(new Option(value, value));
+      field.append(select); target.append(field);
+    }
+    const field = document.createElement('label'); field.textContent = 'Sort';
+    const sort = document.createElement('select'); sort.name = 'sort';
+    for (const [label, value] of [['Relevance', ''], ['A–Z', 'name:asc'], ['Most starred', 'stars:desc']]) sort.add(new Option(label, value));
+    field.append(sort); target.append(field); return p;
+  })();
+  async function renderBatch(id: number) {
+    const start = offset;
+    const batch = await Promise.all(pending.slice(offset, offset + 15).map(r => r.data()));
+    if (id !== sequence) return;
+    offset += batch.length;
+    for (const [index, item] of batch.entries()) {
+      const li = document.createElement('li'), h = document.createElement('h2'), a = document.createElement('a'), p = document.createElement('p');
+      a.href = item.url; a.textContent = item.meta.title || item.url;
+      a.dataset.resourceKey = item.meta.resource_key || new URL(item.url, location.origin).pathname.replace(/^\/repositories\//, '').replace(/\/$/, '');
+      a.dataset.analyticsSource = 'search_results'; a.dataset.searchId = currentSearchId; a.dataset.resultPosition = String(start + index + 1);
+      h.append(a); p.textContent = item.excerpt.replace(/<[^>]+>/g, ''); li.append(h, p); results.append(li);
+    }
+    more.hidden = offset >= pending.length;
+  }
+  async function search(trigger = 'submit', restore = false) {
+    const id = ++sequence, started = performance.now(), searchId = crypto.randomUUID();
+    let phase = 'engine_unavailable';
+    status.textContent = 'Searching…';
+    try {
+      const p = await getEngine(); if (id !== sequence) return;
+      if (restore) {
+        const state = new URLSearchParams(location.hash.slice(1)); input.value = state.get('q') || '';
+        for (const select of form.querySelectorAll('select')) select.value = state.get(select.name) || '';
+      }
+      const state = new URLSearchParams(), filters: Record<string, string> = {};
+      if (input.value.trim()) state.set('q', input.value.trim());
+      for (const select of form.querySelectorAll('select')) if (select.value) state.set(select.name, select.value);
+      // The signature lives only in memory. Neither it nor a query hash is captured.
+      const signature = state.toString();
+      if (signature === lastCompleted && currentSearchId) { status.textContent = `${pending.length} resources found`; return; }
+      for (const name of ['category', 'type', 'technology', 'level']) if (state.get(name)) filters[name] = state.get(name)!;
+      const sorting = state.get('sort')?.split(':'); phase = 'search_unavailable';
+      const response = await p.search(input.value.trim() || null, { filters, ...(sorting ? { sort: { [sorting[0]]: sorting[1] } } : {}) });
+      if (id !== sequence) return;
+      pending = response.results; offset = 0; currentSearchId = searchId; results.replaceChildren(); phase = 'results_unavailable';
+      await renderBatch(id); if (id !== sequence) return;
+      status.textContent = `${pending.length} resource${pending.length === 1 ? '' : 's'} found`;
+      history.replaceState(null, '', location.pathname + location.search + (state.size ? `#${state}` : ''));
+      lastCompleted = signature;
+      track('resource_searched', { search_id: searchId, trigger, has_query: Boolean(input.value.trim()), active_filter_count: Object.keys(filters).length, sort: state.get('sort') || 'relevance', result_count: pending.length, duration_ms: Math.round(performance.now() - started), category: filters.category, resource_type: filters.type, technology: filters.technology, level: filters.level });
+    } catch {
+      if (id !== sequence) return;
+      status.textContent = 'Search is unavailable. Browse the categories, or try again after refreshing.';
+      track('search_failed', { search_id: searchId, trigger, failure_type: phase, duration_ms: Math.round(performance.now() - started) });
+      captureSearchFailure(); engine = undefined;
+    }
+  }
+  let timer: ReturnType<typeof setTimeout>;
+  input.addEventListener('input', () => { clearTimeout(timer); sequence++; timer = setTimeout(() => void search('input'), 400); });
+  input.addEventListener('focus', () => { void getEngine().catch(() => { engine = undefined; }); }, { once: true });
+  form.addEventListener('submit', event => { event.preventDefault(); clearTimeout(timer); void search('submit'); });
+  form.addEventListener('change', event => { if (event.target instanceof HTMLSelectElement) { clearTimeout(timer); void search('filter'); } });
+  more.addEventListener('click', () => void renderBatch(sequence).catch(() => captureSearchFailure()));
+  window.addEventListener('hashchange', () => { clearTimeout(timer); void search('restore', true); });
+  if (location.hash) void search('restore', true);
+</script>

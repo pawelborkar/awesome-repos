@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "awesome-repositories-staging",
+  "compatibility_date": "2026-10-20",
+  "assets": {"directory": "./site/dist", "not_found_handling": "404-page", "html_handling": "force-trailing-slash"},
+  "workers_dev": true,
+  "env": {
+    "staging": {"name": "awesome-repositories-staging", "workers_dev": true},
+    "production": {
+      "name": "awesome-repositories",
+      "workers_dev": false,
+      "preview_urls": false,
+      "routes": [{"pattern": "awesome.pawel.in", "custom_domain": true}]
+    }
+  }
+}

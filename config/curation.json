@@ -1,0 +1,12 @@
+{
+  "model": "qwen/qwen3.8-27b",
+  "establishedStars": 1000,
+  "emergingStars": 200,
+  "emergingMonths": 12,
+  "screenLimit": 20,
+  "qualityThreshold": 8,
+  "weeklyPrLimit": 3,
+  "pendingPrLimit": 3,
+  "queries": ["topic:course", "topic:tutorial", "topic:programming-book", "topic:learn-to-code", "topic:exercises", "topic:awesome-list", "topic:computer-science", "topic:learning-resources"],
+  "excluded": []
+}

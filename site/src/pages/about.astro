@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="How we curate the collection" description="Learn how Awesome Repositories selects resources, uses GitHub popularity signals, reviews AI suggestions, and keeps its catalog open." breadcrumbs={[{name:'How we curate',path:'/about/'}]} schema={{'@type':'AboutPage'}}>
+  <div class="flex flex-col gap-6">
+    <header class="page-heading flex flex-col gap-2 pt-2">
+      <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">PEOPLE FIRST. RESOURCES SECOND.</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">How Awesome Repositories is curated</h1>
+      <p class="text-sm text-neutral-400 mt-1 font-normal leading-relaxed max-w-2xl">Curation standards, review guidelines, and selection criteria for the Awesome Repositories catalog.</p>
+    </header>
+
+    <article class="prose max-w-none text-neutral-300 text-sm leading-relaxed space-y-4 border border-[#20232a] bg-[#14161a] p-6 rounded-xl divide-y divide-[#20232a]">
+      <div class="space-y-2">
+        <h2 id="catalog-source" class="text-base font-bold text-white tracking-tight">Where does the catalog come from?</h2>
+        <p class="text-neutral-400">The catalog lives in <a href="https://github.com/pawelborkar/awesome-repos#readme" class="text-white underline hover:no-underline">our GitHub README</a>, which supplies repository membership, names, descriptions, and licenses. The website organizes those entries into <a href="/categories/" class="text-white underline hover:no-underline">categories</a> and <a href="/discover/" class="text-white underline hover:no-underline">guided collections</a>, with links to the original repositories. Inclusion is a starting point for your own evaluation.</p>
+      </div>
+
+      <div class="pt-4 space-y-2">
+        <h2 id="selection-notes" class="text-base font-bold text-white tracking-tight">How are selection notes reviewed?</h2>
+        <p class="text-neutral-400">Reviewed resource notes explain who a resource helps, what you can do with it, and limitations to check before starting. They cite their sources and show the date of the editorial review. Category and collection notes explain how to choose a starting point. Unreviewed classifications remain unclassified, and draft collections are excluded from publication.</p>
+      </div>
+
+      <div class="pt-4 space-y-2">
+        <h2 id="popularity" class="text-base font-bold text-white tracking-tight">Do GitHub stars measure quality?</h2>
+        <p class="text-neutral-400">Stars and forks help surface resources that people have discovered and used. They do not measure educational quality, security, compatibility, or visitor traffic. When we display metrics, we show when they were checked. Popularity snapshots have separate dates from selection notes.</p>
+      </div>
+
+      <div class="pt-4 space-y-2">
+        <h2 id="automation" class="text-base font-bold text-white tracking-tight">How is AI used in curation?</h2>
+        <p class="text-neutral-400">The discovery workflow searches for established and emerging learning resources. AI can suggest educational assessments and editorial drafts, grounded in repository content. Additions and editorial changes go through pull-request review before publication. The <a href="https://github.com/pawelborkar/awesome-repos/blob/main/CONTRIBUTING.md" class="text-white underline hover:no-underline">contribution guidelines</a> and <a href="https://github.com/pawelborkar/awesome-repos/pulls" class="text-white underline hover:no-underline">pull requests</a> are public.</p>
+      </div>
+
+      <div class="pt-4 space-y-2">
+        <h2 id="costs-and-licenses" class="text-base font-bold text-white tracking-tight">Are all resources free to use?</h2>
+        <p class="text-neutral-400">A public GitHub repository does not establish that every use is permitted or that associated services are free. Check each resource's license and setup instructions. A course may require a paid model provider or cloud service.</p>
+      </div>
+
+      <div class="pt-4 space-y-2">
+        <h2 id="choosing" class="text-base font-bold text-white tracking-tight">What should I check before choosing?</h2>
+        <p class="text-neutral-400">Read the source documentation, check the license, and try a small example. Course scope, installation requirements, and maintenance can change. A completed book can still be useful without frequent commits; a popular tool can still be a poor fit for your task.</p>
+      </div>
+
+      <div class="pt-4 space-y-2">
+        <h2 id="contribute" class="text-base font-bold text-white tracking-tight">How can I suggest a resource or correction?</h2>
+        <p class="text-neutral-400">Suggest a resource, correct a description, or share what helped you get started. <a href="/contribute/" class="text-white underline hover:no-underline">See how to contribute</a>.</p>
+      </div>
+    </article>
+  </div>
+</Layout>

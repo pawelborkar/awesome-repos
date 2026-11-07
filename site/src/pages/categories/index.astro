@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { categories, resources } from '../../lib/catalog';
+import { collectionPage } from '../../lib/seo';
+
+const categoryCounts = categories.map(c => ({
+  ...c,
+  count: resources.filter(r => r.categories.includes(c.slug)).length,
+}));
+---
+<Layout
+  title="Explore every category"
+  description="Browse GitHub resources across programming languages, AI, system design, developer tools, books, and more."
+  breadcrumbs={[{ name: 'Categories', path: '/categories/' }]}
+  schema={collectionPage('Repository categories', categories.map(c => ({ name: c.name, path: `/categories/${c.slug}/` })))}
+>
+  <div class="flex flex-col gap-6">
+    <header class="page-heading flex flex-col gap-2 pt-2">
+      <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">THE WHOLE COLLECTION</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">A topic for every curiosity.</h1>
+      <p class="text-sm text-neutral-400 mt-1 font-normal leading-relaxed max-w-2xl">Explore {categories.length} curated topics across programming languages, frameworks, AI, and developer tools.</p>
+    </header>
+
+    <div class="topic-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+      {categoryCounts.map(c => (
+        <a
+          class="topic-chip group flex items-center justify-between p-3.5 rounded-xl border border-[#20232a] bg-[#14161a] hover:bg-[#181d27] hover:border-neutral-700 transition-all text-neutral-300 hover:text-white"
+          href={`/categories/${c.slug}/`}
+        >
+          <span class="text-sm font-medium tracking-tight text-neutral-200 group-hover:text-white transition-colors min-w-0 pr-2">
+            {c.name}
+          </span>
+          <span class="badge badge-sm rounded bg-[#181d27] border border-[#2b3547] text-neutral-400 font-mono text-xs px-2 py-0.5 shrink-0 group-hover:border-neutral-500 group-hover:text-neutral-300 transition-colors">
+            {c.count}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

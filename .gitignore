@@ -1,0 +1,15 @@
+node_modules/
+node_modules
+site/dist/
+site/.astro/
+site/src/generated/
+.cache/
+.wrangler/
+.dev.vars*
+.env*
+!.env.example
+reports/
+test-results/
+playwright-report/
+__pycache__/
+*.pyc
