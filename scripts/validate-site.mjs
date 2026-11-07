@@ -4,8 +4,9 @@ import {gzipSync} from 'node:zlib';
 import {load} from 'cheerio';
 const root='site/dist';const production=process.env.PRODUCTION==='true';const origin='https://awesome.pawel.in';
 const files=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(d=>d.isDirectory()?files(path.join(dir,d.name)):[path.join(dir,d.name)]);
-const all=files(root),pages=all.filter(f=>f.endsWith('.html'));const errors=[];const titles=new Set();
+const all=files(root),pages=all.filter(f=>f.endsWith('.html'));const errors=[];const titles=new Set();const inbound=new Set();
 const sitemap=load(readFileSync(`${root}/sitemap.xml`,'utf8'),{xmlMode:true});const urls=new Set(sitemap('loc').map((_,el)=>sitemap(el).text()).get());
+if(urls.size!==sitemap('loc').length)errors.push('Duplicate sitemap URLs');
 const redirects=JSON.parse(readFileSync('config/redirects.json','utf8'));
 const htmlfile=url=>url.pathname.endsWith('/')?`${root}${url.pathname}index.html`:`${root}${url.pathname}`;
 for(const file of pages){
@@ -15,6 +16,7 @@ for(const file of pages){
  if(!$('meta[name=description]').attr('content'))errors.push(`Missing description: ${file}`);
  if(!canonical||!canonical.startsWith(origin+'/'))errors.push(`Invalid canonical: ${file}`);
  if(canonical && new URL(canonical).pathname!==relative)errors.push(`Canonical path mismatch: ${file}`);
+ if(canonical && (new URL(canonical).search || new URL(canonical).hash))errors.push(`Noncanonical query or fragment: ${file}`);
  const indexable=$('meta[name=robots]').attr('content')==='index,follow';
  if(indexable!==urls.has(canonical))errors.push(`Sitemap/indexability mismatch: ${file}`);
  if(!production&&indexable)errors.push(`Preview is indexable: ${file}`);
@@ -47,6 +49,7 @@ for(const file of pages){
  for(const element of $('a[href],link[rel=stylesheet],script[src],img[src]').toArray()){
   const href=$(element).attr('href')||$(element).attr('src');if(!href||href.startsWith('#')||/^(mailto:|tel:)/.test(href))continue;
   const url=new URL(href,canonical);if(url.origin!==origin)continue;
+  if(element.tagName==='a' && url.pathname!==new URL(canonical).pathname)inbound.add(new URL(url.pathname,origin).href);
   const target=htmlfile(url);
   if(!existsSync(target)&&!redirects[url.pathname])errors.push(`Broken internal link ${href} in ${file}`);
  }
@@ -59,6 +62,7 @@ for(const file of pages){
  if(js>35*1024||css>25*1024)errors.push(`Asset budget exceeded (${js} JS, ${css} CSS): ${file}`);
 }
 for(const url of urls)if(!existsSync(htmlfile(new URL(url))))errors.push(`Sitemap URL missing: ${url}`);
+for(const url of urls)if(!inbound.has(url))errors.push(`Indexable page has no inbound HTML link: ${url}`);
 const guide=readFileSync(`${root}/llms.txt`,'utf8');
 const guideLinks=[...guide.matchAll(/\]\((https:\/\/[^\s)]+)\)/g)].map(match=>match[1]);
 if(new Set(guideLinks).size!==guideLinks.length||guideLinks.length!==urls.size||guideLinks.some(url=>!urls.has(url)))errors.push('AI reading guide differs from sitemap eligibility');

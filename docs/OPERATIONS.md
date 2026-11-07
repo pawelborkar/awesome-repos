@@ -41,6 +41,7 @@ Controls follow [HeroUI's design principles](https://heroui.com/en/docs/react/ge
 - Collection Markdown files in `content/collections/` use JSON/YAML frontmatter with `title`, `description`, `journey`, `resources`, `selection`, `updated`, and `reviewed`. Include a distinct useful introduction in the Markdown body. `reviewed: false` drafts are excluded from publication.
 - Category notes live in `content/categories.json`. An indexable category needs reviewed original guidance and at least five resources. Collections need the same minimum inventory and substantial reviewed copy. Resource pages need reviewed audience, practical value, limitations, and sources.
 - Avoid unsupported experience levels, free-service claims, compatibility promises, or claims of keyword search volume. The original catalog includes resources beyond the narrower automated learning-resource discovery scope.
+- For the SEO/AEO pilot, source evidence, comparison fields, human review, promotion commands, and isolated template checks, see [SEO-IMPLEMENTATION.md](SEO-IMPLEMENTATION.md). `npm run seo:review` generates the pending editorial review package without changing publication status.
 - GitHub snapshots in `.cache/github-metadata.json` are refreshed at most daily per repository in CI. Failures retain the last successful entries, and the UI displays the check date. Missing metrics are omitted. No visitor browser receives a GitHub or Groq credential.
 
 ### Renames and modification dates

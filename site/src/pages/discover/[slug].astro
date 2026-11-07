@@ -1,21 +1,27 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ResourceList from '../../components/ResourceList.astro';
-import {collections,resources} from '../../lib/catalog';
+import CollectionGuidance from '../../components/CollectionGuidance.astro';
+import {collections,resources,categories} from '../../lib/catalog';
 import {collectionPage} from '../../lib/seo';
 import {renderMarkdown} from '../../lib/markdown';
 export function getStaticPaths(){return collections.map(collection=>({params:{slug:collection.slug},props:{collection}}));}
 const {collection:c}=Astro.props;
 const selected=c.resources.map(key=>resources.find(r=>r.key===key)!);
+const topics=categories.filter(topic=>topic.editorial?.reviewed && selected.some(r=>r.categories.includes(topic.slug)));
+const related=collections.filter(other=>other.slug!==c.slug && other.indexable)
+  .map(other=>({collection:other,overlap:other.resources.filter(key=>c.resources.includes(key)).length}))
+  .filter(item=>item.overlap>0).sort((a,b)=>b.overlap-a.overlap||a.collection.slug.localeCompare(b.collection.slug)).slice(0,3);
+const citations=[...new Set([...c.sources,...c.comparison.flatMap(row=>row.sources),...c.questions.flatMap(q=>q.sources)])];
 ---
 <Layout
   title={c.title}
   description={c.description}
   indexable={c.indexable}
   breadcrumbs={[{ name: 'Collections', path: '/discover/' }, { name: c.title, path: `/discover/${c.slug}/` }]}
-  schema={{ ...collectionPage(c.title, selected), lastReviewed: c.updated }}
+  schema={{ ...collectionPage(c.title, selected), lastReviewed: c.updated, citation: citations }}
 >
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 min-w-0">
     <header class="page-heading flex flex-col gap-2 pt-2">
       <div class="eyebrow text-[11px] font-semibold text-neutral-400 tracking-wider font-mono uppercase">{c.journey === 'learn' ? 'LEARN' : 'BUILD'} / A CURATED COLLECTION</div>
       <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">{c.title}</h1>
@@ -26,9 +32,15 @@ const selected=c.resources.map(key=>resources.find(r=>r.key===key)!);
       <div class="space-y-3" set:html={renderMarkdown(c.body)}/>
       <h2 id="selection" class="text-base font-bold text-white tracking-tight pt-2 border-t border-[#20232a]">How this collection is selected</h2>
       <p class="text-neutral-400">{c.selection}</p>
-      <p class="text-xs text-neutral-500 font-mono">Selection notes updated <time datetime={c.updated}>{c.updated}</time>. Popularity metrics, when available, show their own snapshot date.</p>
+      <p class="text-xs text-neutral-400 font-mono">Selection notes updated <time datetime={c.updated}>{c.updated}</time>. Popularity metrics, when available, show their own snapshot date.</p>
     </article>
 
+    <CollectionGuidance collection={c}/>
     <ResourceList resources={selected}/>
+    {(topics.length > 0 || related.length > 0) && <section class="border-t border-[#20232a] pt-5 text-sm space-y-3" aria-labelledby="related-guides">
+      <h2 id="related-guides" class="text-base font-bold text-white">Keep exploring</h2>
+      {topics.length > 0 && <p class="text-neutral-400">Browse the wider topic: {topics.map((topic,i)=><>{i>0?' · ':''}<a class="text-white underline underline-offset-2" href={`/categories/${topic.slug}/`}>{topic.name}</a></>)}</p>}
+      {related.length > 0 && <ul class="space-y-2">{related.map(({collection})=><li><a class="text-white hover:underline" href={`/discover/${collection.slug}/`}>{collection.title}</a></li>)}</ul>}
+    </section>}
   </div>
 </Layout>

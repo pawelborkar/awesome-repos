@@ -33,9 +33,9 @@ async function isolatedAnalytics(page: Page, blocked = false, replay = false) {
     if (!filename.startsWith(resolve('site/dist') + '/') || !existsSync(filename)) { await route.fulfill({ status: 404, body: 'Not found' }); return; }
     let body: Buffer | string = readFileSync(filename);
     if (extname(filename) === '.html') {
-      // Enable only this intercepted artifact, using a dummy token. No production
+      // Enable only this intercepted artifact, using a dummy token and mock host. No production
       // build flag, environment file, credential or server setting is changed.
-      body = body.toString().replace('"enabled":false', '"enabled":true').replace(/"apiKey":"[^"]*"/, `"apiKey":"${token}"`).replace('"errorsEnabled":false', '"errorsEnabled":true');
+      body = body.toString().replace('"enabled":false', '"enabled":true').replace(/"apiKey":"[^"]*"/, `"apiKey":"${token}"`).replace(/"apiHost":"[^"]*"/, `"apiHost":"${proxy}"`).replace('"errorsEnabled":false', '"errorsEnabled":true');
       if (replay) body = body.replace('"replayEnabled":false', '"replayEnabled":true');
     }
     const types: Record<string, string> = { '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css', '.json': 'application/json', '.wasm': 'application/wasm', '.svg': 'image/svg+xml', '.woff2': 'font/woff2' };

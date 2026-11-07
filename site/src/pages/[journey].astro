@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ResourceList from '../components/ResourceList.astro';
-import {matching} from '../lib/catalog';
+import {matching,collections} from '../lib/catalog';
 import {collectionPage} from '../lib/seo';
 import {readFileSync} from 'node:fs';
 import matter from 'gray-matter';
@@ -9,6 +9,7 @@ export function getStaticPaths(){return ['learn','tools'].map(journey=>({params:
 const journey=Astro.params.journey!;
 const {data}=matter(readFileSync(new URL(`../../../content/hubs/${journey}.md`,import.meta.url),'utf8'));
 const selected=matching(journey);
+const guides=collections.filter(c=>c.indexable && (c.journey===journey || c.journey==='both'));
 const name=journey==='learn'?'Learning resources':'Developer tools';
 const description=journey==='learn'?'Find programming books, courses, exercises, and learning references from our curated GitHub catalog.':'Explore frameworks, libraries, applications, and practical developer tools from our curated GitHub catalog.';
 ---
@@ -26,6 +27,10 @@ const description=journey==='learn'?'Find programming books, courses, exercises,
       <p class="text-sm text-neutral-300 font-normal leading-relaxed max-w-2xl">{description}</p>
     </header>
 
+    {guides.length > 0 && <section class="rounded-xl border border-[#20232a] p-5" aria-labelledby="guided-starts">
+      <h2 id="guided-starts" class="text-base font-bold text-white mb-3">Choose a starting point</h2>
+      <ul class="space-y-3 text-sm">{guides.map(c=><li><a class="text-white hover:underline" href={`/discover/${c.slug}/`}>{c.title}</a><p class="text-neutral-400">{c.description}</p></li>)}</ul>
+    </section>}
     <ResourceList resources={selected}/>
   </div>
 </Layout>

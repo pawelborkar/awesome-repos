@@ -26,7 +26,7 @@
     ],
     "level": "beginner",
     "audience": "Learners looking for a curriculum covering classic machine learning.",
-    "value": "Use the repository\u2019s 12-week, 26-lesson curriculum to organize practice in classic ML.",
+    "value": "Use the repository’s 12-week, 26-lesson curriculum to organize practice in classic ML.",
     "limitations": "This catalog describes classic ML coverage. Choose a generative AI or agent course when that is the application area you need.",
     "sources": [
       "https://github.com/microsoft/ml-for-beginners"
@@ -196,5 +196,132 @@
       "https://github.com/danistefanovic/build-your-own-x"
     ],
     "updated": "2026-10-20"
+  },
+  {
+    "key": "microsoft/ai-agents-for-beginners",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "course",
+    "technologies": [
+      "Python",
+      "AI agents"
+    ],
+    "level": "unclassified",
+    "audience": "Developers exploring agent concepts through lessons and code samples.",
+    "value": "Choose one agent pattern, read its explanation, and inspect the accompanying example before building your own variation.",
+    "limitations": "The current examples use Microsoft Agent Framework and Foundry. Some samples support other providers; check the individual setup rather than assuming one environment fits every lesson.",
+    "prerequisites": "Check the course setup and your chosen lesson. The course points new generative-AI learners to Generative AI for Beginners.",
+    "service_costs": "The documented Foundry route requires an Azure account. Verify service pricing and quotas before running examples.",
+    "first_step": "Read the introduction and setup, then follow one tool-use example with the required provider configuration.",
+    "sources": [
+      "https://github.com/microsoft/ai-agents-for-beginners"
+    ],
+    "source_checked": "2026-11-02",
+    "updated": "2026-11-02"
+  },
+  {
+    "key": "microsoft/mcp-for-beginners",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "course",
+    "technologies": [
+      "MCP"
+    ],
+    "level": "unclassified",
+    "audience": "Developers who want to understand MCP and study client/server examples in a supported language.",
+    "value": "Trace how a client connects to a server and exposes a tool, then compare that flow with the protocol explanation.",
+    "limitations": "The curriculum covers several languages and evolving protocol details. Follow the selected example and version notes rather than combining instructions across languages.",
+    "prerequisites": "Use a language you can already build and run. Check the dependencies in that language’s setup instructions.",
+    "service_costs": "Some examples integrate model providers or external services. Public access to the curriculum does not establish that those services are free.",
+    "first_step": "Read the getting-started section and run one client/server example in a language you already use.",
+    "sources": [
+      "https://github.com/microsoft/mcp-for-beginners"
+    ],
+    "source_checked": "2026-11-02",
+    "updated": "2026-11-02"
+  },
+  {
+    "key": "asabeneh/30-days-of-python",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "exercises",
+    "technologies": [
+      "Python"
+    ],
+    "level": "unclassified",
+    "audience": "Learners who prefer a sequence of Python explanations and exercises organized into daily sections.",
+    "value": "Use the early sections to practise syntax, then revisit a topic by changing an example and explaining the output.",
+    "limitations": "The day labels organize topics; they are not a promise about completion time. Check requirements for later package and web examples separately.",
+    "prerequisites": "Follow the installation and basic-Python sections before attempting exercises that depend on later topics.",
+    "service_costs": "Check any external services used in later exercises. The catalog’s license label is not a fresh reuse assessment.",
+    "first_step": "Complete a small exercise from the first section without copying the solution, then change one input.",
+    "sources": [
+      "https://github.com/asabeneh/30-days-of-python"
+    ],
+    "source_checked": "2026-11-02",
+    "updated": "2026-11-02"
+  },
+  {
+    "key": "satwikkansal/wtfpython",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "reference",
+    "technologies": [
+      "Python"
+    ],
+    "level": "unclassified",
+    "audience": "Python readers who want to investigate surprising snippets and language behavior.",
+    "value": "Predict an example’s result before reading the explanation, then use a small change to test your understanding.",
+    "limitations": "Surprising behavior can depend on interpreter details or versions. These examples are not a recommended style guide or a sequential introduction.",
+    "prerequisites": "Be comfortable reading short Python programs and identifying the interpreter version used for a result.",
+    "service_costs": "Local examples require a suitable Python environment; check separate requirements for interactive hosted versions.",
+    "first_step": "Choose one snippet, write down your prediction, and compare it with the explanation and your interpreter’s output.",
+    "sources": [
+      "https://github.com/satwikkansal/wtfpython"
+    ],
+    "source_checked": "2026-11-02",
+    "updated": "2026-11-02"
+  },
+  {
+    "key": "faif/python-patterns",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "reference",
+    "technologies": [
+      "Python"
+    ],
+    "level": "unclassified",
+    "audience": "Python programmers comparing design patterns and idioms for an existing design problem.",
+    "value": "Study one implementation and explain the tradeoff it makes before adapting the idea to your own code.",
+    "limitations": "A pattern is a design option, not a requirement to add abstraction. The README asks readers to consider why a pattern is useful.",
+    "prerequisites": "Know enough Python to read classes, functions, and the specific example you select.",
+    "service_costs": "Check the original repository and individual files for reuse terms; the catalog currently labels this entry No License.",
+    "first_step": "Choose one pattern that matches a real problem and compare its example with a simpler implementation.",
+    "sources": [
+      "https://github.com/faif/python-patterns"
+    ],
+    "source_checked": "2026-11-02",
+    "updated": "2026-11-02"
+  },
+  {
+    "key": "google/comprehensive-rust",
+    "reviewed": true,
+    "journey": "learn",
+    "type": "course",
+    "technologies": [
+      "Rust"
+    ],
+    "level": "unclassified",
+    "audience": "Experienced programmers seeking a classroom-shaped introduction to Rust and selected deeper topics.",
+    "value": "Use the course’s sequence to connect Rust syntax with generics and error handling, then select a relevant deeper topic.",
+    "limitations": "The README describes an audience of experienced engineers and notes that self-study misses classroom discussion. It should not be presented as a first programming course.",
+    "prerequisites": "Bring prior programming experience and follow the course’s Rust setup instructions.",
+    "service_costs": "Check the environment for the selected deep dive; Android, bare-metal, and concurrency material may have different setup needs.",
+    "first_step": "Read the audience and course-format notes, then try the first examples before committing to the complete sequence.",
+    "sources": [
+      "https://github.com/google/comprehensive-rust"
+    ],
+    "source_checked": "2026-11-02",
+    "updated": "2026-11-02"
   }
 ]

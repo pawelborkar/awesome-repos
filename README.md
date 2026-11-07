@@ -2,7 +2,7 @@
 
 # Awesome Repositories
 
-_A curated list of GitHub Repositories full of FREE Resources._
+_A curated list of GitHub repositories for learning programming and building software._
 
 [Explore the searchable directory](https://awesome.pawel.in) · [Website and automation setup](docs/OPERATIONS.md)
 

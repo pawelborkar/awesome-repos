@@ -1,0 +1,1691 @@
+{
+  "version": 1,
+  "prepared_at": "2026-11-02",
+  "status": "awaiting-human-review",
+  "source_checks": [
+    {
+      "key": "ageron/handson-ml3",
+      "url": "https://github.com/ageron/handson-ml3",
+      "checked_at": "2026-11-02",
+      "sha256": "46a77a9bc3d66615bf4161b0c694d83eae6f47fd644b7a2257a90e518980aa2c",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "agno-agi/agno",
+      "url": "https://github.com/agno-agi/agno",
+      "checked_at": "2026-11-02",
+      "sha256": "84516cb4da201b8a1bd47c89ec317242b0d52352df9622ae46c32bc3eeaabd2e",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "aider-ai/aider",
+      "url": "https://github.com/aider-ai/aider",
+      "checked_at": "2026-11-02",
+      "sha256": "3e9571714deda1e6c3a2e7f0b1869c7009fbdaf9471485507fb80834810be020",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "ajeetdsouza/zoxide",
+      "url": "https://github.com/ajeetdsouza/zoxide",
+      "checked_at": "2026-11-02",
+      "sha256": "7d9e78221195af78a6308c17c3a63c694fa32bdb1e4af607e083d45b65938476",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "appflowy-io/appflowy",
+      "url": "https://github.com/appflowy-io/appflowy",
+      "checked_at": "2026-11-02",
+      "sha256": "e1161b2f200a7a85450c4c683354fb0542fd81001c2fcbf286e5877218c37620",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "asabeneh/30-days-of-python",
+      "url": "https://github.com/asabeneh/30-days-of-python",
+      "checked_at": "2026-11-02",
+      "sha256": "1255a12100988b218ca146613b78e92854502fe7defaff440bc14c4ae1b8ecb6",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "assafelovic/gpt-researcher",
+      "url": "https://github.com/assafelovic/gpt-researcher",
+      "checked_at": "2026-11-02",
+      "sha256": "91bba198a73e1efb7c265989af213cdd170cad5ff33d7907c82f178bd58ab2f4",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "awesome-selfhosted/awesome-selfhosted",
+      "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "checked_at": "2026-11-02",
+      "sha256": "8411ef8e58669e3aa9f3de8bdd1d889427d0fb42db80d577d86ed3ec2a6c9ecd",
+      "snapshot_excerpt": true
+    },
+    {
+      "key": "berriai/litellm",
+      "url": "https://github.com/berriai/litellm",
+      "checked_at": "2026-11-02",
+      "sha256": "dd6d41707f596c26acb13a036cb5220f82dead554ffa5a1d251a16e88e6f9d7c",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "browser-use/browser-use",
+      "url": "https://github.com/browser-use/browser-use",
+      "checked_at": "2026-11-02",
+      "sha256": "e8233b2ed06be1e15da9bb7b3473edbfef707a7bd85c671168952a1a41c2f7e8",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "burntsushi/ripgrep",
+      "url": "https://github.com/burntsushi/ripgrep",
+      "checked_at": "2026-11-02",
+      "sha256": "9177878260e76473d0a165a8f8c07202f83a827d5ac168dad4e096118932d73f",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "cline/cline",
+      "url": "https://github.com/cline/cline",
+      "checked_at": "2026-11-02",
+      "sha256": "34d2cbdd3aa8cf204aa02966a62a984d7f13cd25c7f44757838e73d4320c375e",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "comfy-org/comfyui",
+      "url": "https://github.com/comfy-org/comfyui",
+      "checked_at": "2026-11-02",
+      "sha256": "aedc962fa128fe7395991d6d8f10148a69ab512100dc5c32afb08a296a17b3df",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "continuedev/continue",
+      "url": "https://github.com/continuedev/continue",
+      "checked_at": "2026-11-02",
+      "sha256": "8820350d46e2bab2e4bf94cc8111de80bec855cd2ed54f9440c1d8ff8136d52f",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "crewaiinc/crewai",
+      "url": "https://github.com/crewaiinc/crewai",
+      "checked_at": "2026-11-02",
+      "sha256": "747fe072845d691120d577a0d6dbdc10507f8ba8a1c06de4817bbad43e2680d1",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "d2l-ai/d2l-en",
+      "url": "https://github.com/d2l-ai/d2l-en",
+      "checked_at": "2026-11-02",
+      "sha256": "66c4f8c0fbbc011d60bdac54d58d1a0ec5c9025ca94930473e65a4acd5d3971a",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "danistefanovic/build-your-own-x",
+      "url": "https://github.com/danistefanovic/build-your-own-x",
+      "checked_at": "2026-11-02",
+      "sha256": "895a9e99d3964faf6d5992cedce69790b46cbadd59c0fc10dd3d520284aba6f6",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "dtolnay/proc-macro-workshop",
+      "url": "https://github.com/dtolnay/proc-macro-workshop",
+      "checked_at": "2026-11-02",
+      "sha256": "ca8a43a9b76f3a0a3c863bbfbce77a638cd12dc0114e40292d473ce20f677a29",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "e2b-dev/awesome-ai-agents",
+      "url": "https://github.com/e2b-dev/awesome-ai-agents",
+      "checked_at": "2026-11-02",
+      "sha256": "d1dab900e569cf6e96a02f719bb57ab880f366979fa83d7d84c23f2fd1d500f7",
+      "snapshot_excerpt": true
+    },
+    {
+      "key": "excalidraw/excalidraw",
+      "url": "https://github.com/excalidraw/excalidraw",
+      "checked_at": "2026-11-02",
+      "sha256": "4bd0586d85977fa9e90828c0caaf0d7d0702de369ad5692033b3f722a62c2cfd",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "faif/python-patterns",
+      "url": "https://github.com/faif/python-patterns",
+      "checked_at": "2026-11-02",
+      "sha256": "7f59f46bc2a0df2872cd67c5ae71be3a15e829043ed131ece168b5653fcc3ce6",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "foundationagents/metagpt",
+      "url": "https://github.com/foundationagents/metagpt",
+      "checked_at": "2026-11-02",
+      "sha256": "518d5c559a8b50e7e363023ef26c11413d6236b05861d3708676ceaa9c1fe9d3",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "ggml-org/llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "checked_at": "2026-11-02",
+      "sha256": "e40a0894817ff9124f446c2fa63cfee88b446bf6888f32f838335d8fc10c1806",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "gokumohandas/made-with-ml",
+      "url": "https://github.com/gokumohandas/made-with-ml",
+      "checked_at": "2026-11-02",
+      "sha256": "70cfebae5f70c5d0e33cf60c70d26f67f1a809828d3a2ff19cd6f43729b79f27",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "google/adk-python",
+      "url": "https://github.com/google/adk-python",
+      "checked_at": "2026-11-02",
+      "sha256": "93e4f4e92c71eba201ea37f264b666747b8d346f41b97f49e7ae64b12f836ee0",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "google/comprehensive-rust",
+      "url": "https://github.com/google/comprehensive-rust",
+      "checked_at": "2026-11-02",
+      "sha256": "113f87213cc478050dec404292a331d1395ebb8df5f2b5c2c1d40800c89f4737",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "huggingface/smolagents",
+      "url": "https://github.com/huggingface/smolagents",
+      "checked_at": "2026-11-02",
+      "sha256": "936933f7195b8e9e829c412c1030b7c5f9a0d15ad5c8b603b69cd6fa2c21a30d",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "huggingface/transformers",
+      "url": "https://github.com/huggingface/transformers",
+      "checked_at": "2026-11-02",
+      "sha256": "4110062199901c60fb3f1acf57f1c6085ed5f29cb399e26ab9734722577179b2",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "jakevdp/pythondatasciencehandbook",
+      "url": "https://github.com/jakevdp/pythondatasciencehandbook",
+      "checked_at": "2026-11-02",
+      "sha256": "4806d5c27837be7a78b2d4ab03701b38b2ecb0af8844b99df24a8497f53939ff",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "jaywcjlove/awesome-mac",
+      "url": "https://github.com/jaywcjlove/awesome-mac",
+      "checked_at": "2026-11-02",
+      "sha256": "c88fcc1f693a549dda3f72782d5648bc5dd723078b1e9c07a7ca1feb1892a9fb",
+      "snapshot_excerpt": true
+    },
+    {
+      "key": "jesseduffield/lazygit",
+      "url": "https://github.com/jesseduffield/lazygit",
+      "checked_at": "2026-11-02",
+      "sha256": "270182d0751b8692aca685b6908edb7f582c4247eace06f83f51aee99c65bccc",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "junegunn/fzf",
+      "url": "https://github.com/junegunn/fzf",
+      "checked_at": "2026-11-02",
+      "sha256": "36f01d2320d94613e604b065c76d167f1054bdeeaecd8dfee7fe199def44bfeb",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "jwasham/coding-interview-university",
+      "url": "https://github.com/jwasham/coding-interview-university",
+      "checked_at": "2026-11-02",
+      "sha256": "3cc8ae205d26a19a58d9e0585f3cfcc59e29d1a266fff533bbf5e04274648ac6",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "kamranahmedse/developer-roadmap",
+      "url": "https://github.com/kamranahmedse/developer-roadmap",
+      "checked_at": "2026-11-02",
+      "sha256": "290f05175c3f605077954996fbfb7728cb00cb2ff9deea8e2e813f3b10db7237",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "karpathy/nn-zero-to-hero",
+      "url": "https://github.com/karpathy/nn-zero-to-hero",
+      "checked_at": "2026-11-02",
+      "sha256": "3639430e2fd56c7baf58a186810d083b8a33b2b37604e1db95ea2a164841992b",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "langchain-ai/langchain",
+      "url": "https://github.com/langchain-ai/langchain",
+      "checked_at": "2026-11-02",
+      "sha256": "f87c63d50eeee9b904fbd7a1ad48114246d4507d43b64ceb402526403becadc3",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "langchain-ai/langgraph",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "checked_at": "2026-11-02",
+      "sha256": "26bab20a17fb1e0ba71e388671af9746ab4d1001dee70b9d9f8e22cfc867a48e",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "langflow-ai/langflow",
+      "url": "https://github.com/langflow-ai/langflow",
+      "checked_at": "2026-11-02",
+      "sha256": "7fe1120b7953fde31da470f081ea26c84fa0f5aa174ad30f21392ba1a70fe5bd",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "langgenius/dify",
+      "url": "https://github.com/langgenius/dify",
+      "checked_at": "2026-11-02",
+      "sha256": "2a1eb4b7214a2ca3659b2a24cc24c40ea71bfd0be382e1c63af70fac1643c181",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "laurent22/joplin",
+      "url": "https://github.com/laurent22/joplin",
+      "checked_at": "2026-11-02",
+      "sha256": "054ee03bf1d30810834d9e4b2e91ce7e567d7c3a2fc6803d0faa59292ea3388e",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "logseq/logseq",
+      "url": "https://github.com/logseq/logseq",
+      "checked_at": "2026-11-02",
+      "sha256": "859d209be09d2f0fdbf15fa86c3e88545c00b699bc20e7a15599e93c95769b1b",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "makeplane/plane",
+      "url": "https://github.com/makeplane/plane",
+      "checked_at": "2026-11-02",
+      "sha256": "2e90a4c049cf2160b979844696ecae5253ce83238bf4eb543b46999b3876ce7c",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "mem0ai/mem0",
+      "url": "https://github.com/mem0ai/mem0",
+      "checked_at": "2026-11-02",
+      "sha256": "2ae3995e5219e79227fa4a02e70f0df4ef5558481bc4d6fa354e4c9c96e103a3",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "microsoft/agent-framework",
+      "url": "https://github.com/microsoft/agent-framework",
+      "checked_at": "2026-11-02",
+      "sha256": "0209a7e7cab8885bb1367267709766d726a1bd5f53c0b806dcc8781fb82c0d0d",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "microsoft/ai-agents-for-beginners",
+      "url": "https://github.com/microsoft/ai-agents-for-beginners",
+      "checked_at": "2026-11-02",
+      "sha256": "bafb2ce75d817af80c61a3cc46e76d426e8cc510fd716a55fd7535af99cb2a2a",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "microsoft/ai-for-beginners",
+      "url": "https://github.com/microsoft/ai-for-beginners",
+      "checked_at": "2026-11-02",
+      "sha256": "21b5c81f2a43f7adf7e850d2c392f9a00f4c0f387f8e3ca0f113f3c2da5b8d3e",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "microsoft/generative-ai-for-beginners",
+      "url": "https://github.com/microsoft/generative-ai-for-beginners",
+      "checked_at": "2026-11-02",
+      "sha256": "b6be96140263e6eaea98db5b0fc5a48add1ac52ac95de113da0d0ca36270a5a6",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "microsoft/mcp-for-beginners",
+      "url": "https://github.com/microsoft/mcp-for-beginners",
+      "checked_at": "2026-11-02",
+      "sha256": "deaf8d911048db2c946eba0d1bb8362b8f2fbc1cd5851632852338f3b54a5974",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "microsoft/ml-for-beginners",
+      "url": "https://github.com/microsoft/ml-for-beginners",
+      "checked_at": "2026-11-02",
+      "sha256": "d633849f0bcd1399e13a1a6ecc5bd0bb821b2b99c8861616ae8c62b0be1e7977",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "microsoft/semantic-kernel",
+      "url": "https://github.com/microsoft/semantic-kernel",
+      "checked_at": "2026-11-02",
+      "sha256": "397f481ec8acacfd57badaecce76430675929a66e4806d01ac44ace72ff5c819",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "milanm/devops-roadmap",
+      "url": "https://github.com/milanm/devops-roadmap",
+      "checked_at": "2026-11-02",
+      "sha256": "81f42730337420ca782db31a3c65b579511371891e1db4f6808585bd4c581030",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "mlabonne/llm-course",
+      "url": "https://github.com/mlabonne/llm-course",
+      "checked_at": "2026-11-02",
+      "sha256": "98c40c5291a35b6f5a13b999cc91dd79ff46fe9b1d945df38641cdf2ca15f5ed",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "checked_at": "2026-11-02",
+      "sha256": "e5734132d91d16d31633889a9e37228dc78c2dc61884d5c52735d08c3b07bb6a",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "checked_at": "2026-11-02",
+      "sha256": "f937eaa29f377e9715c611d8ab719d0f43cf24acb260cdbd504cb87cc16309ab",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "nomic-ai/gpt4all",
+      "url": "https://github.com/nomic-ai/gpt4all",
+      "checked_at": "2026-11-02",
+      "sha256": "ef869660ebab5c4ec93bb17ed1c43c40353cb675d4018aafda69ba9f2fd163f0",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "ohmyzsh/ohmyzsh",
+      "url": "https://github.com/ohmyzsh/ohmyzsh",
+      "checked_at": "2026-11-02",
+      "sha256": "f66b77d172aa9fc3dc2fc5653aa9168b7bb13911da101e6576fe64573772a310",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "ollama/ollama",
+      "url": "https://github.com/ollama/ollama",
+      "checked_at": "2026-11-02",
+      "sha256": "30cbe878f13cb1b279275022c57396214050d2d679eb387363df2e408e7a637c",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "open-webui/open-webui",
+      "url": "https://github.com/open-webui/open-webui",
+      "checked_at": "2026-11-02",
+      "sha256": "89409528e380bad499d8e3397a36c31153f1c0eca0431392396a6615ad26c3a1",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "openai/openai-agents-python",
+      "url": "https://github.com/openai/openai-agents-python",
+      "checked_at": "2026-11-02",
+      "sha256": "62d9c2288fa1b75111bc71b30470f069ea6a2b4da3996cde8dd841938c14d240",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "openai/whisper",
+      "url": "https://github.com/openai/whisper",
+      "checked_at": "2026-11-02",
+      "sha256": "e17d8aa043ec2cbdc14de0d094aabd3b335d4f67b690031d63673d6a9349c8c7",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "openhands/openhands",
+      "url": "https://github.com/openhands/openhands",
+      "checked_at": "2026-11-02",
+      "sha256": "517eda79f76c1cd5486056b0994d90d3a45ea05614dbabecbc7b14e765ccd0de",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "ossu/computer-science",
+      "url": "https://github.com/ossu/computer-science",
+      "checked_at": "2026-11-02",
+      "sha256": "9855c98897c074a3311cedb55bc7e34d7fd967c6e6f77c69a4c6eeaf2ff5a56e",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "paperless-ngx/paperless-ngx",
+      "url": "https://github.com/paperless-ngx/paperless-ngx",
+      "checked_at": "2026-11-02",
+      "sha256": "90b8fda4759d5b3db4a396185a4198e59ee8c600d11a297f52087f7b1cdcb33a",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "punkpeye/awesome-mcp-servers",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers",
+      "checked_at": "2026-11-02",
+      "sha256": "0b472a70aadb8a74e35ced9a9ffa80a4d0c4beca86efab6546a295aaae4c1547",
+      "snapshot_excerpt": true
+    },
+    {
+      "key": "pydantic/pydantic-ai",
+      "url": "https://github.com/pydantic/pydantic-ai",
+      "checked_at": "2026-11-02",
+      "sha256": "ba3e75470359480bb509680ffeaaf69a2da8db509efd5acd6bb2699f2c86e805",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "rasbt/llms-from-scratch",
+      "url": "https://github.com/rasbt/llms-from-scratch",
+      "checked_at": "2026-11-02",
+      "sha256": "0bb0a45b0dd285f28f8e6f7ea290fbd5494cdb5700c1ffc34211ff6cbc0eddc3",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "run-llama/llama_index",
+      "url": "https://github.com/run-llama/llama_index",
+      "checked_at": "2026-11-02",
+      "sha256": "9f358a4a2f5769c74891553356f43fd22193ed6094e96b296823913d7035230a",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "rust-lang/book",
+      "url": "https://github.com/rust-lang/book",
+      "checked_at": "2026-11-02",
+      "sha256": "65818fff109fe31e5d324d0a03efd107c06271350fec274ee5ccc64a65255154",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "rust-lang/rust-by-example",
+      "url": "https://github.com/rust-lang/rust-by-example",
+      "checked_at": "2026-11-02",
+      "sha256": "b1d0f4f0aefabe23ee3151c4576690fb8cc2bd8d2dcd57b5c755d264d11cab48",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "rust-lang/rustlings",
+      "url": "https://github.com/rust-lang/rustlings",
+      "checked_at": "2026-11-02",
+      "sha256": "b1cef27f46e7d146ccd23777538d924e309ebe28dd09e2e2574a896a20426f5c",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "rust-unofficial/patterns",
+      "url": "https://github.com/rust-unofficial/patterns",
+      "checked_at": "2026-11-02",
+      "sha256": "09b5943d594506e9a20f8deaed628e74b6ee55e62aefa75b2c02f32c4a499972",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "satwikkansal/wtfpython",
+      "url": "https://github.com/satwikkansal/wtfpython",
+      "checked_at": "2026-11-02",
+      "sha256": "a26cf7103865749c755cbe455ab3dc3055aad6234f96d504aab1a046bc366835",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "sharkdp/bat",
+      "url": "https://github.com/sharkdp/bat",
+      "checked_at": "2026-11-02",
+      "sha256": "64d19bdac1b4fa60343c15b94cf665bb7e7445288964ca89ff3abab8ee6ff47d",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "sharkdp/fd",
+      "url": "https://github.com/sharkdp/fd",
+      "checked_at": "2026-11-02",
+      "sha256": "09a3eeba1226903b9bafcea92d4ba461774af049ae8e3c6bf71d9056be7f53df",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "significant-gravitas/autogpt",
+      "url": "https://github.com/significant-gravitas/autogpt",
+      "checked_at": "2026-11-02",
+      "sha256": "d23343d1d770213823169e98aa5be392b9b2af589b7b3c60a841d965bb72e678",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "siyuan-note/siyuan",
+      "url": "https://github.com/siyuan-note/siyuan",
+      "checked_at": "2026-11-02",
+      "sha256": "0524aa00ab391a556ea30e675d7e5899012179887e192d9f942e0651a9b27c89",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "stirling-tools/stirling-pdf",
+      "url": "https://github.com/stirling-tools/stirling-pdf",
+      "checked_at": "2026-11-02",
+      "sha256": "69948317bcc61e72a37fb5f55f854e5738b41bfe991d4912a32740f67b7aefde",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "thealgorithms/python",
+      "url": "https://github.com/thealgorithms/python",
+      "checked_at": "2026-11-02",
+      "sha256": "050cf7e443190bf63b54733fd06c0597da60b93da2d15d6c486ce27284e1611e",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "tldr-pages/tldr",
+      "url": "https://github.com/tldr-pages/tldr",
+      "checked_at": "2026-11-02",
+      "sha256": "f317b813920b076988903555010870f9e63fcf00fd12bee35d1573c22fff19e0",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "tmux/tmux",
+      "url": "https://github.com/tmux/tmux",
+      "checked_at": "2026-11-02",
+      "sha256": "afca6f4a7392404c5436a495b48d90f4d05a0e99260cdba341630b70cd983a3d",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "trekhleb/javascript-algorithms",
+      "url": "https://github.com/trekhleb/javascript-algorithms",
+      "checked_at": "2026-11-02",
+      "sha256": "28d4b9c0b5fabc260a5a14f22e59f25b91ca5d54e0168a2e8f632fb3ca7aa1ca",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "trekhleb/learn-python",
+      "url": "https://github.com/trekhleb/learn-python",
+      "checked_at": "2026-11-02",
+      "sha256": "aeff1f7db4a9453f55793093c91c496b8e0b6216d5c51a3868ae6e738386cbda",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "unslothai/unsloth",
+      "url": "https://github.com/unslothai/unsloth",
+      "checked_at": "2026-11-02",
+      "sha256": "ee774d3f2bf8b200f16881010f4aebb00105102ead2a9cfecfbe546be95409a7",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "usememos/memos",
+      "url": "https://github.com/usememos/memos",
+      "checked_at": "2026-11-02",
+      "sha256": "e2235e27fbab3b469c942bf60682db1276bf3df2dcafea2565a4f273e68ebfcb",
+      "snapshot_excerpt": false
+    },
+    {
+      "key": "vllm-project/vllm",
+      "url": "https://github.com/vllm-project/vllm",
+      "checked_at": "2026-11-02",
+      "sha256": "24b41a7ec8ef75531c1565e906c1dd072e9431cfb936d5c43ffeabf0301c4da0",
+      "snapshot_excerpt": false
+    }
+  ],
+  "records": [
+    {
+      "id": "R01",
+      "kind": "annotation",
+      "key": "microsoft/ai-agents-for-beginners",
+      "group": "batch-1",
+      "base_sha256": null,
+      "data": {
+        "key": "microsoft/ai-agents-for-beginners",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "course",
+        "technologies": [
+          "Python",
+          "AI agents"
+        ],
+        "level": "unclassified",
+        "audience": "Developers exploring agent concepts through lessons and code samples.",
+        "value": "Choose one agent pattern, read its explanation, and inspect the accompanying example before building your own variation.",
+        "limitations": "The current examples use Microsoft Agent Framework and Foundry. Some samples support other providers; check the individual setup rather than assuming one environment fits every lesson.",
+        "prerequisites": "Check the course setup and your chosen lesson. The course points new generative-AI learners to Generative AI for Beginners.",
+        "service_costs": "The documented Foundry route requires an Azure account. Verify service pricing and quotas before running examples.",
+        "first_step": "Read the introduction and setup, then follow one tool-use example with the required provider configuration.",
+        "sources": [
+          "https://github.com/microsoft/ai-agents-for-beginners"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R02",
+      "kind": "annotation",
+      "key": "microsoft/mcp-for-beginners",
+      "group": "batch-1",
+      "base_sha256": null,
+      "data": {
+        "key": "microsoft/mcp-for-beginners",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "course",
+        "technologies": [
+          "MCP"
+        ],
+        "level": "unclassified",
+        "audience": "Developers who want to understand MCP and study client/server examples in a supported language.",
+        "value": "Trace how a client connects to a server and exposes a tool, then compare that flow with the protocol explanation.",
+        "limitations": "The curriculum covers several languages and evolving protocol details. Follow the selected example and version notes rather than combining instructions across languages.",
+        "prerequisites": "Use a language you can already build and run. Check the dependencies in that language’s setup instructions.",
+        "service_costs": "Some examples integrate model providers or external services. Public access to the curriculum does not establish that those services are free.",
+        "first_step": "Read the getting-started section and run one client/server example in a language you already use.",
+        "sources": [
+          "https://github.com/microsoft/mcp-for-beginners"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R03",
+      "kind": "annotation",
+      "key": "asabeneh/30-days-of-python",
+      "group": "batch-1",
+      "base_sha256": null,
+      "data": {
+        "key": "asabeneh/30-days-of-python",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "exercises",
+        "technologies": [
+          "Python"
+        ],
+        "level": "unclassified",
+        "audience": "Learners who prefer a sequence of Python explanations and exercises organized into daily sections.",
+        "value": "Use the early sections to practise syntax, then revisit a topic by changing an example and explaining the output.",
+        "limitations": "The day labels organize topics; they are not a promise about completion time. Check requirements for later package and web examples separately.",
+        "prerequisites": "Follow the installation and basic-Python sections before attempting exercises that depend on later topics.",
+        "service_costs": "Check any external services used in later exercises. The catalog’s license label is not a fresh reuse assessment.",
+        "first_step": "Complete a small exercise from the first section without copying the solution, then change one input.",
+        "sources": [
+          "https://github.com/asabeneh/30-days-of-python"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R04",
+      "kind": "annotation",
+      "key": "satwikkansal/wtfpython",
+      "group": "batch-1",
+      "base_sha256": null,
+      "data": {
+        "key": "satwikkansal/wtfpython",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "reference",
+        "technologies": [
+          "Python"
+        ],
+        "level": "unclassified",
+        "audience": "Python readers who want to investigate surprising snippets and language behavior.",
+        "value": "Predict an example’s result before reading the explanation, then use a small change to test your understanding.",
+        "limitations": "Surprising behavior can depend on interpreter details or versions. These examples are not a recommended style guide or a sequential introduction.",
+        "prerequisites": "Be comfortable reading short Python programs and identifying the interpreter version used for a result.",
+        "service_costs": "Local examples require a suitable Python environment; check separate requirements for interactive hosted versions.",
+        "first_step": "Choose one snippet, write down your prediction, and compare it with the explanation and your interpreter’s output.",
+        "sources": [
+          "https://github.com/satwikkansal/wtfpython"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R05",
+      "kind": "annotation",
+      "key": "faif/python-patterns",
+      "group": "batch-1",
+      "base_sha256": null,
+      "data": {
+        "key": "faif/python-patterns",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "reference",
+        "technologies": [
+          "Python"
+        ],
+        "level": "unclassified",
+        "audience": "Python programmers comparing design patterns and idioms for an existing design problem.",
+        "value": "Study one implementation and explain the tradeoff it makes before adapting the idea to your own code.",
+        "limitations": "A pattern is a design option, not a requirement to add abstraction. The README asks readers to consider why a pattern is useful.",
+        "prerequisites": "Know enough Python to read classes, functions, and the specific example you select.",
+        "service_costs": "Check the original repository and individual files for reuse terms; the catalog currently labels this entry No License.",
+        "first_step": "Choose one pattern that matches a real problem and compare its example with a simpler implementation.",
+        "sources": [
+          "https://github.com/faif/python-patterns"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R06",
+      "kind": "annotation",
+      "key": "google/comprehensive-rust",
+      "group": "batch-1",
+      "base_sha256": null,
+      "data": {
+        "key": "google/comprehensive-rust",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "course",
+        "technologies": [
+          "Rust"
+        ],
+        "level": "unclassified",
+        "audience": "Experienced programmers seeking a classroom-shaped introduction to Rust and selected deeper topics.",
+        "value": "Use the course’s sequence to connect Rust syntax with generics and error handling, then select a relevant deeper topic.",
+        "limitations": "The README describes an audience of experienced engineers and notes that self-study misses classroom discussion. It should not be presented as a first programming course.",
+        "prerequisites": "Bring prior programming experience and follow the course’s Rust setup instructions.",
+        "service_costs": "Check the environment for the selected deep dive; Android, bare-metal, and concurrency material may have different setup needs.",
+        "first_step": "Read the audience and course-format notes, then try the first examples before committing to the complete sequence.",
+        "sources": [
+          "https://github.com/google/comprehensive-rust"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R07",
+      "kind": "annotation",
+      "key": "jakevdp/pythondatasciencehandbook",
+      "group": "batch-2",
+      "base_sha256": null,
+      "data": {
+        "key": "jakevdp/pythondatasciencehandbook",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "book",
+        "technologies": [
+          "Python",
+          "Jupyter"
+        ],
+        "level": "unclassified",
+        "audience": "Python readers learning data-analysis libraries through explanatory Jupyter notebooks.",
+        "value": "Connect an explanation to a notebook, change a small data example, and inspect the resulting output or visualization.",
+        "limitations": "The repository documents older Python and package versions. Check the edition and dependencies before treating old environment commands as current installation guidance.",
+        "prerequisites": "The source assumes familiarity with Python. Notebook execution also needs a compatible Jupyter and scientific-Python environment.",
+        "service_costs": "The README provides online reading and repository notebooks; a printed book is a separate option. Check any hosted-notebook requirements.",
+        "first_step": "Read one chapter online and inspect its notebook dependencies before creating an isolated environment.",
+        "sources": [
+          "https://github.com/jakevdp/pythondatasciencehandbook"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R08",
+      "kind": "annotation",
+      "key": "rust-unofficial/patterns",
+      "group": "batch-2",
+      "base_sha256": null,
+      "data": {
+        "key": "rust-unofficial/patterns",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "book",
+        "technologies": [
+          "Rust"
+        ],
+        "level": "unclassified",
+        "audience": "Rust programmers looking for explanations of recurring design choices and idioms.",
+        "value": "Use one pattern to reason about a concrete Rust design, comparing its motivation and drawbacks with your current approach.",
+        "limitations": "A collection of patterns is a reference, not a substitute for learning core language behavior or a guarantee that a pattern fits every project.",
+        "prerequisites": "Be able to read the Rust examples and revisit the language book when a concept is unfamiliar.",
+        "service_costs": "The README links to an online book. Check licensing and any tools needed to reproduce examples separately.",
+        "first_step": "Choose a pattern relevant to code you are writing and explain the tradeoff before implementing it.",
+        "sources": [
+          "https://github.com/rust-unofficial/patterns"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R09",
+      "kind": "annotation",
+      "key": "dtolnay/proc-macro-workshop",
+      "group": "batch-2",
+      "base_sha256": null,
+      "data": {
+        "key": "dtolnay/proc-macro-workshop",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "exercises",
+        "technologies": [
+          "Rust"
+        ],
+        "level": "unclassified",
+        "audience": "Rust programmers who want focused practice implementing procedural macros.",
+        "value": "Work through a workshop project and its test harness to understand how generated code is checked.",
+        "limitations": "The workshop focuses on derive, attribute, and function-like macros. Its prerequisites and specialized projects make it a different choice from a broad Rust introduction.",
+        "prerequisites": "Read the suggested prerequisites and project recommendations before choosing a project.",
+        "service_costs": "Check the current Rust toolchain and crate requirements; the repository does not establish a universal working environment.",
+        "first_step": "Read the workflow and test-harness sections, then attempt the first test in one selected project.",
+        "sources": [
+          "https://github.com/dtolnay/proc-macro-workshop"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R10",
+      "kind": "annotation",
+      "key": "karpathy/nn-zero-to-hero",
+      "group": "batch-2",
+      "base_sha256": null,
+      "data": {
+        "key": "karpathy/nn-zero-to-hero",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "course",
+        "technologies": [
+          "Python",
+          "Neural networks"
+        ],
+        "level": "unclassified",
+        "audience": "Python learners who want to follow neural-network implementations alongside video explanations.",
+        "value": "Pair a lecture with its notebook and reconstruct a small computation before moving to a larger model.",
+        "limitations": "Later lectures build on earlier work. Watching a video alone does not demonstrate that you can reproduce or adapt its implementation.",
+        "prerequisites": "The opening lecture assumes basic Python and some recollection of calculus. Check prerequisites for later material separately.",
+        "service_costs": "Compute and package requirements depend on the selected notebook; do not assume every training example fits the same machine.",
+        "first_step": "Begin with the micrograd lecture and trace a small derivative calculation in its notebook.",
+        "sources": [
+          "https://github.com/karpathy/nn-zero-to-hero"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R11",
+      "kind": "annotation",
+      "key": "rasbt/llms-from-scratch",
+      "group": "batch-2",
+      "base_sha256": null,
+      "data": {
+        "key": "rasbt/llms-from-scratch",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "book",
+        "technologies": [
+          "Python",
+          "LLMs"
+        ],
+        "level": "unclassified",
+        "audience": "Readers studying how a GPT-like language model is implemented through the companion code for a book.",
+        "value": "Inspect a small implementation step and connect it to the surrounding explanation before attempting model training.",
+        "limitations": "This is the official code repository for a companion book. Repository code, book access, and the compute needed for an experiment are separate considerations.",
+        "prerequisites": "Read the repository setup and chapter guidance; use the introductory material to check your Python and tensor-programming readiness.",
+        "service_costs": "The book is a separate publication. Review the selected experiment’s hardware and dependency requirements before provisioning compute.",
+        "first_step": "Read the setup instructions and inspect an early chapter’s small example before running larger training code.",
+        "sources": [
+          "https://github.com/rasbt/llms-from-scratch"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "R12",
+      "kind": "annotation",
+      "key": "mlabonne/llm-course",
+      "group": "batch-2",
+      "base_sha256": null,
+      "data": {
+        "key": "mlabonne/llm-course",
+        "reviewed": false,
+        "journey": "learn",
+        "type": "course",
+        "technologies": [
+          "Python",
+          "LLMs"
+        ],
+        "level": "unclassified",
+        "audience": "Learners choosing a path through LLM fundamentals, model development, and application engineering.",
+        "value": "Use the roadmap to locate one knowledge gap, then follow one linked article or notebook relevant to that goal.",
+        "limitations": "The resource combines paths, external readings, and notebooks rather than a single uniform environment. Check each linked resource’s assumptions.",
+        "prerequisites": "Review the optional fundamentals section covering mathematics, Python, and neural networks before selecting later material.",
+        "service_costs": "Hosted notebooks, GPUs, models, and provider APIs can have separate limits or costs. A public roadmap is not a compute entitlement.",
+        "first_step": "Choose one roadmap topic and inspect the linked notebook’s dependencies and runtime requirements before executing it.",
+        "sources": [
+          "https://github.com/mlabonne/llm-course"
+        ],
+        "source_checked": "2026-11-02",
+        "updated": "2026-11-02"
+      }
+    },
+    {
+      "id": "C01",
+      "kind": "collection",
+      "key": "ai-for-beginners",
+      "group": "collections",
+      "base_sha256": "3092b8c2ab3721ee6f7866c556ef46c4c5bd4ad55eec4a4307e71346be66b221",
+      "data": {
+        "title": "GitHub AI courses for beginners: choose a starting point",
+        "description": "Compare GitHub courses on machine learning, AI, generative applications, agents, and MCP. Choose a subject and check prerequisites and service costs.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "journey": "learn",
+        "resources": [
+          "microsoft/ml-for-beginners",
+          "microsoft/ai-for-beginners",
+          "microsoft/generative-ai-for-beginners",
+          "microsoft/ai-agents-for-beginners",
+          "microsoft/mcp-for-beginners"
+        ],
+        "selection": "Each selection is an explicitly educational beginner course already in the catalog. The courses cover distinct AI subjects; choose by subject and check the source for prerequisites and service costs.",
+        "sources": [
+          "https://github.com/microsoft/ml-for-beginners",
+          "https://github.com/microsoft/ai-for-beginners",
+          "https://github.com/microsoft/generative-ai-for-beginners",
+          "https://github.com/microsoft/ai-agents-for-beginners",
+          "https://github.com/microsoft/mcp-for-beginners"
+        ],
+        "comparison": [
+          {
+            "key": "microsoft/ml-for-beginners",
+            "use": "Classic machine-learning concepts and exercises.",
+            "prerequisites": "Follow the selected lesson’s Python and library setup.",
+            "limitations": "This curriculum distinguishes classic ML from deep learning; choose by subject rather than the broad AI label.",
+            "sources": [
+              "https://github.com/microsoft/ml-for-beginners"
+            ]
+          },
+          {
+            "key": "microsoft/ai-for-beginners",
+            "use": "A broad AI curriculum with lessons and labs.",
+            "prerequisites": "Check the selected lab’s programming and framework requirements.",
+            "limitations": "Its scope differs from a course focused on building generative-model applications.",
+            "sources": [
+              "https://github.com/microsoft/ai-for-beginners"
+            ]
+          },
+          {
+            "key": "microsoft/generative-ai-for-beginners",
+            "use": "Learning generative-AI concepts and building applications.",
+            "prerequisites": "Use the language and provider setup for the selected example.",
+            "limitations": "Some examples use external model APIs; verify account, quota, and cost requirements.",
+            "sources": [
+              "https://github.com/microsoft/generative-ai-for-beginners"
+            ]
+          },
+          {
+            "key": "microsoft/ai-agents-for-beginners",
+            "use": "Studying agent design patterns through explanations and samples.",
+            "prerequisites": "Read the course setup and the selected lesson.",
+            "limitations": "The current documented Foundry route needs an Azure account; check alternatives and service pricing.",
+            "sources": [
+              "https://github.com/microsoft/ai-agents-for-beginners"
+            ]
+          },
+          {
+            "key": "microsoft/mcp-for-beginners",
+            "use": "Learning MCP clients, servers, and integrations.",
+            "prerequisites": "Choose a supported language you can already build and run.",
+            "limitations": "Protocol and example dependencies evolve; follow the current version notes and service requirements.",
+            "sources": [
+              "https://github.com/microsoft/mcp-for-beginners"
+            ]
+          }
+        ],
+        "questions": [
+          {
+            "question": "Does access to a public course mean every exercise is free to run?",
+            "answer": "No. Course reading, repository reuse, and external service access are separate. Inspect the chosen lesson for model-provider accounts, cloud resources, quotas, and pricing before running it.",
+            "sources": [
+              "https://github.com/microsoft/ai-agents-for-beginners"
+            ]
+          },
+          {
+            "question": "Should I complete all five courses?",
+            "answer": "Choose one subject that matches what you want to understand or build. Finish a small lesson and explain its result before deciding whether another course addresses a remaining gap.",
+            "sources": []
+          }
+        ],
+        "source_checked": "2026-11-02"
+      },
+      "body": "## Choose a subject before a course\n\nStart with Machine Learning for Beginners when you want to study classic ML. Choose AI for Beginners for a broader AI curriculum. If your goal is an application that uses a generative model, inspect Generative AI for Beginners before narrowing into agents or MCP.\n\nThese courses answer different questions. A course about agent patterns is not interchangeable with a curriculum on learning algorithms, and an MCP example teaches an integration protocol rather than all of AI.\n\n## Try one lesson before planning the whole course\n\nRead the selected lesson and its setup, list any accounts or dependencies it needs, and complete one small exercise. Change an input and explain the result in your own words. Use that experience to choose your next lesson rather than committing to every course at once."
+    },
+    {
+      "id": "C02",
+      "kind": "collection",
+      "key": "python-practice",
+      "group": "collections",
+      "base_sha256": "6c2bd9d6c3f7f0893c3114a012cbba83e25d1fa2acea3b7ac4ffc18c97254ca0",
+      "data": {
+        "title": "Python practice repositories: examples, algorithms and patterns",
+        "description": "Choose Python practice by task: sequential exercises, runnable examples, algorithms, design patterns, surprising behavior, or data-science notebooks.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "journey": "learn",
+        "resources": [
+          "thealgorithms/python",
+          "asabeneh/30-days-of-python",
+          "trekhleb/learn-python",
+          "satwikkansal/wtfpython",
+          "faif/python-patterns",
+          "jakevdp/pythondatasciencehandbook"
+        ],
+        "selection": "The collection groups catalog entries that teach Python through code or examples. Frameworks and package managers are excluded so the focus stays on practice and understanding.",
+        "sources": [
+          "https://github.com/thealgorithms/python",
+          "https://github.com/asabeneh/30-days-of-python",
+          "https://github.com/trekhleb/learn-python",
+          "https://github.com/satwikkansal/wtfpython",
+          "https://github.com/faif/python-patterns",
+          "https://github.com/jakevdp/pythondatasciencehandbook"
+        ],
+        "comparison": [
+          {
+            "key": "thealgorithms/python",
+            "use": "Studying and comparing Python algorithm implementations.",
+            "prerequisites": "Be able to read the chosen implementation and its problem.",
+            "limitations": "The source describes educational implementations; they are not automatically a production-library replacement.",
+            "sources": [
+              "https://github.com/thealgorithms/python"
+            ]
+          },
+          {
+            "key": "asabeneh/30-days-of-python",
+            "use": "A sequence of Python topics and exercises.",
+            "prerequisites": "Start with the installation and introductory sections.",
+            "limitations": "The daily organization is a topic structure, not a guaranteed completion schedule.",
+            "sources": [
+              "https://github.com/asabeneh/30-days-of-python"
+            ]
+          },
+          {
+            "key": "trekhleb/learn-python",
+            "use": "Changing runnable examples and using a language cheatsheet.",
+            "prerequisites": "Follow the repository’s setup for the chosen example.",
+            "limitations": "A playground does not supply the same learning sequence as a full course.",
+            "sources": [
+              "https://github.com/trekhleb/learn-python"
+            ]
+          },
+          {
+            "key": "satwikkansal/wtfpython",
+            "use": "Explaining surprising Python behavior.",
+            "prerequisites": "Read short Python snippets and check your interpreter version.",
+            "limitations": "Version-specific behavior and surprising examples are not a recommended coding style.",
+            "sources": [
+              "https://github.com/satwikkansal/wtfpython"
+            ]
+          },
+          {
+            "key": "faif/python-patterns",
+            "use": "Comparing design patterns and Python idioms.",
+            "prerequisites": "Understand the classes or functions used in the selected example.",
+            "limitations": "Use a pattern for its tradeoff; verify reuse terms separately from the catalog label.",
+            "sources": [
+              "https://github.com/faif/python-patterns"
+            ]
+          },
+          {
+            "key": "jakevdp/pythondatasciencehandbook",
+            "use": "Learning scientific-Python tools through notebooks.",
+            "prerequisites": "The README assumes Python familiarity.",
+            "limitations": "The documented environment is old; check compatible dependencies before executing notebooks.",
+            "sources": [
+              "https://github.com/jakevdp/pythondatasciencehandbook"
+            ]
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which repository should I try first?",
+            "answer": "If you want a topic sequence, inspect 30 Days of Python. If you already have a specific question, choose examples, algorithms, patterns, or notebooks that match it. Try one exercise before deciding on a longer path.",
+            "sources": []
+          },
+          {
+            "question": "Can I copy a repository’s examples into my project?",
+            "answer": "Check the original repository and relevant files for their current license and conditions. Being publicly readable on GitHub does not by itself establish permission for every reuse.",
+            "sources": []
+          }
+        ],
+        "source_checked": "2026-11-02"
+      },
+      "body": "## Match the practice to the skill\n\nChoose 30 Days of Python for a topic sequence or Learn Python for a playground of examples. Use The Algorithms when you want to inspect an algorithm implementation. Once you have a specific design or language-behavior question, try Python Patterns or wtfpython.\n\nThe Python Data Science Handbook takes a separate route through scientific-Python notebooks. Its README assumes Python familiarity and documents older environments, so check the edition and dependencies before copying installation commands.\n\n## Make the exercise your own\n\nPick one small problem. Write down the expected result, run or trace the example, then change an input and explain the difference. For algorithm study, attempt your own implementation before comparing it with the source. For design patterns, explain the tradeoff before adopting the structure."
+    },
+    {
+      "id": "C03",
+      "kind": "collection",
+      "key": "learn-rust",
+      "group": "collections",
+      "base_sha256": "9bc4ebc5376317359abedc90281b439e21bb4d70238d5068407a2991b3e25793",
+      "data": {
+        "title": "Learn Rust with books, examples and exercises",
+        "description": "Combine Rust explanations with runnable examples and exercises. Compare books, a course, design guidance, and a focused procedural-macro workshop.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "journey": "learn",
+        "resources": [
+          "rust-lang/book",
+          "rust-lang/rust-by-example",
+          "rust-lang/rustlings",
+          "google/comprehensive-rust",
+          "rust-unofficial/patterns",
+          "dtolnay/proc-macro-workshop"
+        ],
+        "selection": "These catalog entries are books, courses, exercises, or instructional references about Rust. Application frameworks are excluded to keep the collection focused on learning the language.",
+        "sources": [
+          "https://github.com/rust-lang/book",
+          "https://github.com/rust-lang/rust-by-example",
+          "https://github.com/rust-lang/rustlings",
+          "https://github.com/google/comprehensive-rust",
+          "https://github.com/rust-unofficial/patterns",
+          "https://github.com/dtolnay/proc-macro-workshop"
+        ],
+        "comparison": [
+          {
+            "key": "rust-lang/book",
+            "use": "A book-length explanation of the Rust language.",
+            "prerequisites": "Follow the book’s installation and getting-started chapters.",
+            "limitations": "Reading is only part of the work; compile and modify examples to check understanding.",
+            "sources": [
+              "https://github.com/rust-lang/book"
+            ]
+          },
+          {
+            "key": "rust-lang/rust-by-example",
+            "use": "Learning through annotated runnable examples.",
+            "prerequisites": "Read the selected example and use its documented environment.",
+            "limitations": "An example may need more explanation than a short page supplies; use a fuller reference when needed.",
+            "sources": [
+              "https://github.com/rust-lang/rust-by-example"
+            ]
+          },
+          {
+            "key": "rust-lang/rustlings",
+            "use": "Practising Rust through small exercises.",
+            "prerequisites": "Follow the current Rustlings setup.",
+            "limitations": "The project recommends using exercises alongside the Rust book rather than replacing explanations.",
+            "sources": [
+              "https://github.com/rust-lang/rustlings"
+            ]
+          },
+          {
+            "key": "google/comprehensive-rust",
+            "use": "A classroom-shaped course for experienced programmers.",
+            "prerequisites": "Bring prior programming experience and read the course-format notes.",
+            "limitations": "The README notes that independent study misses classroom questions and discussion.",
+            "sources": [
+              "https://github.com/google/comprehensive-rust"
+            ]
+          },
+          {
+            "key": "rust-unofficial/patterns",
+            "use": "Investigating Rust design patterns and idioms.",
+            "prerequisites": "Be able to read the relevant Rust examples.",
+            "limitations": "A reference on patterns is not a sequential introduction to all language features.",
+            "sources": [
+              "https://github.com/rust-unofficial/patterns"
+            ]
+          },
+          {
+            "key": "dtolnay/proc-macro-workshop",
+            "use": "Implementing focused procedural-macro projects.",
+            "prerequisites": "Read the workshop’s suggested prerequisites.",
+            "limitations": "This is specialized practice; inspect its project recommendations and test harness before starting.",
+            "sources": [
+              "https://github.com/dtolnay/proc-macro-workshop"
+            ]
+          }
+        ],
+        "questions": [
+          {
+            "question": "Should I read the book before doing exercises?",
+            "answer": "You can combine the two: read a concept, attempt a related exercise, and return to the explanation when a compiler error reveals a gap. Rustlings explicitly recommends accompanying the Rust book.",
+            "sources": [
+              "https://github.com/rust-lang/rustlings"
+            ]
+          },
+          {
+            "question": "Is Comprehensive Rust a first programming course?",
+            "answer": "Its README describes an audience of experienced software engineers. Use that audience statement when deciding whether the course matches your background.",
+            "sources": [
+              "https://github.com/google/comprehensive-rust"
+            ]
+          }
+        ],
+        "source_checked": "2026-11-02"
+      },
+      "body": "## Pair an explanation with a small program\n\nUse The Rust Programming Language for an extended explanation, Rust By Example for annotated examples, and Rustlings for exercises. Read one concept, write or change a small program, and explain a compiler error before moving on.\n\nComprehensive Rust is a course developed for experienced programmers. Its README describes a classroom setting and notes the limits of self-study without the surrounding discussion. Check that format against your background before choosing it.\n\n## Choose specialized references for a specific problem\n\nRust Design Patterns helps you investigate design choices. The Procedural Macros Workshop focuses on macro projects and a test-driven workflow. Read the workshop prerequisites before attempting it; use the language book or examples when the missing knowledge is more general."
+    },
+    {
+      "id": "C04",
+      "kind": "collection",
+      "key": "command-line-workflow",
+      "group": "collections",
+      "base_sha256": "7de17c9e89633d62eb483d8852b97c67f923d7dd04eaf94cb5a45962079d4c6b",
+      "data": {
+        "title": "Command-line developer tools by workflow",
+        "description": "Compare terminal tools for text search, finding files, reading output, directory navigation, Git, and command examples. Start with one repeated task.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "journey": "tools",
+        "resources": [
+          "burntsushi/ripgrep",
+          "sharkdp/bat",
+          "sharkdp/fd",
+          "ajeetdsouza/zoxide",
+          "jesseduffield/lazygit",
+          "tldr-pages/tldr"
+        ],
+        "selection": "The collection groups existing command-line entries by everyday developer tasks. These tools have distinct purposes, so compare them with your current workflow instead of treating the list as a required installation bundle.",
+        "sources": [
+          "https://github.com/burntsushi/ripgrep",
+          "https://github.com/sharkdp/bat",
+          "https://github.com/sharkdp/fd",
+          "https://github.com/ajeetdsouza/zoxide",
+          "https://github.com/jesseduffield/lazygit",
+          "https://github.com/tldr-pages/tldr"
+        ],
+        "comparison": [
+          {
+            "key": "burntsushi/ripgrep",
+            "use": "Searching text inside files.",
+            "prerequisites": "Choose a supported installation method for your environment.",
+            "limitations": "Default ignore and hidden-file behavior affects which files are searched; read the options.",
+            "sources": [
+              "https://github.com/burntsushi/ripgrep"
+            ]
+          },
+          {
+            "key": "sharkdp/fd",
+            "use": "Finding entries in a filesystem.",
+            "prerequisites": "Check your operating system’s package and executable naming.",
+            "limitations": "A file-name search and a file-content search answer different questions.",
+            "sources": [
+              "https://github.com/sharkdp/fd"
+            ]
+          },
+          {
+            "key": "sharkdp/bat",
+            "use": "Reading file output with syntax highlighting and Git context.",
+            "prerequisites": "Use the project’s installation and terminal guidance.",
+            "limitations": "Check output and paging behavior before using it in an existing command pipeline.",
+            "sources": [
+              "https://github.com/sharkdp/bat"
+            ]
+          },
+          {
+            "key": "ajeetdsouza/zoxide",
+            "use": "Revisiting directories through shell integration.",
+            "prerequisites": "Follow the initialization instructions for your shell.",
+            "limitations": "Shell configuration changes deserve a small test before adding them to your daily environment.",
+            "sources": [
+              "https://github.com/ajeetdsouza/zoxide"
+            ]
+          },
+          {
+            "key": "jesseduffield/lazygit",
+            "use": "Working with Git through a terminal interface.",
+            "prerequisites": "Understand the Git operation you want to perform.",
+            "limitations": "A different interface does not remove the need to inspect changes before applying an operation.",
+            "sources": [
+              "https://github.com/jesseduffield/lazygit"
+            ]
+          },
+          {
+            "key": "tldr-pages/tldr",
+            "use": "Looking up concise command examples.",
+            "prerequisites": "Choose a client or supported reading interface.",
+            "limitations": "Examples supplement command documentation; check options and paths before running them.",
+            "sources": [
+              "https://github.com/tldr-pages/tldr"
+            ]
+          }
+        ],
+        "questions": [
+          {
+            "question": "Do I need every tool in this collection?",
+            "answer": "No. Start with a repeated task, compare one tool with your current approach, and keep it only if you can explain how it helps. Avoid changing several parts of your shell setup at once.",
+            "sources": []
+          },
+          {
+            "question": "Are these installation steps the same on every platform?",
+            "answer": "Use the current project instructions for your operating system and shell. Package names, terminal behavior, and integration steps can differ.",
+            "sources": []
+          }
+        ],
+        "source_checked": "2026-11-02"
+      },
+      "body": "## Improve one repeated task\n\nChoose by the job that slows you down. ripgrep searches file contents; fd finds filesystem entries. bat helps inspect file output, zoxide helps revisit directories, lazygit provides a terminal interface for Git, and tldr pages supplies command examples.\n\nThese are different responsibilities. You do not need to install the whole list to benefit from one tool.\n\n## Try the tool before changing your shell\n\nUse a small working directory or a disposable Git repository to test the command. Read its defaults and inspect the result before creating aliases, changing shell startup files, or applying commands to important work. Installation packages, executable names, and supported shells can differ by environment; use each project’s current instructions."
+    },
+    {
+      "id": "C05",
+      "kind": "collection",
+      "key": "machine-learning-deeper",
+      "group": "collections",
+      "base_sha256": "44be9841380d74286697c191b0be1dd4581ed6ae18ce70354732af7ac7a867d0",
+      "data": {
+        "title": "Machine learning resources beyond the first tutorial",
+        "description": "Compare neural-network lectures, an interactive deep-learning book, practical ML material, and LLM implementations. Check prerequisites and compute first.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "journey": "learn",
+        "resources": [
+          "karpathy/nn-zero-to-hero",
+          "d2l-ai/d2l-en",
+          "ageron/handson-ml3",
+          "gokumohandas/made-with-ml",
+          "rasbt/llms-from-scratch",
+          "mlabonne/llm-course"
+        ],
+        "selection": "These catalog entries teach ML through code, notebooks, or extended explanations. They cover different depths and prerequisites; public repository access does not imply that companion books or compute are free.",
+        "sources": [
+          "https://github.com/karpathy/nn-zero-to-hero",
+          "https://github.com/d2l-ai/d2l-en",
+          "https://github.com/ageron/handson-ml3",
+          "https://github.com/gokumohandas/made-with-ml",
+          "https://github.com/rasbt/llms-from-scratch",
+          "https://github.com/mlabonne/llm-course"
+        ],
+        "comparison": [
+          {
+            "key": "karpathy/nn-zero-to-hero",
+            "use": "Following neural-network implementation lectures and notebooks.",
+            "prerequisites": "The first lecture assumes basic Python and some calculus recollection.",
+            "limitations": "Later examples build on earlier material and may need different compute resources.",
+            "sources": [
+              "https://github.com/karpathy/nn-zero-to-hero"
+            ]
+          },
+          {
+            "key": "d2l-ai/d2l-en",
+            "use": "Connecting deep-learning explanations, mathematics, and code.",
+            "prerequisites": "Check the chosen chapter and framework setup.",
+            "limitations": "Select a consistent framework and environment rather than mixing setup from different examples.",
+            "sources": [
+              "https://github.com/d2l-ai/d2l-en"
+            ]
+          },
+          {
+            "key": "ageron/handson-ml3",
+            "use": "Studying notebooks for the third-edition companion book.",
+            "prerequisites": "Read the selected notebook and repository setup.",
+            "limitations": "Confirm the book edition and software versions; repository code and a printed book are separate.",
+            "sources": [
+              "https://github.com/ageron/handson-ml3"
+            ]
+          },
+          {
+            "key": "gokumohandas/made-with-ml",
+            "use": "Connecting ML with software engineering and application delivery.",
+            "prerequisites": "Inspect the learning path and selected project setup.",
+            "limitations": "Check dependencies and any infrastructure requirements before attempting the complete workflow.",
+            "sources": [
+              "https://github.com/gokumohandas/made-with-ml"
+            ]
+          },
+          {
+            "key": "rasbt/llms-from-scratch",
+            "use": "Studying code that builds a GPT-like language model step by step.",
+            "prerequisites": "Read the setup and chapter-specific guidance.",
+            "limitations": "The repository is companion code for a book; larger experiments require a separate compute assessment.",
+            "sources": [
+              "https://github.com/rasbt/llms-from-scratch"
+            ]
+          },
+          {
+            "key": "mlabonne/llm-course",
+            "use": "Choosing LLM learning paths and focused notebooks.",
+            "prerequisites": "Review the fundamentals path if mathematics or Python is a gap.",
+            "limitations": "Linked notebooks and services have separate dependencies, quotas, and possible costs.",
+            "sources": [
+              "https://github.com/mlabonne/llm-course"
+            ]
+          }
+        ],
+        "questions": [
+          {
+            "question": "Does a public ML repository include everything I need?",
+            "answer": "Not necessarily. Check the chosen resource for book access, package versions, data or model downloads, and compute or provider requirements. Decide on one small experiment before paying for infrastructure.",
+            "sources": []
+          },
+          {
+            "question": "Should I start with the largest model example?",
+            "answer": "Start with the smallest example that answers your question. Explain its inputs, outputs, and assumptions before increasing the dataset or model size.",
+            "sources": []
+          }
+        ],
+        "source_checked": "2026-11-02"
+      },
+      "body": "## Choose the kind of depth you need\n\nFor an implementation-led explanation of neural networks, inspect Neural Networks: Zero to Hero. Dive into Deep Learning combines an online book with code and mathematical explanations. Hands-On Machine Learning offers notebooks associated with a particular book edition, while Made With ML focuses on building and operating ML applications.\n\nIf your question is specifically about language models, compare LLMs from Scratch with LLM Course. One provides the companion implementation for a book; the other organizes learning paths, linked material, and notebooks.\n\n## Inspect one working example before provisioning compute\n\nRead prerequisites and dependency versions, then choose a small example you can explain. Identify whether a book, hosted notebook, GPU, model download, or API is involved. Public repository access does not make every companion publication or compute environment free."
+    },
+    {
+      "id": "C06",
+      "kind": "collection",
+      "key": "developer-learning-paths",
+      "group": "collections",
+      "base_sha256": "c0ee29c37fee4f7131cde1fd9c3574dc9e15f6b177d64d9b96cd8389d8b2518b",
+      "data": {
+        "title": "Developer roadmaps and computer science learning paths",
+        "description": "Choose between developer roadmaps, computer science curricula, interview study, and build-it-yourself projects. Turn a topic map into one practical next step.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "journey": "learn",
+        "resources": [
+          "kamranahmedse/developer-roadmap",
+          "ossu/computer-science",
+          "jwasham/coding-interview-university",
+          "milanm/devops-roadmap",
+          "danistefanovic/build-your-own-x",
+          "trekhleb/javascript-algorithms"
+        ],
+        "selection": "These entries provide structured subject maps, curricula, or practice material already in the catalog. The collection separates orientation from practice and does not promise employment outcomes.",
+        "sources": [
+          "https://github.com/kamranahmedse/developer-roadmap",
+          "https://github.com/ossu/computer-science",
+          "https://github.com/jwasham/coding-interview-university",
+          "https://github.com/milanm/devops-roadmap",
+          "https://github.com/danistefanovic/build-your-own-x",
+          "https://github.com/trekhleb/javascript-algorithms"
+        ],
+        "comparison": [
+          {
+            "key": "kamranahmedse/developer-roadmap",
+            "use": "Orienting study with developer topic maps.",
+            "prerequisites": "Choose a role or topic that matches a real goal.",
+            "limitations": "A roadmap organizes subjects; it is not proof that every linked resource has the same depth or prerequisites.",
+            "sources": [
+              "https://github.com/kamranahmedse/developer-roadmap"
+            ]
+          },
+          {
+            "key": "ossu/computer-science",
+            "use": "Following a curriculum-shaped computer science study path.",
+            "prerequisites": "Read the curriculum’s prerequisites and course sequence.",
+            "limitations": "Linked courses have their own access and prerequisite requirements; plan the commitment first.",
+            "sources": [
+              "https://github.com/ossu/computer-science"
+            ]
+          },
+          {
+            "key": "jwasham/coding-interview-university",
+            "use": "Organizing coding-interview study.",
+            "prerequisites": "Inspect the study plan and select topics relevant to your preparation.",
+            "limitations": "Interview study is a specific goal and does not represent every part of software development.",
+            "sources": [
+              "https://github.com/jwasham/coding-interview-university"
+            ]
+          },
+          {
+            "key": "milanm/devops-roadmap",
+            "use": "Organizing DevOps topics and linked learning material.",
+            "prerequisites": "Choose a concrete workflow to learn or practise.",
+            "limitations": "Check the access, environment, and currency of each linked resource separately.",
+            "sources": [
+              "https://github.com/milanm/devops-roadmap"
+            ]
+          },
+          {
+            "key": "danistefanovic/build-your-own-x",
+            "use": "Finding implementation projects and tutorials.",
+            "prerequisites": "Read the prerequisites of the particular linked project.",
+            "limitations": "The collection links to many independent tutorials; they do not share one quality or setup guarantee.",
+            "sources": [
+              "https://github.com/danistefanovic/build-your-own-x"
+            ]
+          },
+          {
+            "key": "trekhleb/javascript-algorithms",
+            "use": "Studying JavaScript algorithms and data structures.",
+            "prerequisites": "Know enough JavaScript to read the chosen implementation.",
+            "limitations": "Use explanations and tests to reason about one problem rather than memorizing code.",
+            "sources": [
+              "https://github.com/trekhleb/javascript-algorithms"
+            ]
+          }
+        ],
+        "questions": [
+          {
+            "question": "Do I have to finish a roadmap before building something?",
+            "answer": "Use a roadmap to choose a small next step. Build or explain something using that topic, then revisit the map to identify the next gap. The map is an organizing aid, not a completion requirement.",
+            "sources": []
+          },
+          {
+            "question": "Will completing these resources guarantee a job?",
+            "answer": "No. These resources support study, practice, or interview preparation. Employment depends on factors that a repository collection cannot guarantee.",
+            "sources": []
+          }
+        ],
+        "source_checked": "2026-11-02"
+      },
+      "body": "## Pick a destination before a resource\n\nA roadmap helps you choose subjects. A curriculum gives those subjects a longer study structure. Interview preparation and implementation projects have more specific goals. Choose the kind of help you need before deciding which list to follow.\n\nDeveloper Roadmap and DevOps Roadmap organize topics. OSSU Computer Science offers a curriculum-shaped route, while Coding Interview University is a study plan for interview preparation. Build Your Own X and JavaScript Algorithms offer different ways to turn a topic into implementation practice.\n\n## Turn a map into one observable step\n\nChoose one concept and define a small result: a program you can explain, an algorithm you can reconstruct, or a deployment step you can reproduce. Use the roadmap to choose that next step rather than treating every item as a prerequisite for making anything.\n\nCourse providers, repository ownership, and linked material can change. Follow current source links and setup instructions. None of these learning paths guarantees an employment outcome."
+    },
+    {
+      "id": "K01",
+      "kind": "category",
+      "key": "ai-agents",
+      "group": "categories",
+      "base_sha256": null,
+      "data": {
+        "title": "GitHub AI agents: frameworks, SDKs and applications",
+        "description": "Browse agent frameworks, SDKs, applications, and reference lists. Choose by the agent task and check requirements and maintenance at the source.",
+        "intro": "Begin with the job you want an agent to perform, then distinguish a framework or SDK from a ready-made application and a resource list. LangGraph, CrewAI, ADK, and the OpenAI Agents SDK offer programming interfaces; browsing an MCP server list answers a different question from choosing an orchestration framework. Check the language and workflow you actually need before comparing options.",
+        "selection": "Read setup and maintenance notes before starting a small example. Semantic Kernel’s README now points to Microsoft Agent Framework as its successor; separate catalog entries do not imply independent active development. Verify provider access, costs, and migration guidance in current documentation.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "source_checked": "2026-11-02",
+        "sources": [
+          "https://github.com/google/adk-python",
+          "https://github.com/agno-agi/agno",
+          "https://github.com/Significant-Gravitas/AutoGPT",
+          "https://github.com/e2b-dev/awesome-ai-agents",
+          "https://github.com/punkpeye/awesome-mcp-servers",
+          "https://github.com/browser-use/browser-use",
+          "https://github.com/crewAIInc/crewAI",
+          "https://github.com/assafelovic/gpt-researcher",
+          "https://github.com/langflow-ai/langflow",
+          "https://github.com/langchain-ai/langgraph",
+          "https://github.com/modelcontextprotocol/servers",
+          "https://github.com/FoundationAgents/MetaGPT",
+          "https://github.com/microsoft/agent-framework",
+          "https://github.com/openai/openai-agents-python",
+          "https://github.com/OpenHands/OpenHands",
+          "https://github.com/pydantic/pydantic-ai",
+          "https://github.com/microsoft/semantic-kernel",
+          "https://github.com/huggingface/smolagents"
+        ]
+      }
+    },
+    {
+      "id": "K02",
+      "kind": "category",
+      "key": "ai-tools",
+      "group": "categories",
+      "base_sha256": null,
+      "data": {
+        "title": "GitHub AI tools by development task",
+        "description": "Explore AI coding tools, model runtimes, application frameworks, and related resources. Check local requirements, providers, licenses, and maintenance.",
+        "intro": "Choose a concrete task: coding assistance, running a model, building an application, or processing a particular kind of media. This category spans user-facing applications and libraries, so a single popularity ranking does not describe which tool fits your workflow. Read the original setup and identify where execution and data processing take place.",
+        "selection": "Compare installation, model access, hardware needs, and external services for one task. Continue’s README currently describes its repository as read-only, so verify maintenance before adopting it. Check each project’s current license; public repository access does not establish unrestricted reuse or zero operating cost.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "source_checked": "2026-11-02",
+        "sources": [
+          "https://github.com/Aider-AI/aider",
+          "https://github.com/cline/cline",
+          "https://github.com/Comfy-Org/ComfyUI",
+          "https://github.com/continuedev/continue",
+          "https://github.com/langgenius/dify",
+          "https://github.com/nomic-ai/gpt4all",
+          "https://github.com/langchain-ai/langchain",
+          "https://github.com/BerriAI/litellm",
+          "https://github.com/ggml-org/llama.cpp",
+          "https://github.com/run-llama/llama_index",
+          "https://github.com/mem0ai/mem0",
+          "https://github.com/ollama/ollama",
+          "https://github.com/open-webui/open-webui",
+          "https://github.com/huggingface/transformers",
+          "https://github.com/unslothai/unsloth",
+          "https://github.com/vllm-project/vllm",
+          "https://github.com/openai/whisper"
+        ]
+      }
+    },
+    {
+      "id": "K03",
+      "kind": "category",
+      "key": "productivity-tools",
+      "group": "categories",
+      "base_sha256": null,
+      "data": {
+        "title": "GitHub productivity tools for developer workflows",
+        "description": "Find terminal utilities, notes and document tools, visual editors, and project management resources. Choose one workflow and check deployment and license needs.",
+        "intro": "Separate small terminal utilities from applications that manage notes, documents, diagrams, or projects. A resource list such as Awesome Mac or Awesome Selfhosted helps you discover other software; it does not provide one uniform application or license. Choose the task you want to improve before comparing installation and operating requirements.",
+        "selection": "For repeated shell tasks, try one focused utility before changing your configuration. For a larger application, inspect deployment, storage, backup, integration, and access requirements in its documentation. Evaluate the current license and service costs for the individual product rather than applying a blanket open-source or free-to-run label.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "source_checked": "2026-11-02",
+        "sources": [
+          "https://github.com/AppFlowy-IO/AppFlowy",
+          "https://github.com/jaywcjlove/awesome-mac",
+          "https://github.com/awesome-selfhosted/awesome-selfhosted",
+          "https://github.com/sharkdp/bat",
+          "https://github.com/excalidraw/excalidraw",
+          "https://github.com/sharkdp/fd",
+          "https://github.com/junegunn/fzf",
+          "https://github.com/laurent22/joplin",
+          "https://github.com/jesseduffield/lazygit",
+          "https://github.com/logseq/logseq",
+          "https://github.com/usememos/memos",
+          "https://github.com/n8n-io/n8n",
+          "https://github.com/ohmyzsh/ohmyzsh",
+          "https://github.com/paperless-ngx/paperless-ngx",
+          "https://github.com/makeplane/plane",
+          "https://github.com/BurntSushi/ripgrep",
+          "https://github.com/siyuan-note/siyuan",
+          "https://github.com/Stirling-Tools/Stirling-PDF",
+          "https://github.com/tldr-pages/tldr",
+          "https://github.com/tmux/tmux",
+          "https://github.com/ajeetdsouza/zoxide"
+        ]
+      }
+    },
+    {
+      "id": "A01",
+      "kind": "collection",
+      "key": "choosing-github-learning-resources",
+      "group": "reference",
+      "base_sha256": null,
+      "data": {
+        "title": "How to choose a GitHub learning resource",
+        "description": "Use a practical checklist to choose programming resources by goal, format, prerequisites, source evidence, license, service costs, and a small first exercise.",
+        "reviewed": false,
+        "updated": "2026-11-02",
+        "source_checked": "2026-11-02",
+        "journey": "learn",
+        "resources": [
+          "microsoft/ml-for-beginners",
+          "trekhleb/learn-python",
+          "thealgorithms/python",
+          "rust-lang/book",
+          "rust-lang/rustlings",
+          "kamranahmedse/developer-roadmap"
+        ],
+        "selection": "These existing catalog entries illustrate different learning formats: a course, runnable examples, algorithms, a language book, exercises, and a topic map. They are examples for applying the checklist, not a ranking of all learning resources.",
+        "sources": [
+          "https://github.com/microsoft/ml-for-beginners",
+          "https://github.com/trekhleb/learn-python",
+          "https://github.com/thealgorithms/python",
+          "https://github.com/rust-lang/book",
+          "https://github.com/rust-lang/rustlings",
+          "https://github.com/kamranahmedse/developer-roadmap"
+        ],
+        "comparison": [],
+        "questions": []
+      },
+      "body": "## Define the result you want\n\nWrite a small goal before opening a resource list: understand one language concept, implement an algorithm, or build a model-backed example. A good starting resource is one that helps you produce or explain that result with prerequisites you can meet.\n\n## Check seven things before committing\n\n1. **Purpose.** Does the resource explain a concept, offer exercises, map a topic, or supply a tool? Match its job to yours.\n2. **Format.** Decide whether you need an extended explanation, runnable examples, a sequence of exercises, or a reference to revisit.\n3. **Prerequisites.** Read the original introduction and setup. Identify required language knowledge, dependency versions, accounts, and hardware. Treat missing information as something to check.\n4. **Evidence.** Prefer original documentation for scope and requirements. Popularity can help you discover a resource; it does not establish that its explanations or code fit your goal.\n5. **Reuse.** Read the current license and relevant file notices before copying or redistributing material. A publicly readable repository does not answer every reuse question.\n6. **Costs.** Separate reading access from books, hosted development environments, model APIs, and compute. Inspect the particular lesson you plan to run.\n7. **First action.** Choose one example small enough to inspect. Predict its result, run or trace it, change something, and explain the difference.\n\n## Apply the checklist to different formats\n\nMachine Learning for Beginners illustrates a subject-focused course; Learn Python offers examples and a cheatsheet. The Algorithms provides implementations to study. The Rust book supplies extended explanations, Rustlings supplies exercises, and Developer Roadmap helps organize topics.\n\nThese are different starting points. Use the links below to inspect the original source and decide which format serves your goal. An exercise and a book can complement one another without becoming interchangeable.\n\n## Recheck when something no longer matches\n\nIf setup instructions fail, compare the documented versions with your environment before changing unrelated settings. If the resource assumes knowledge you do not yet have, choose a smaller prerequisite goal. An older completed explanation can remain useful, while a frequently updated tool can still be a poor fit for the task.\n\nOur [curation process](/about/) describes how this directory is maintained. For a subject-specific starting point, explore [Python practice](/discover/python-practice/), [Rust books and exercises](/discover/learn-rust/), or [AI courses](/discover/ai-for-beginners/)."
+    }
+  ]
+}

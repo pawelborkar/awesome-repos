@@ -5,6 +5,7 @@ import {load} from 'cheerio';
 import path from 'node:path';
 import sharp from 'sharp';
 import {discoveryGuide} from './discovery.mjs';
+import {contentModificationDate} from './content-dates.mjs';
 await sharp('site/public/social.svg').png().toFile('site/dist/social.png');
 const production=process.env.PRODUCTION==='true';
 const root='site/dist';const origin='https://awesome.pawel.in';
@@ -19,7 +20,9 @@ for(const file of files(root).filter(f=>f.endsWith('.html'))){
  $('[data-metrics]').remove();
  const fingerprint=createHash('sha256').update($('main').text().replace(/\s+/g,' ').trim()).digest('hex');
  const previous=dates[canonical];
- const date=previous?.hash===fingerprint?previous.date:previous?today:baseline;
+ const schemas=$('script[type="application/ld+json"]').toArray().map(el=>JSON.parse($(el).text()));
+ const reviewed=schemas.find(schema=>schema.lastReviewed)?.lastReviewed;
+ const date=contentModificationDate({previous,fingerprint,today,baseline,reviewed});
  dates[canonical]={hash:fingerprint,date};
  if(production && $('meta[name=robots]').attr('content')==='index,follow')entries.push({canonical,date,title:$('title').text().replace(/ \| Awesome Repositories$/,''),description:$('meta[name=description]').attr('content')||''});
 }

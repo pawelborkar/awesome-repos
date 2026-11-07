@@ -1,0 +1,17 @@
+id,cohort,intent,prompt,target_path,status
+P01,unbranded,AI learning selection,Which GitHub courses should I compare to start learning AI and how do their subjects differ?,/discover/ai-for-beginners/,not_run
+P02,unbranded,AI learning prerequisites,I want to learn generative AI from a GitHub course. What prerequisites and service costs should I check?,/discover/ai-for-beginners/,not_run
+P03,unbranded,Python practice selection,Which GitHub repositories can help me practise Python through examples algorithms and design patterns?,/discover/python-practice/,not_run
+P04,unbranded,Python practice format,How should I choose between structured Python challenges and collections of Python code examples?,/discover/python-practice/,not_run
+P05,unbranded,Rust learning selection,Which Rust books examples and exercise repositories work well together for a learning plan?,/discover/learn-rust/,not_run
+P06,unbranded,Rust format comparison,How do the Rust Book Rust By Example and Rustlings differ and when should I use each?,/discover/learn-rust/,not_run
+P07,unbranded,terminal workflow,Which GitHub command-line tools are useful for file search navigation preview and Git workflows?,/discover/command-line-workflow/,not_run
+P08,unbranded,learning roadmap,Where can I find GitHub roadmaps and computer science curricula and how do they differ from project collections?,/discover/developer-learning-paths/,not_run
+P09,unbranded,ML learning selection,Which GitHub learning resources should I compare after an introductory machine learning tutorial?,/discover/machine-learning-deeper/,not_run
+P10,unbranded,AI agents category,How can I distinguish AI agent frameworks SDKs applications and resource lists on GitHub?,/categories/ai-agents/,not_run
+P11,unbranded,AI tools category,How should I compare GitHub AI developer tools by task deployment requirements and service costs?,/categories/ai-tools/,not_run
+P12,unbranded,resource selection method,What should I check before choosing a GitHub repository as a programming learning resource?,/discover/choosing-github-learning-resources/,not_run
+P13,unbranded,resource evidence,Does a popular public GitHub repository mean that it is high quality free to run and unrestricted to reuse?,/about/,not_run
+P14,unbranded,Python resource evaluation,What is The Algorithms Python repository useful for and what should learners check before using it?,/repositories/thealgorithms/python/,not_run
+P15,unbranded,Rust resource evaluation,What does Comprehensive Rust teach and what should I check before starting it?,/repositories/google/comprehensive-rust/,not_run
+P16,branded_control,brand accuracy,What is Awesome Repositories at awesome.pawel.in and how does it curate GitHub resources?,/about/,not_run

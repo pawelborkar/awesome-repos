@@ -128,6 +128,12 @@
 }
 
 /* Typography & Prose for Markdown / Editorial content */
+.comparison-table { min-width: 38rem; border-collapse: collapse; }
+.comparison-table th, .comparison-table td { padding: 1rem; vertical-align: top; border-bottom: 1px solid #20232a; }
+.comparison-table thead th { color: #e5e7eb; background: #181b22; }
+.comparison-table tbody th { min-width: 9rem; font-weight: 500; }
+.comparison-table td { min-width: 12rem; color: #9ca3af; }
+.comparison-table a { color: #e5e7eb; text-decoration: underline; text-underline-offset: 3px; }
 .prose {
   max-width: 750px;
   color: #9ca3af;
