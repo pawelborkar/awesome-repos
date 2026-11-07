@@ -80,6 +80,7 @@
       "https://github.com/openai/openai-agents-python",
       "https://github.com/OpenHands/OpenHands",
       "https://github.com/pydantic/pydantic-ai",
+      "https://github.com/morluto/rea",
       "https://github.com/microsoft/semantic-kernel",
       "https://github.com/huggingface/smolagents"
     ]
