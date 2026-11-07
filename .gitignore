@@ -13,3 +13,7 @@ test-results/
 playwright-report/
 __pycache__/
 *.pyc
+.env
+.posthog/
+.posthog-wizard-cache/
+.DS_Store

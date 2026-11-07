@@ -50,6 +50,58 @@ When renaming a listed repository, update its README URL and annotation key, pre
 
 `.cache/content-dates.json` records a content hash and modification date per canonical URL. The CI cache preserves dates across builds. Popularity counters do not alter these dates. If the cache is unavailable, the README's latest commit date is used as the conservative baseline.
 
+## Trending repositories
+
+`/trending/` is Awesome Repositories’ ranking of a bounded GitHub candidate pool,
+independent of README catalog membership. Daily, seven-day, and thirty-day views
+support all languages, Python, JavaScript, TypeScript, Rust, Go, Java, and C++.
+Only the populated default view is indexable; filter variants remain noindex.
+
+```sh
+GITHUB_TOKEN=... npm run trending
+npm run build
+```
+
+The refresh command uses GitHub’s official search and star-history APIs. For
+each language and all languages, it searches for the 25 most-starred public,
+non-fork, non-archived repositories pushed within 30 days and the 25 most-starred
+created within 90 days. Repository IDs deduplicate the resulting maximum of
+400 candidates. Six weeks of history supply the latest 1, 7, and 30 reported day
+buckets, including the current partial day. Source week anchors determine day
+boundaries; GitHub does not guarantee these align with UTC. These counts represent
+reported star additions, not net changes in the current star total. Results sort
+by gains, total stars, then case-insensitive repository name; each view contains
+at most 25 positive-growth results. Primary language comes from GitHub.
+
+`npm run trending` updates `.cache/trending.json` atomically. Ordinary builds and
+development never fetch data. For isolated fixtures, set `TRENDING_SNAPSHOT_PATH`
+to a snapshot JSON file during dev/check/build. No snapshot renders an unavailable
+page and publishes JSON `null`; it does not break the catalog.
+
+To exercise populated, empty-language, and stale states without API credentials,
+run `node tests/fixtures/write-trending.mjs`, then
+`TRENDING_SNAPSHOT_PATH=reports/trending-fixture.json npm run build` and the browser
+checks. Validation CI uses this isolated fixture; production builds use only the
+real snapshot. Run `npm run build` again to return to normal local data.
+
+Production deployment refreshes every six hours at minute 17 UTC and on existing
+deployment triggers. Use **Actions → Deploy website → Run workflow** on `main`
+for a manual refresh. The workflow first retrieves the previously published
+`/data/trending.json` as fallback, then uses `GITHUB_TOKEN` for discovery/history.
+Local cache is a secondary fallback if the deployed snapshot cannot be retrieved.
+Search requests are spaced at least 2.1 seconds apart; other requests at least
+one second apart. Requests follow only GitHub API redirects, use bounded retries
+for transient failures, stop on access/rate limits, and have a 500-request budget.
+
+Incomplete or failed discovery and refreshes without usable growth retain the
+last successful snapshot and its original timestamp. Missing/invalid individual
+histories are excluded and counted, never silently assigned zero growth. The
+workflow summary reports coverage, failures, and snapshot age. Snapshots older
+than 12 hours display a stale notice; with JavaScript it also updates as a static
+deployment ages. Without JavaScript the notice reflects age at build time, and
+the exact snapshot time remains visible. All production checks and the latest
+`main` guard run before deployment; a failed build leaves production unchanged.
+
 ## Weekly discovery
 
 The workflow runs Monday at **03:47 UTC / 09:17 IST**. Configure thresholds and queries in `config/curation.json`; set `GROQ_MODEL` as a repository variable to override the model.
