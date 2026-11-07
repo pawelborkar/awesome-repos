@@ -23,4 +23,7 @@ for(const record of pilot.records){
 const {changes}=planPromotion(pilot,loadCatalog(),pilot.records.map(r=>r.id));
 for(const [file,text] of changes)writeFileSync(path.join(destination,file),text);
 writeFileSync(path.join(destination,'SEO-TEST-FIXTURE.txt'),'SIMULATED APPROVAL FOR TESTING ONLY. DO NOT DEPLOY.\n');
+// Synthetic public configuration for the browser suite's fully intercepted SDK checks.
+// No real .env or credential is copied; localhost visits still fail the production host gate.
+writeFileSync(path.join(destination,'.env'),'PUBLIC_POSTHOG_PROJECT_TOKEN=phc_analytics_test_000000000000000000000000000\nPUBLIC_POSTHOG_HOST=https://a.awesome.pawel.in\n');
 console.log(destination);

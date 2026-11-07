@@ -4,6 +4,8 @@ on:
     workflows: [Validate catalog and website]
     types: [completed]
   workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
 permissions:
   contents: read
 concurrency:
@@ -13,9 +15,10 @@ jobs:
   deploy:
     if: >-
       (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'schedule' && github.ref == 'refs/heads/main') ||
       (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     environment: production
     env:
       ANALYTICS_ENABLED: ${{ vars.ANALYTICS_ENABLED }}
@@ -26,11 +29,12 @@ jobs:
       PUBLIC_POSTHOG_PROJECT_TOKEN: ${{ vars.PUBLIC_POSTHOG_PROJECT_TOKEN }}
       PUBLIC_POSTHOG_HOST: ${{ vars.PUBLIC_POSTHOG_HOST }}
       PUBLIC_POSTHOG_UI_HOST: ${{ vars.PUBLIC_POSTHOG_UI_HOST }}
+      PUBLIC_POSTHOG_REPLAY_ENABLED: ${{ vars.PUBLIC_POSTHOG_REPLAY_ENABLED || 'true' }}
       PUBLIC_SEARCH_CONSOLE_VERIFICATION: ${{ vars.PUBLIC_SEARCH_CONSOLE_VERIFICATION }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.event_name == 'schedule' && 'main' || github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
@@ -47,6 +51,10 @@ jobs:
           key: catalog-production-${{ github.run_id }}
           restore-keys: catalog-production-
       - run: npm run metadata
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Refresh trending repositories
+        run: npm run trending -- --production
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - run: npm test

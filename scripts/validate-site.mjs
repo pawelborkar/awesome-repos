@@ -38,6 +38,8 @@ for(const file of pages){
    for(const [i,item]of list.itemListElement.entries())if(item.position!==i+1||!item.name||!mainLinks.has(item.url))errors.push(`Collection item missing from HTML: ${file}`);
    const cards=$('.directory [data-resource] h3 a').toArray().map(el=>new URL($(el).attr('href'),canonical).href);
    if(cards.length&&JSON.stringify(cards)!==JSON.stringify(listed))errors.push(`Collection schema differs from rendered inventory/order: ${file}`);
+   const trending=$('[data-trending-repository] h2 a').toArray().map(el=>new URL($(el).attr('href'),canonical).href);
+   if($('[data-trending-page]').length&&JSON.stringify(trending)!==JSON.stringify(listed))errors.push(`Trending schema differs from rendered inventory/order: ${file}`);
   }
  }
  if(page?.lastReviewed&&!$('main time[datetime]').toArray().some(el=>$(el).attr('datetime')===page.lastReviewed))errors.push(`Review date missing from HTML: ${file}`);

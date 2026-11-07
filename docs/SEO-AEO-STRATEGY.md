@@ -27,8 +27,6 @@ The following is a read-only audit of the local working tree on 2 November 2026.
 | Static Astro pages, canonical URLs, metadata, linked structured data, production-only indexing, sitemap, and `llms.txt` generation already exist | Preserve this foundation; spend the initial effort on evidence and decision value. |
 | Search is noindex; filters use fragments; only a populated default trending view is index-eligible | Preserve this controlled URL footprint. |
 
-The initial working-tree audit also included separate local Trending work. That feature is outside this SEO implementation branch.
-
 Audit sources: `scripts/catalog.mjs`, `content/categories.json`, `content/resources/annotations.json`, `content/collections/`, `site/src/lib/seo.ts`, `site/src/layouts/Layout.astro`, page templates, `scripts/postbuild.mjs`, and `scripts/validate-site.mjs`.
 
 The initial strategy audit could not retrieve production URLs from its DNS-restricted execution environment. Subsequent read-only implementation checks reached production; see [SEO-IMPLEMENTATION.md](SEO-IMPLEMENTATION.md) for the sampled HTTP/indexing baseline and current limitations. Actual crawler-IP access, Search Console settings, rankings, backlinks, traffic, and existing AI citations have not been established. Historical reports are not treated as fresh production tests.
