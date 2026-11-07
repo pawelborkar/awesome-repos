@@ -232,6 +232,13 @@
       ],
       "owner": "Awesome Repos",
       "schema_version": 2
+    },
+    {
+      "event_name": "$snapshot",
+      "event_description": "Masked session recording DOM mutation or interaction chunk.",
+      "properties": [],
+      "owner": "Awesome Repos",
+      "schema_version": 2
     }
   ]
 }

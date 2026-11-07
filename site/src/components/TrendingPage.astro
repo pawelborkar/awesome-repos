@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { resources, compact } from '../lib/catalog';
+import { collectionPage } from '../lib/seo';
+import { trendingSnapshot as snapshot, periods, periodLabels, languageSlugs, languageLabels, trendingPath, repositoryUrl, rankedRepositories, snapshotAgeHours, type TrendingPeriod, type TrendingLanguage } from '../lib/trending';
+interface Props { period: TrendingPeriod; language: TrendingLanguage }
+const { period, language } = Astro.props;
+const entries = rankedRepositories(snapshot, period, language);
+const isDefault = period === 'daily' && language === 'all';
+const title = isDefault ? 'Trending repositories' : `Trending repositories: ${periodLabels[period]} · ${languageLabels[language]}`;
+const catalog = new Map(resources.map(r => [r.key, r]));
+const age = snapshotAgeHours(snapshot);
+const stale = age !== null && age > 12;
+const description = 'Discover repositories gaining stars across GitHub. Explore Awesome Repositories’ ranking by recent star growth, time range, and programming language.';
+---
+<Layout title={title} description={description} indexable={isDefault && entries.length > 0}
+  breadcrumbs={[{ name: 'Trending', path: '/trending/' }]}
+  schema={collectionPage(title, entries.map(r => ({ name: r.key, path: repositoryUrl(r.key), description: r.description })))}>
+  <div class="flex flex-col gap-6" data-trending-page data-period={period} data-language={language}>
+    <header class="pt-2">
+      <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Trending repositories</h1>
+      <p class="text-sm text-neutral-400 mt-2 leading-relaxed">Repositories gaining stars across GitHub, ranked by Awesome Repositories.</p>
+      <a href="#methodology" class="inline-block text-xs text-[#93c5fd] hover:underline mt-2">How this ranking works</a>
+    </header>
+
+    <div class="flex flex-col gap-3">
+      <nav aria-label="Trending time range" class="flex flex-wrap gap-2">
+        {periods.map(p => <a href={trendingPath(p, language)} aria-current={p === period ? 'page' : undefined}
+          class:list={['px-3 py-2 rounded-lg text-sm border', p === period ? 'bg-[#1b2234] border-[#2b3547] text-white' : 'border-[#272b34] text-neutral-300 hover:bg-neutral-800/40']}>{periodLabels[p]}</a>)}
+      </nav>
+      <nav aria-label="Trending language" class="flex flex-wrap gap-1.5">
+        {languageSlugs.map(l => <a href={trendingPath(period, l)} aria-current={l === language ? 'page' : undefined}
+          class:list={['px-2.5 py-1.5 rounded-md text-xs', l === language ? 'bg-[#1b2234] text-white' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/40']}>{languageLabels[l]}{l === 'go' && <span class="sr-only"> repositories</span>}</a>)}
+      </nav>
+    </div>
+
+    {snapshot ? <>
+      <div class="text-xs text-neutral-400 flex flex-wrap justify-between gap-2" data-metrics>
+        <span>{periodLabels[period]} · {languageLabels[language]} · {entries.length} repositories</span>
+        <span>Updated <time datetime={snapshot.fetchedAt}>{new Date(snapshot.fetchedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC' })} UTC</time></span>
+      </div>
+      <p class="text-sm text-amber-200 border border-amber-300/20 rounded-lg p-3" data-trending-stale data-fetched-at={snapshot.fetchedAt} hidden={!stale} role="status">This snapshot is more than 12 hours old. A refresh is delayed; the last successful ranking is shown below.</p>
+      {snapshot.coverage.excludedCount > 0 && <p class="text-xs text-neutral-400" data-metrics>{snapshot.coverage.excludedCount} candidate {snapshot.coverage.excludedCount === 1 ? 'repository was' : 'repositories were'} excluded because {snapshot.coverage.excludedCount === 1 ? 'its' : 'their'} star history was unavailable or invalid.</p>}
+      {entries.length > 0 ? <ol class="divide-y divide-[#20232a] border-y border-[#20232a]" aria-label="Trending repositories" data-trending-list>
+        {entries.map((repo, index) => {
+          const listed = catalog.get(repo.key.toLowerCase());
+          return <li class="py-4 flex items-start gap-3 min-w-0" data-trending-repository data-resource-key={repo.key.toLowerCase()}>
+            <span class="text-xs text-neutral-400 font-mono w-5 shrink-0 pt-1" aria-label={`Rank ${index + 1}`}>{index + 1}</span>
+            <div class="min-w-0 flex-1">
+              <h2 class="text-base font-bold text-white break-words"><a href={repositoryUrl(repo.key)} data-resource-source data-resource-key={repo.key.toLowerCase()} data-analytics-source="trending" class="hover:underline">{repo.key}<span aria-hidden="true" class="text-xs text-neutral-400 ml-1">↗</span></a></h2>
+              {repo.description && <p class="text-xs md:text-sm text-neutral-400 leading-relaxed mt-1 break-words">{repo.description}</p>}
+              <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-400 mt-2">
+                {repo.language && <span>{repo.language}</span>}
+                <span title={`${repo.stars.toLocaleString('en-US')} total stars`}>★ {compact(repo.stars)} stars</span>
+                <span data-trending-gains class="text-[#93c5fd]">+{repo.gains[period].toLocaleString('en-US')} stars {period === 'daily' ? 'today' : period === 'weekly' ? 'in 7 days' : 'in 30 days'}</span>
+                {listed && <a href={listed.path} data-resource-key={listed.key} data-analytics-source="trending" class="text-neutral-300 hover:underline">In our catalog</a>}
+              </div>
+            </div>
+          </li>;
+        })}
+      </ol> : <p class="text-sm text-neutral-400 py-8" data-trending-empty>No repositories with positive star growth match this view. Try another language or time range.</p>}
+    </> : <div class="rounded-lg border border-[#272b34] p-5" data-trending-unavailable role="status">
+      <h2 class="text-base font-semibold text-white">Trending is temporarily unavailable</h2>
+      <p class="text-sm text-neutral-400 mt-2">There is no successful snapshot yet. Please check back after the next refresh, or <a class="text-[#93c5fd] hover:underline" href="https://github.com/trending">explore GitHub Trending</a>.</p>
+    </div>}
+
+    <section id="methodology" aria-labelledby="methodology-heading" class="text-sm text-neutral-400 leading-relaxed border-t border-[#20232a] pt-6 space-y-3">
+      <h2 id="methodology-heading" class="text-lg font-semibold text-white">How this ranking works</h2>
+      <p>Every six hours, we search GitHub for popular active and recently created repositories. For all languages and each of the seven language filters, we take the 25 most-starred repositories pushed within 30 days and the 25 most-starred created within 90 days. After removing forks, archived repositories, and duplicates, this covers up to 400 candidates.</p>
+      <p>We use <a href="https://docs.github.com/en/rest/activity/starring#get-repository-star-history" class="text-[#93c5fd] hover:underline">GitHub’s star-history API</a> to count stars gained over the latest 1, 7, or 30 reported days, including the current partial day. GitHub’s reporting boundaries may differ from UTC. These are reported star additions, which can differ from net changes in the total star count.</p>
+      <p>Each view shows up to 25 repositories with positive gains, ordered by star gains, then total stars, then repository name. Language filters use GitHub’s primary language. Missing history is excluded rather than counted as zero.</p>
+      <p>This is Awesome Repositories’ ranking of a bounded candidate pool. It is not an exhaustive ranking of GitHub or a copy of GitHub Trending. Appearing here does not mean a repository has been reviewed for our curated catalog.</p>
+      {snapshot && <p data-metrics>Latest coverage: {snapshot.coverage.successCount} usable histories from {snapshot.coverage.candidateCount} candidates; {snapshot.coverage.excludedCount} excluded.</p>}
+    </section>
+  </div>
+</Layout>
+
+<script>
+  // A static deployment can age without a rebuild; update the notice on visit.
+  const notice = document.querySelector<HTMLElement>('[data-trending-stale]');
+  if (notice?.dataset.fetchedAt) {
+    const update = () => { notice.hidden = Date.now() - Date.parse(notice.dataset.fetchedAt!) <= 12 * 3600000; };
+    update();
+    window.setInterval(update, 60000);
+  }
+</script>

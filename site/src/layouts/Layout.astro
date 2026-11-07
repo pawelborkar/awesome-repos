@@ -78,6 +78,11 @@ const topCategories = categories
             <span class="text-xs text-neutral-400 font-mono">{collections.length}</span>
           </a>
         </li>
+        <li>
+          <a href="/trending/" class={`flex justify-between items-center rounded-lg px-2.5 py-1.5 ${Astro.url.pathname.startsWith('/trending/') ? 'bg-[#1b2234] text-white font-medium' : 'text-neutral-400 hover:text-white hover:bg-neutral-800/40'}`} aria-current={Astro.url.pathname.startsWith('/trending/')?'page':undefined}>
+            <span>Trending</span>
+          </a>
+        </li>
       </ul>
     </nav>
 
@@ -116,6 +121,7 @@ const topCategories = categories
       <a href="/learn/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Learn</a>
       <a href="/tools/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Build</a>
       <a href="/discover/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Collections</a>
+      <a href="/trending/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded" aria-current={Astro.url.pathname.startsWith('/trending/')?'page':undefined}>Trending</a>
       <a href="/categories/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Explore categories</a>
       <a href="/search/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Search</a>
       <a href="/contribute/" class="p-2 text-sm text-neutral-300 hover:bg-neutral-800 rounded">Suggest a resource</a>

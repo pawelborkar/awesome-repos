@@ -1,3 +1,4 @@
+import {load} from 'cheerio';
 import {assertHtmlSnapshot,sitemapUrls,crawlerAllowed} from './seo-http.mjs';
 import {loadCatalog} from './catalog.mjs';
 
@@ -22,13 +23,19 @@ for(const url of urls){
 }
 const catalog=loadCatalog();
 const unreviewed=catalog.resources.find(r=>!r.indexable);
-const expected=[['/',true],['/learn/',true],['/tools/',true],['/about/',true],['/discover/ai-for-beginners/',true],['/repositories/rust-lang/book/',true],['/search/',false],...(unreviewed?[[unreviewed.path,false]]:[])];
+const expected=[['/',true],['/learn/',true],['/tools/',true],['/about/',true],['/discover/ai-for-beginners/',true],['/repositories/rust-lang/book/',true],['/search/',false],['/trending/weekly/python/',false],...(unreviewed?[[unreviewed.path,false]]:[])];
 for(const [pathname,indexable] of expected){
  assertHtmlSnapshot({...await get(pathname),canonical:new URL(pathname,canonicalOrigin).href,indexable});
  if(urls.includes(new URL(pathname,canonicalOrigin).href)!==indexable)throw Error(`Sitemap eligibility mismatch: ${pathname}`);
 }
+const trending=await get('/trending/');
+if(trending.status!==200)throw Error(`Trending returned ${trending.status}`);
+const trendingIndexable=load(trending.html)('meta[name=robots]').attr('content')==='index,follow';
+assertHtmlSnapshot({...trending,canonical:`${canonicalOrigin}/trending/`,indexable:trendingIndexable});
+if(urls.includes(`${canonicalOrigin}/trending/`)!==trendingIndexable)throw Error('Trending sitemap eligibility mismatch');
+const data=await get('/data/trending.json');if(data.status!==200)throw Error('Missing trending JSON');JSON.parse(data.html);
 const guide=await get('/llms.txt');if(guide.status!==200)throw Error('Missing reading guide');
 const guideLinks=[...guide.html.matchAll(/\]\((https:\/\/[^\s)]+)\)/g)].map(match=>match[1]);
 if(guideLinks.length!==urls.length || new Set(guideLinks).size!==urls.length || guideLinks.some(url=>!urls.includes(url)))throw Error('Reading guide differs from sitemap');
 const missing=await get('/this-page-must-not-exist/');if(missing.status!==404)throw Error(`Missing route returned ${missing.status}, expected 404`);
-console.log(`Verified ${urls.length} sitemap pages, canonical URLs, HTML/HTTP indexing directives, search-crawler policy, core routes, noindex variants, reading guide, and actual 404 behavior at ${origin}`);
+console.log(`Verified ${urls.length} sitemap pages, canonical URLs, HTML/HTTP indexing directives, search-crawler policy, core routes, noindex variants, reading guide, trending data, and actual 404 behavior at ${origin}`);

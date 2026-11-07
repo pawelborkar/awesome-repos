@@ -13,6 +13,7 @@
     "validate": "node scripts/validate-site.mjs",
     "metadata": "node scripts/metadata.mjs",
     "seo:review": "node scripts/seo-pilot.mjs",
+    "trending": "node scripts/trending.mjs",
     "curate": "python3 scripts/curate.py",
     "deploy": "wrangler deploy --env production",
     "preview": "wrangler dev --env staging",

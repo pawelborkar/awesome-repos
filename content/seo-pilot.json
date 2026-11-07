@@ -375,6 +375,13 @@
       "snapshot_excerpt": false
     },
     {
+      "key": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "checked_at": "2026-11-02",
+      "sha256": "26ab8638e6ebc45bc3f39fd37af2bdfb68845d7f310b3873dd4ba13ae6eb8db5",
+      "snapshot_excerpt": false
+    },
+    {
       "key": "n8n-io/n8n",
       "url": "https://github.com/n8n-io/n8n",
       "checked_at": "2026-11-02",
@@ -1573,6 +1580,7 @@
           "https://github.com/openai/openai-agents-python",
           "https://github.com/OpenHands/OpenHands",
           "https://github.com/pydantic/pydantic-ai",
+          "https://github.com/morluto/rea",
           "https://github.com/microsoft/semantic-kernel",
           "https://github.com/huggingface/smolagents"
         ]
