@@ -26,25 +26,17 @@ const { resource: r } = Astro.props;
     <span class="text-xs md:text-sm text-neutral-400 font-normal shrink-0">{r.owner}</span>
   </div>
 
-  <!-- Row 1, Column 2: Stars and External Link -->
-  <div class="flex items-center gap-2 shrink-0 justify-self-end">
-    {r.metrics && (
-      <span
-        class="star-count inline-flex items-center gap-1 text-xs md:text-sm text-neutral-300 font-medium"
-        title={`${r.metrics.stars.toLocaleString()} stars; ${r.metrics.forks.toLocaleString()} forks; checked ${r.metrics.fetchedAt.slice(0, 10)}`}
-        data-metrics
-      >
-        <span class="text-neutral-400 text-xs">★</span>
-        <span>{compact(r.metrics.stars)}</span>
-      </span>
-    )}
+  <!-- Row 1, Column 2: Stars (link to repository instead of arrow) -->
+  <div class="flex items-center shrink-0 justify-self-end">
     <a
-      class="card-source text-neutral-400 hover:text-white transition-colors text-sm px-1"
+      class="card-source star-count inline-flex items-center gap-1 text-xs md:text-sm text-neutral-300 hover:text-white font-medium transition-colors"
       href={r.url}
-      aria-label={`View ${r.name} on GitHub`}
-      title="View the original GitHub repository"
+      aria-label={`View ${r.name} on GitHub${r.metrics ? ` (${r.metrics.stars.toLocaleString()} stars)` : ''}`}
+      title={r.metrics ? `View on GitHub · ${r.metrics.stars.toLocaleString()} stars; ${r.metrics.forks.toLocaleString()} forks; checked ${r.metrics.fetchedAt.slice(0, 10)}` : `View ${r.name} on GitHub`}
+      data-metrics
     >
-      <span class="text-xs">↗</span>
+      <span class="text-neutral-400 text-xs">★</span>
+      <span>{r.metrics ? compact(r.metrics.stars) : '—'}</span>
     </a>
   </div>
 

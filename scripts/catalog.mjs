@@ -72,8 +72,10 @@ export function loadCatalog() {
   for(const category of catalog.categories)category.editorial=categoryNotes[category.slug]||null;
   const annotations = JSON.parse(readFileSync(path.join(root,'content/resources/annotations.json'),'utf8')).map(x => annotationSchema.parse(x));
   if (new Set(annotations.map(a=>a.key)).size !== annotations.length) throw Error('Duplicate resource annotation');
-  const statsPath = path.join(root,'.cache/github-metadata.json');
-  const snapshots = existsSync(statsPath) ? JSON.parse(readFileSync(statsPath,'utf8')) : {};
+  const cachedPath = path.join(root, '.cache/github-metadata.json');
+  const fallbackPath = path.join(root, 'content/github-metadata.json');
+  const statsPath = existsSync(cachedPath) ? cachedPath : fallbackPath;
+  const snapshots = existsSync(statsPath) ? JSON.parse(readFileSync(statsPath, 'utf8')) : {};
   const educationCategories = ['ai-learning','books','career','cheatsheets','competitive-programming','courses-and-certifications','education','reading-list','system-design','opportunities-and-programs'];
   for (const resource of catalog.resources) {
     const annotation = annotations.find(a => a.key === resource.key);

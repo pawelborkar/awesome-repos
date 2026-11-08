@@ -1,7 +1,8 @@
 import {mkdirSync,writeFileSync,readFileSync,existsSync} from 'node:fs';
 import {parseReadme} from './catalog.mjs';
 const file='.cache/github-metadata.json';
-const cache=existsSync(file)?JSON.parse(readFileSync(file,'utf8')):{};
+const fallback='content/github-metadata.json';
+const cache=existsSync(file)?JSON.parse(readFileSync(file,'utf8')):existsSync(fallback)?JSON.parse(readFileSync(fallback,'utf8')):{};
 const resources=parseReadme(readFileSync('README.md','utf8')).resources;
 const token=process.env.GITHUB_TOKEN;
 if(!token) console.warn('No GitHub token: preserving cached metadata; missing metrics will be omitted.');
@@ -17,5 +18,5 @@ if(token) for(const resource of resources) {
     refreshed++;
   }catch{console.warn(`Metadata fetch failed for ${resource.key}; retaining cache.`);}
 }
-mkdirSync('.cache',{recursive:true});writeFileSync(file,JSON.stringify(cache,null,2));
+mkdirSync('.cache',{recursive:true});writeFileSync(file,JSON.stringify(cache,null,2));writeFileSync(fallback,JSON.stringify(cache,null,2));
 console.log(`Refreshed ${refreshed}; ${Object.keys(cache).length} cached snapshots.`);

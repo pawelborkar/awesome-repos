@@ -35,3 +35,19 @@ test('advanced filters disclose predictably and restore active values',async({pa
  const expected=loadCatalog().resources.filter(r=>(r.journey==='learn'||r.journey==='both')&&r.technologies.includes('Rust')).length;
  await page.goto('/learn/');await expect(page.locator('[data-advanced]')).not.toHaveAttribute('open','');await page.getByText('More filters',{exact:true}).click();await page.locator('.directory select[name="technology"]').selectOption('Rust');await expect(page.locator('[data-resource]:visible')).toHaveCount(expected);await page.reload();await expect(page.locator('[data-advanced]')).toHaveAttribute('open','');await expect(page.locator('.directory select[name="technology"]')).toHaveValue('Rust');
 });
+
+test('directory cards display stars instead of arrow and support sorting',async({page})=>{
+ await page.goto('/');
+ const firstCard = page.locator('[data-resource]').first();
+ await expect(firstCard.locator('.card-source')).toContainText('★');
+ await expect(firstCard.locator('.card-source')).not.toContainText('↗');
+
+ await page.locator('select[name="sort"]').selectOption('name');
+ await expect(page).toHaveURL(/sort=name/);
+ const nameSorted = await page.locator('[data-resource]').evaluateAll(els => els.slice(0, 3).map(e => e.dataset.name));
+ expect(nameSorted[0]! <= nameSorted[1]!).toBe(true);
+
+ await page.locator('select[name="sort"]').selectOption('stars');
+ const starsSorted = await page.locator('[data-resource]').evaluateAll(els => els.slice(0, 3).map(e => Number(e.dataset.stars)));
+ expect(starsSorted[0]! >= starsSorted[1]!).toBe(true);
+});
