@@ -176,7 +176,11 @@ const isHome = Astro.url.pathname === '/';
         if (sortVal === 'name') {
           return a.dataset.name!.localeCompare(b.dataset.name!);
         }
-        return Number(b.dataset.stars) - Number(a.dataset.stars) || a.dataset.name!.localeCompare(b.dataset.name!);
+        const starsA = Number(a.dataset.stars);
+        const starsB = Number(b.dataset.stars);
+        const safeA = Number.isFinite(starsA) ? starsA : -1;
+        const safeB = Number.isFinite(starsB) ? starsB : -1;
+        return (safeB - safeA) || a.dataset.name!.localeCompare(b.dataset.name!);
       });
       for (const card of cards) {
         card.hidden = !fields.slice(0, 4).every(f => !values.get(f) || (card.dataset[f] || '').split(',').includes(String(values.get(f)))) || !!(values.get('q') && !`${card.dataset.name} ${card.dataset.description}`.includes(String(values.get('q')).toLowerCase()));
