@@ -156,7 +156,7 @@ export function analyticsRuntime(settings, win) {
           visitorStatus = !first || first === id ? 'new' : 'returning';
           ph.register({ visitor_status: visitorStatus });
         } catch { visitorStatus = 'unknown'; }
-        if (permitted() && context().page_type !== 'not_found' && settings.replayEnabled && sampleSession(id)) ph.startSessionRecording({ sampling: true });
+        if (permitted() && context().page_type !== 'not_found' && settings.replayEnabled && sampleSession(id, settings.replaySampleRate)) ph.startSessionRecording({ sampling: true });
         else ph.stopSessionRecording();
       });
     },

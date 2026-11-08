@@ -91,8 +91,8 @@ block navigation, theme changes, filtering, search, or curation.
   messages/rejection values never enter the error queue. Error capture additionally
   requires a verified included Error Tracking limit.
 
-Replay starts disabled. For a verified replay allowance, a deterministic hash of the
-SDK session ID selects 10% of sessions, stable across document loads. A selected
+Replay starts disabled by default unless `PUBLIC_POSTHOG_REPLAY_ENABLED=true` is set or an included allowance is verified. For an enabled replay configuration, a deterministic hash of the
+SDK session ID selects 10% of sessions (configurable via `PUBLIC_POSTHOG_REPLAY_SAMPLE_RATE`), stable across document loads. A selected
 session starts recording with the SDK sampling override; unselected sessions stop.
 This avoids accidentally applying two independent 10% samplers. All text/inputs are
 masked, relevant attributes are masked, network records are dropped, and canvas and

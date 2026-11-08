@@ -1,0 +1,10 @@
+---
+import TrendingPage from '../../../components/TrendingPage.astro';
+import { periods, languageSlugs, type TrendingPeriod, type TrendingLanguage } from '../../../lib/trending';
+export function getStaticPaths() {
+  return periods.flatMap(period => languageSlugs.filter(language => period !== 'daily' || language !== 'all').map(language => ({ params: { period, language }, props: { period, language } })));
+}
+interface Props { period: TrendingPeriod; language: TrendingLanguage }
+const { period, language } = Astro.props;
+---
+<TrendingPage period={period} language={language} />

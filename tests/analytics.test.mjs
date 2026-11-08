@@ -103,6 +103,13 @@ test('production analytics needs only a project token and host, with an optional
   assert.equal(config.apiHost, settings.apiHost);
   assert.equal(config.replayEnabled, false);
   assert.equal(config.errorsEnabled, false);
+  const withReplay = browserAnalyticsConfig({ ...env, PUBLIC_POSTHOG_REPLAY_ENABLED: 'true' });
+  assert.equal(withReplay.replayEnabled, true);
+  assert.equal(withReplay.replaySampleRate, 0.1);
+  const customRate = browserAnalyticsConfig({ ...env, PUBLIC_POSTHOG_REPLAY_ENABLED: 'true', PUBLIC_POSTHOG_REPLAY_SAMPLE_RATE: '0.25' });
+  assert.equal(customRate.replaySampleRate, 0.25);
+  const withFallbackVar = browserAnalyticsConfig({ ...env, REPLAY_ENABLED: 'true' });
+  assert.equal(withFallbackVar.replayEnabled, true);
   assert.equal(browserAnalyticsConfig({ ...env, PUBLIC_POSTHOG_HOST: 'https://custom.example.com/' }).apiHost, 'https://custom.example.com');
   for (const changed of [{ PUBLIC_POSTHOG_PROJECT_TOKEN: '' }, { PUBLIC_POSTHOG_HOST: '' }, { ANALYTICS_ENABLED: 'false' }, { PRODUCTION: 'false' }]) {
     const disabled = browserAnalyticsConfig({ ...env, ...changed });

@@ -25,8 +25,15 @@ jobs:
       - run: npm ci
       - run: python3 -m pip install -r requirements.txt
       - run: npm test
+      - run: npm run seo:review
       - run: npm run check
       - run: npm run build && npm run validate
+      - name: Build populated and stale Trending views for browser checks
+        run: |
+          node tests/fixtures/write-trending.mjs
+          npm run build && npm run validate
+        env:
+          TRENDING_SNAPSHOT_PATH: reports/trending-fixture.json
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
       - run: npm run test:performance

@@ -2,7 +2,7 @@
 
 # Awesome Repositories
 
-_A curated list of GitHub Repositories full of FREE Resources._
+_A curated list of GitHub repositories for learning programming and building software._
 
 [Explore the searchable directory](https://awesome.pawel.in) · [Website and automation setup](docs/OPERATIONS.md)
 
@@ -65,6 +65,7 @@ _A curated list of GitHub Repositories full of FREE Resources._
 | [Agent Development Kit (ADK)](https://github.com/google/adk-python) | An open-source, code-first Python toolkit for building, evaluating and deploying AI agents | [Apache-2.0](https://github.com/google/adk-python/blob/main/LICENSE) |
 | [smolagents](https://github.com/huggingface/smolagents) | A barebones library for agents that think in code | [Apache-2.0](https://github.com/huggingface/smolagents/blob/main/LICENSE) |
 | [Pydantic AI](https://github.com/pydantic/pydantic-ai) | A Python agent framework to help you build production-grade GenAI applications | [MIT](https://github.com/pydantic/pydantic-ai/blob/main/LICENSE) |
+| [REA](https://github.com/morluto/rea) | Reverse engineer anything with agents, from app behavior down to native binaries | [MIT](https://github.com/morluto/rea/blob/main/LICENSE) |
 | [Semantic Kernel](https://github.com/microsoft/semantic-kernel) | A model-agnostic SDK for building, orchestrating and deploying AI agents and multi-agent systems | [MIT](https://github.com/microsoft/semantic-kernel/blob/main/LICENSE) |
 | [Agno](https://github.com/agno-agi/agno) | Build, run and manage multi-agent systems | [Apache-2.0](https://github.com/agno-agi/agno/blob/main/LICENSE) |
 | [OpenHands](https://github.com/OpenHands/OpenHands) | AI-driven software development agents | [MIT](https://github.com/OpenHands/OpenHands/blob/main/LICENSE) |

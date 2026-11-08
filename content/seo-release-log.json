@@ -1,0 +1,162 @@
+[
+  {
+    "id": "C01",
+    "path": "/discover/ai-for-beginners/",
+    "group": "collections",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "baa0aa316b4dd6ab7fb9c3592466e98587e731e1f020518b65a257ec32626b7b",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "C02",
+    "path": "/discover/python-practice/",
+    "group": "collections",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "aaeac274018922766c12abcdd29d650d8523427a46ed4bfde1dbf669309083b0",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "C03",
+    "path": "/discover/learn-rust/",
+    "group": "collections",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "8a23922ffb0bc79aa9014616e7a8f027b2fb264979ba63af9d592f65156aa562",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "R01",
+    "path": "/repositories/microsoft/ai-agents-for-beginners/",
+    "group": "batch-1",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "f08c21d759d8e02518795c857801a8dc33fa389984311a92e2e08dc8f392d547",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "R02",
+    "path": "/repositories/microsoft/mcp-for-beginners/",
+    "group": "batch-1",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "42dc1e160c32dba19f1f791878d5b3167712d2f8540782c30c4f5bbb1547da76",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "R03",
+    "path": "/repositories/asabeneh/30-days-of-python/",
+    "group": "batch-1",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "4fde2efc27564c20f330053efed62c05956bde1d28f6259815fe6d2b7d432b9d",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "R04",
+    "path": "/repositories/satwikkansal/wtfpython/",
+    "group": "batch-1",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "280da8f49d75768028920f39fa1f8a7e1ea1c7e82dd8e1646410709e8547c088",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "R05",
+    "path": "/repositories/faif/python-patterns/",
+    "group": "batch-1",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "f1b78d08a31a42a239c2c5cb17ca74a4bc882b80c387ad5a96b6bd215b1bd0ed",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "R06",
+    "path": "/repositories/google/comprehensive-rust/",
+    "group": "batch-1",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "2b494a7d6052d84da57eeebe0c65d0c9a5098948120ee580daae5e2cdec10bbc",
+    "approved_at": "2026-11-02T12:31:30.251Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "C04",
+    "path": "/discover/command-line-workflow/",
+    "group": "collections",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "167ee6330d752a9a3b73f4c0578e7a59baa0ca7ec215ffcce3e77f7b3c4c358d",
+    "approved_at": "2026-11-02T12:55:38.012Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "C05",
+    "path": "/discover/machine-learning-deeper/",
+    "group": "collections",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "0d474a9731518152d98e49ad7714697bb35212815daa12ac7a423cdba70db030",
+    "approved_at": "2026-11-02T12:55:38.012Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "C06",
+    "path": "/discover/developer-learning-paths/",
+    "group": "collections",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "9298ad07a0f4b22416e713fb85fd450e4fe20e2ce9081c7860f391943353eee5",
+    "approved_at": "2026-11-02T12:55:38.012Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "K01",
+    "path": "/categories/ai-agents/",
+    "group": "categories",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "ce294cd01ff62c307ecf8b5aafc7f3e878763173de9fbc4e390231db155f8e38",
+    "approved_at": "2026-11-02T12:55:38.012Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "K02",
+    "path": "/categories/ai-tools/",
+    "group": "categories",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "28afaac62ef76362854bb34fddc008ab7cf6ac956414df80fb8668dd35c7dbbb",
+    "approved_at": "2026-11-02T12:55:38.012Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "K03",
+    "path": "/categories/productivity-tools/",
+    "group": "categories",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "8c2cf0e9a2b993825d4e579121963379a3143b5fb3d92c06f23db7896698fd35",
+    "approved_at": "2026-11-02T12:55:38.012Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  },
+  {
+    "id": "A01",
+    "path": "/discover/choosing-github-learning-resources/",
+    "group": "reference",
+    "source_checked": "2026-11-02",
+    "draft_sha256": "dbf69d71e33268d05533582d4c91de629f0af88b9139774863cff33cc037285e",
+    "approved_at": "2026-11-02T12:55:38.012Z",
+    "published_at": null,
+    "status": "approved-locally-awaiting-deployment"
+  }
+]
